@@ -9,6 +9,7 @@
 #include "sort_utils.hpp"
 #include <cstddef>
 #include <utility>
+#include <cstring>
 #include <stdexcept>
 #include <functional>
 

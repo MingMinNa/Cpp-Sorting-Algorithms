@@ -172,7 +172,7 @@ void TimSort::tim_merge(T* arr, size_t start, size_t mid, size_t end, Compare cm
 template <typename T, typename Compare>
 ptrdiff_t TimSort::merge_lo_left(
     T* arr, std::vector<T> &left, 
-    ptrdiff_t start, ptrdiff_t mid, ptrdiff_t end, 
+    ptrdiff_t start, ptrdiff_t mid, [[maybe_unused]] ptrdiff_t end, 
     ptrdiff_t &i, ptrdiff_t &j, ptrdiff_t &k, Compare cmp
 ) {
     ptrdiff_t n1 = mid - start + 1;
@@ -193,10 +193,11 @@ ptrdiff_t TimSort::merge_lo_left(
     k ++, j ++;
     return ret;
 }
+
 template <typename T, typename Compare>
 ptrdiff_t TimSort::merge_lo_right(
     T* arr, std::vector<T> &left, 
-    ptrdiff_t start, ptrdiff_t mid, ptrdiff_t end, 
+    [[maybe_unused]] ptrdiff_t start, [[maybe_unused]] ptrdiff_t mid, ptrdiff_t end, 
     ptrdiff_t &i, ptrdiff_t &j, ptrdiff_t &k, Compare cmp
 ) {
     ptrdiff_t index = j - 1;
@@ -274,7 +275,7 @@ void TimSort::merge_lo(T* arr, ptrdiff_t start, ptrdiff_t mid, ptrdiff_t end, Co
 template <typename T, typename Compare>
 ptrdiff_t TimSort::merge_hi_left(
     T* arr, std::vector<T> &right, 
-    ptrdiff_t start, ptrdiff_t mid, ptrdiff_t end, 
+    ptrdiff_t start, [[maybe_unused]] ptrdiff_t mid, [[maybe_unused]] ptrdiff_t end, 
     ptrdiff_t &i, ptrdiff_t &j, ptrdiff_t &k, Compare cmp
 ) {
     ptrdiff_t index = i + 1;
@@ -298,7 +299,7 @@ ptrdiff_t TimSort::merge_hi_left(
 template <typename T, typename Compare>
 ptrdiff_t TimSort::merge_hi_right(
     T* arr, std::vector<T> &right, 
-    ptrdiff_t start, ptrdiff_t mid, ptrdiff_t end, 
+    [[maybe_unused]] ptrdiff_t start, [[maybe_unused]] ptrdiff_t mid, [[maybe_unused]] ptrdiff_t end, 
     ptrdiff_t &i, ptrdiff_t &j, ptrdiff_t &k, Compare cmp
 ) {
     ptrdiff_t index = j + 1; 
