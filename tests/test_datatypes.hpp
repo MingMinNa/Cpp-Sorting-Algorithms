@@ -6,6 +6,7 @@
 
 #pragma once
 
+#include <vector>
 #include <limits>
 #include <random>
 #include <cstdint>
@@ -17,15 +18,23 @@
 namespace sort_test 
 {
 
+extern std::vector<size_t> test_sizes;
+
 /* Int Class */
 using Int = int32_t;
 using IntCmp = std::function<bool(const Int &, const Int &)>;
 using IntFn  = std::function<void(Int*, size_t, IntCmp)>;
 
+extern Int Int_range_min;
+extern Int Int_range_max;
+
 /* Float Class */
 using Float = double;
 using FloatCmp = std::function<bool(const Float &, const Float &)>;
 using FloatFn  = std::function<void(Float*, size_t, FloatCmp)>;
+
+extern Float Float_range_min;
+extern Float Float_range_max;
 
 /* Element Class */
 struct Element {
@@ -65,6 +74,9 @@ struct Element {
 using ElementCmp = std::function<bool(const Element &, const Element &)>;
 using ElementFn  = std::function<void(Element*, size_t, ElementCmp)>;
 
+extern decltype(Element::key) Element_range_min_key;
+extern decltype(Element::key) Element_range_max_key;
+
 } // namespace sort_test
 
 /* Random Generators */
@@ -86,8 +98,8 @@ template <>
 struct RandomTraits<Int> {
     using range_type = Int;
 
-    static constexpr range_type default_min() { return -10000; }
-    static constexpr range_type default_max() { return  10000; }
+    static constexpr range_type range_min() { return Int_range_min; }
+    static constexpr range_type range_max() { return Int_range_max; }
 
     static Int generate(range_type min_val, range_type max_val, std::mt19937_64 &engine) 
     {
@@ -100,8 +112,8 @@ template <>
 struct RandomTraits<Float> {
     using range_type = Float;
 
-    static constexpr range_type default_min() { return 0.0; }
-    static constexpr range_type default_max() { return 1.0; }
+    static constexpr range_type range_min() { return Float_range_min; }
+    static constexpr range_type range_max() { return Float_range_max; }
 
     static Float generate(range_type min_val, range_type max_val, std::mt19937_64 &engine) 
     {
@@ -114,8 +126,8 @@ template <>
 struct RandomTraits<Element> {
     using range_type = decltype(Element::key);
 
-    static constexpr range_type default_min() { return     0; }
-    static constexpr range_type default_max() { return 20000; }
+    static constexpr range_type range_min() { return Element_range_min_key; }
+    static constexpr range_type range_max() { return Element_range_max_key; }
 
     static Element generate(range_type min_val, range_type max_val, std::mt19937_64 &engine) 
     {
@@ -130,8 +142,8 @@ struct RandomTraits<Element> {
 
 template <typename T>
 T random(
-    typename RandomTraits<T>::range_type min_val = RandomTraits<T>::default_min(),
-    typename RandomTraits<T>::range_type max_val = RandomTraits<T>::default_max(),
+    typename RandomTraits<T>::range_type min_val = RandomTraits<T>::range_min(),
+    typename RandomTraits<T>::range_type max_val = RandomTraits<T>::range_max(),
     std::optional<uint64_t> seed = std::nullopt
 ) {
     auto &engine = random_engine(seed);

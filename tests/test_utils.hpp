@@ -16,7 +16,8 @@
 #include <algorithm>
 
 /* Functions */
-namespace sort_test {
+namespace sort_test 
+{
 
 template <typename T, typename Compare>
 std::vector<T> ref_sort(std::vector<T> vec, const Compare &cmp) 
@@ -90,7 +91,8 @@ std::vector<T> make_all_equal(size_t n)
 } // namespace sort_test
 
 /* Test Framework */
-namespace sort_test {
+namespace sort_test 
+{
 
 struct TestCase 
 {
@@ -150,8 +152,8 @@ struct Reporter
 };
 
 template <typename T = Element, typename Compare = ElementCmp>
-class TestSuite {
-
+class TestSuite 
+{
     public:
         using SortFn = std::function<void(T*, size_t, Compare)>;
 
@@ -257,7 +259,7 @@ TestCase TestSuite<T, Compare>::test_null_ptr_throws()
         return TestCase(false, func_name, msg.str());
     }
 
-    for (size_t n : { 1u, 5u, 200u, 1000u }) {
+    for (size_t n : test_sizes) {
 
         bool threw = false;
         try                                   { sort_fn(nullptr, n, asc_cmp); }
@@ -296,7 +298,8 @@ TestCase TestSuite<T, Compare>::test_random()
 {
     std::string func_name = std::format("({}) random tests", TypeName<T>::name);
 
-    for(size_t n : { 1u, 2u, 3u, 5u, 8u, 10u, 23u, 57u, 100u, 500u, 1000u, 5000u }) {
+    for(size_t n : test_sizes) {
+
         auto vec = random_vector<T>(n);
         auto ref = ref_sort(vec, asc_cmp);
         sort_fn(vec.data(), n, asc_cmp);
@@ -323,11 +326,11 @@ TestCase TestSuite<T, Compare>::test_sorted()
 {
     std::string func_name = std::format("({}) sorted array", TypeName<T>::name);
 
-    auto asc_vec = make_sorted<T>(5000, asc_cmp);
+    auto asc_vec = make_sorted<T>(test_sizes.back(), asc_cmp);
     auto asc_ref = ref_sort(asc_vec, asc_cmp);
     sort_fn(asc_vec.data(), asc_vec.size(), asc_cmp);
 
-    auto des_vec = make_sorted<T>(5000, des_cmp);
+    auto des_vec = make_sorted<T>(test_sizes.back(), des_cmp);
     auto des_ref = ref_sort(des_vec, des_cmp);
     sort_fn(des_vec.data(), des_vec.size(), des_cmp);
 
@@ -342,7 +345,7 @@ TestCase TestSuite<T, Compare>::test_reverse_sorted()
 {
     std::string func_name = std::format("({}) reverse-sorted array", TypeName<T>::name);
 
-    for (size_t n : { 10u, 100u, 1000u }) {
+    for (size_t n : test_sizes) {
 
         auto vec = random_vector<T>(n);
         std::stable_sort(vec.begin(), vec.end(), des_cmp); 
@@ -363,7 +366,8 @@ TestCase TestSuite<T, Compare>::test_nearly_sorted()
 {
     std::string func_name = std::format("({}) nearly-sorted array", TypeName<T>::name);
 
-    for(size_t n : { 50u, 300u, 1000u }) {
+    for(size_t n : test_sizes) {
+
         size_t swaps = std::max<size_t>(1, n / 10);
         auto vec = make_nearly_sorted<T>(n, swaps, asc_cmp);
         auto ref = ref_sort(vec, asc_cmp);
@@ -382,7 +386,8 @@ TestCase TestSuite<T, Compare>::test_all_equal()
 {
     std::string func_name = std::format("({}) all-equal array", TypeName<T>::name);
 
-    for(size_t n : { 1u, 10u, 500u }) {
+    for (size_t n : test_sizes) {
+
         auto vec = make_all_equal<T>(n);
         auto ref = ref_sort(vec, asc_cmp);
         sort_fn(vec.data(), vec.size(), asc_cmp);
@@ -400,7 +405,8 @@ TestCase TestSuite<T, Compare>::test_high_duplicate_keys()
 {
     std::string func_name = std::format("({}) duplicate keys", TypeName<T>::name);
 
-    for (size_t n : { 10u, 100u, 500u, 1000u }) {
+    for (size_t n : test_sizes) {
+
         int32_t distinct = random<Int>(2, std::max(2, static_cast<Int>(n / 10)));
         auto vec = make_with_duplicates<T>(n, distinct);
         auto ref = ref_sort(vec, asc_cmp);
@@ -420,7 +426,8 @@ TestCase TestSuite<T, Compare>::test_stability()
 {
     std::string func_name = std::format("({}) stability", TypeName<T>::name);
 
-    for (size_t n : { 10u, 100u, 500u, 1000u }) {
+    for (size_t n : test_sizes) {
+
         int32_t distinct = random<Int>(2, std::max(2, static_cast<Int>(n / 10)));
         auto vec = make_with_duplicates<T>(n, distinct);
         auto ref = ref_sort(vec, asc_cmp);
@@ -439,7 +446,7 @@ template <typename T, typename Compare>
 TestCase TestSuite<T, Compare>::test_partial_range()
 {
     std::string func_name = std::format("({}) partial range sort", TypeName<T>::name);
-    const size_t N = 2000;
+    const size_t N = test_sizes.back();
 
     for (size_t trial = 0; trial < 5; ++ trial) {
         auto vec = random_vector<T>(N);
