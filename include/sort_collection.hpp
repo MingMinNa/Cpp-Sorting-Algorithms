@@ -19,9 +19,22 @@
 #include "merge_sort.hpp"
 #include "intro_sort.hpp"
 #include "tim_sort.hpp"
+#include "slow_sort.hpp"
+#include "stooge_sort.hpp"
+#include "comb_sort.hpp"
+#include "cycle_sort.hpp"
+#include "bitonic_sort.hpp"
+#include "tournament_sort.hpp"
+#include "odd_even_sort.hpp"
+#include "pancake_sort.hpp"
+#include "strand_sort.hpp"
+#include "patience_sort.hpp"
+#include "adaptive_merge_sort.hpp"
+#include "smooth_sort.hpp"
 
 /* Non-Comparison Sort */
 
 #include "bucket_sort.hpp"
 #include "counting_sort.hpp"
 #include "radix_sort.hpp"
+#include "flash_sort.hpp"

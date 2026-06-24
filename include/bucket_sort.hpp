@@ -45,10 +45,15 @@ void BucketSort::sort(T* arr, size_t n, Compare cmp, size_t num_buckets)
     std::vector<std::vector<T>> buckets(num_buckets);
     size_t range = static_cast<size_t>(max_ele - min_ele);
 
-    for (size_t i = 0; i < n; ++i) {
-        size_t bucket_index = 1.0 * (static_cast<size_t>(arr[i] - min_ele)) / range * num_buckets;
+    auto calc_index = [&](const T &ele) -> size_t {
+        size_t index = static_cast<size_t>(
+            1.0 * (static_cast<size_t>(ele - min_ele)) / range * num_buckets
+        );
+        return (index >= num_buckets) ? (num_buckets - 1) : (index);
+    };
 
-        if (bucket_index >= num_buckets) bucket_index = num_buckets - 1;
+    for (size_t i = 0; i < n; ++i) {
+        size_t bucket_index = calc_index(arr[i]);
         buckets[bucket_index].push_back(arr[i]);
     }
 

@@ -1,6 +1,6 @@
 /**
- * @file gnome_sort.hpp
- * @brief  Class for gnome sort.
+ * @file odd_even_sort.hpp
+ * @brief  Class for odd-even sort.
  * @author MingMinNa
  */
 
@@ -8,16 +8,17 @@
 
 #include "sort_utils.hpp"
 #include <cstddef>
-#include <functional>
+#include <utility>
 #include <stdexcept>
+#include <functional>
 
 namespace sort_imp 
 {
 
-class GnomeSort
+class OddEvenSort
 {
     public:
-        GnomeSort() = default;
+        OddEvenSort() = default;
 
         template <typename T, typename Compare = std::less<T>>
         static void sort(T* arr, size_t n, Compare cmp = Compare{});
@@ -27,20 +28,24 @@ class GnomeSort
 };
 
 template <typename T, typename Compare>
-void GnomeSort::sort(T* arr, size_t n, Compare cmp)
+void OddEvenSort::sort(T* arr, size_t n, Compare cmp)
 {
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
 
-    size_t index = 0;
-    while (index < n) {
-        if (index > 0 && cmp(arr[index], arr[index - 1])) {
-            std::swap(arr[index - 1], arr[index]);
-            -- index;
-        }
-        else {
-            ++ index;
+    bool swapped = true;
+
+    while (swapped) {
+        swapped = false;
+        for (size_t odd_even = 0; odd_even < 2; ++ odd_even) {
+            for (size_t i = odd_even; i < n - 1; i += 2) {
+                if (cmp(arr[i + 1], arr[i])) {
+					std::swap(arr[i], arr[i + 1]);
+					swapped = true;
+				}
+            }
         }
     }
 }
 
 } // namespace sort_imp
+

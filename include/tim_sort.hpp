@@ -83,8 +83,9 @@ void TimSort::sort(T* arr, size_t n, Compare cmp)
 
         // try to merge 
         while (run_stack.size() >= 3) {
-            size_t size = run_stack.size();
 
+            size_t size = run_stack.size();
+            
             auto [l_A, r_A] = run_stack[size - 3];
             auto [l_B, r_B] = run_stack[size - 2];
             auto [l_C, r_C] = run_stack[size - 1];
@@ -143,9 +144,7 @@ size_t TimSort::get_run(T* arr, const size_t n, size_t run_start, Compare cmp)
     if (run_end + 1 >= n) return run_start;
 
     bool reverse = cmp(arr[run_end + 1], arr[run_end]);
-    while (run_end + 1 < n && 
-           (arr[run_end + 1] == arr[run_end] || reverse == cmp(arr[run_end + 1], arr[run_end]))
-    ) run_end ++;
+    while (run_end + 1 < n && reverse == cmp(arr[run_end + 1], arr[run_end])) run_end ++;
 
     if (reverse) {
         for (ptrdiff_t l = run_start, r = run_end; l < r; ++l, --r) {

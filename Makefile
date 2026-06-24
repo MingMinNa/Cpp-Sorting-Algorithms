@@ -2,9 +2,16 @@ CXX      := g++
 CXXFLAGS := -std=c++23 -Wall -Wextra -Wpedantic
 
 TEST_SRCS := $(wildcard tests/*_test.cpp)
-TEST_BINS := $(patsubst tests/%.cpp,build/%,$(TEST_SRCS))
 
-.PHONY: test clean
+ifeq ($(TEST),)
+    SELECTED_SRCS := $(TEST_SRCS)
+else
+    SELECTED_SRCS := tests/$(TEST).cpp
+endif
+
+TEST_BINS := $(patsubst tests/%.cpp,build/%,$(SELECTED_SRCS))
+
+.PHONY: tests clean
 
 tests: $(TEST_BINS)
 	@failed=""; \
@@ -34,7 +41,7 @@ tests: $(TEST_BINS)
 
 build/%: tests/%.cpp
 	@mkdir -p build
-	$(CXX) $< $(CXXFLAGS) -o $@
+	$(CXX) $(CXXFLAGS) $< -o $@
 
 clean:
 	rm -rf build *.out *.o *.exe
