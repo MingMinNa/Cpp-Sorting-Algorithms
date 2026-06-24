@@ -94,6 +94,39 @@ std::vector<T> make_all_equal(size_t n)
 namespace sort_test 
 {
 
+enum class Tests : uint32_t {
+    None                = 0,
+    SingleElement       = 1u << 0,
+    NullPtrThrows       = 1u << 1,
+    ZeroLengthNoOp      = 1u << 2,
+    Random              = 1u << 3,
+    Sorted              = 1u << 4,
+    ReverseSorted       = 1u << 5,
+    NearlySorted        = 1u << 6,
+    AllEqual            = 1u << 7,
+    HighDuplicateKeys   = 1u << 8,
+    PartialRange        = 1u << 9,
+    Stability           = 1u << 10,
+};
+
+inline Tests operator&(Tests a, Tests b)
+{
+    using U = std::underlying_type_t<Tests>;
+
+    return static_cast<Tests>(
+        static_cast<U>(a) & static_cast<U>(b)
+    );
+}
+
+inline Tests operator|(Tests a, Tests b)
+{
+    using U = std::underlying_type_t<Tests>;
+
+    return static_cast<Tests>(
+        static_cast<U>(a) | static_cast<U>(b)
+    );
+}
+
 struct TestCase 
 {
     bool        passed;
@@ -167,7 +200,7 @@ class TestSuite
         );
         ~TestSuite() = default;
 
-        Result run_all();
+        Result run_all(Tests exclude = Tests::None);
         TestCase test_single_element();
         TestCase test_null_ptr_throws();
         TestCase test_zero_length_no_op();
@@ -207,24 +240,38 @@ TestSuite<T, Compare>::TestSuite(
 }
 
 template <typename T, typename Compare>
-Result TestSuite<T, Compare>::run_all()
+Result TestSuite<T, Compare>::run_all(Tests exclude)
 {
     Result res;
     res.suite_name = sort_name;
-    res.cases = {
-        test_single_element(),
-        test_null_ptr_throws(),
-        test_zero_length_no_op(),
-        test_random(),
-        test_sorted(),
-        test_reverse_sorted(),
-        test_nearly_sorted(),
-        test_all_equal(),
-        test_high_duplicate_keys(),
-        test_partial_range(),
+
+    auto enabled = [&](Tests tc) {
+        return (exclude & tc) == Tests::None;
     };
 
-    if (is_stable) res.cases.push_back(test_stability());
+    using TestFn = std::function<TestCase()>;
+
+    const std::vector<std::pair<Tests, TestFn>> tests = {
+        {Tests::SingleElement,     [this]{ return test_single_element(); }},
+        {Tests::NullPtrThrows,     [this]{ return test_null_ptr_throws(); }},
+        {Tests::ZeroLengthNoOp,    [this]{ return test_zero_length_no_op(); }},
+        {Tests::Random,            [this]{ return test_random(); }},
+        {Tests::Sorted,            [this]{ return test_sorted(); }},
+        {Tests::ReverseSorted,     [this]{ return test_reverse_sorted(); }},
+        {Tests::NearlySorted,      [this]{ return test_nearly_sorted(); }},
+        {Tests::AllEqual,          [this]{ return test_all_equal(); }},
+        {Tests::HighDuplicateKeys, [this]{ return test_high_duplicate_keys(); }},
+        {Tests::PartialRange,      [this]{ return test_partial_range(); }},
+    };
+
+    for (const auto& [flag, fn] : tests) {
+        if (enabled(flag)) res.cases.push_back(fn());
+    }
+    
+    if (is_stable && enabled(Tests::Stability)) {
+        res.cases.push_back(test_stability());
+    }
+
     return res;
 }
 
@@ -473,7 +520,7 @@ TestCase TestSuite<T, Compare>::test_partial_range()
 }
 
 template<typename Sort, typename T, typename Cmp, typename Fn>
-bool test(std::string sort_name)
+bool test(std::string sort_name, Tests exclude = Tests::None)
 {
     Fn sort_fn = [](T* arr, size_t n, Cmp cmp) {
         Sort::sort(arr, n, cmp);
@@ -488,7 +535,7 @@ bool test(std::string sort_name)
         Sort::is_stable()
     );
 
-    Result result = suite.run_all();
+    Result result = suite.run_all(exclude);
     Reporter::print(result);
     return result.failed() == 0;
 }
