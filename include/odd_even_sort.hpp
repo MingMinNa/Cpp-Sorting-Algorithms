@@ -7,6 +7,7 @@
 #pragma once
 
 #include "sort_utils.hpp"
+#include <string>
 #include <cstddef>
 #include <utility>
 #include <stdexcept>
@@ -18,17 +19,20 @@ namespace sort_imp
 class OddEvenSort
 {
     public:
-        OddEvenSort() = default;
+        inline static const std::string name = "Odd-Even Sort";
+        inline static const bool is_stable     = true;
+        inline static const bool is_comparison = true;
+        inline static const bool in_place      = true;
 
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, size_t n, Compare cmp = Compare{});
-        static inline bool is_stable()      { return true; }
-        static inline bool is_comparison()  { return true; }
-        static inline bool in_place()       { return true; }
+        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
+    
+    private:
+        OddEvenSort() = default;
 };
 
 template <typename T, typename Compare>
-void OddEvenSort::sort(T* arr, size_t n, Compare cmp)
+void OddEvenSort::sort(T* arr, std::size_t n, Compare cmp)
 {
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
 
@@ -36,8 +40,8 @@ void OddEvenSort::sort(T* arr, size_t n, Compare cmp)
 
     while (swapped) {
         swapped = false;
-        for (size_t odd_even = 0; odd_even < 2; ++ odd_even) {
-            for (size_t i = odd_even; i < n - 1; i += 2) {
+        for (std::size_t odd_even = 0; odd_even < 2; ++ odd_even) {
+            for (std::size_t i = odd_even; i < n - 1; i += 2) {
                 if (cmp(arr[i + 1], arr[i])) {
 					std::swap(arr[i], arr[i + 1]);
 					swapped = true;

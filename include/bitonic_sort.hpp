@@ -7,6 +7,7 @@
 #pragma once
 
 #include "sort_utils.hpp"
+#include <string>
 #include <cstddef>
 #include <utility>
 #include <stdexcept>
@@ -18,25 +19,26 @@ namespace sort_imp
 class BitonicSort
 {
     public:
+        inline static const std::string name = "Bitonic Sort";
+        inline static const bool is_stable     = false;
+        inline static const bool is_comparison = true;
+        inline static const bool in_place      = true;
+
+        template <typename T, typename Compare = std::less<T>>
+        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
+
+    private:
         BitonicSort() = default;
 
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, size_t n, Compare cmp = Compare{});
-        static inline bool is_stable()      { return false; }
-        static inline bool is_comparison()  { return true;  }
-        static inline bool in_place()       { return true;  }
-
-    private:
+        static void bitonic_sort(T* arr, std::size_t n, Compare cmp, bool flag);
 
         template <typename T, typename Compare = std::less<T>>
-        static void bitonic_sort(T* arr, size_t n, Compare cmp, bool flag);
-
-        template <typename T, typename Compare = std::less<T>>
-        static void bitonic_merge(T* arr, size_t n, Compare cmp, bool flag);
+        static void bitonic_merge(T* arr, std::size_t n, Compare cmp, bool flag);
 };
 
 template <typename T, typename Compare>
-void BitonicSort::sort(T* arr, size_t n, Compare cmp)
+void BitonicSort::sort(T* arr, std::size_t n, Compare cmp)
 {
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
 
@@ -51,10 +53,10 @@ void BitonicSort::sort(T* arr, size_t n, Compare cmp)
 }
 
 template <typename T, typename Compare>
-void BitonicSort::bitonic_sort(T* arr, size_t n, Compare cmp, bool flag)
+void BitonicSort::bitonic_sort(T* arr, std::size_t n, Compare cmp, bool flag)
 {
     if (n > 1) {
-        size_t mid = n >> 1;
+        std::size_t mid = n >> 1;
         bitonic_sort(arr      ,     mid, cmp, true);
         bitonic_sort(arr + mid, n - mid, cmp, false);
         bitonic_merge(arr, n, cmp, flag);
@@ -62,12 +64,12 @@ void BitonicSort::bitonic_sort(T* arr, size_t n, Compare cmp, bool flag)
 }
 
 template <typename T, typename Compare>
-void BitonicSort::bitonic_merge(T* arr, size_t n, Compare cmp, bool flag)
+void BitonicSort::bitonic_merge(T* arr, std::size_t n, Compare cmp, bool flag)
 {
     if (n > 1) {
 
-        size_t mid = n >> 1;
-        for (size_t i = 0; i < mid; ++i) {
+        std::size_t mid = n >> 1;
+        for (std::size_t i = 0; i < mid; ++i) {
             if (
                 ( flag && cmp(arr[i + mid], arr[i])) ||
                 (!flag && cmp(arr[i], arr[i + mid]))

@@ -83,9 +83,9 @@ Cpp-Sorting-Algorithms/
 // Compare 必須滿足嚴格弱序
 template <typename T, typename Compare = std::less<T>>
 static void sort(T* arr, size_t n, Compare cmp = Compare{});
-static inline bool is_stable();     // → 是否為穩定排序
-static inline bool is_comparison(); // → 是否為比較排序
-static inline bool in_place();      // → 是否為原地排序
+inline static const bool is_stable;     // → 是否為穩定排序
+inline static const bool is_comparison; // → 是否為比較排序
+inline static const bool in_place;      // → 是否為原地排序
 ```
 
 以下為使用範例

@@ -8,6 +8,7 @@
 
 #include "sort_utils.hpp"
 #include "insertion_sort.hpp"
+#include <string>
 #include <cstddef>
 #include <utility>
 #include <stdexcept>
@@ -19,24 +20,27 @@ namespace sort_imp
 class TimSort
 {
     public:
-        static const uint8_t MIN_MERGE = 64u;
-        static const uint8_t MIN_GALLOP = 7u;
-        TimSort() = default;
+        inline static const std::string name = "Tim Sort";
+        inline static const bool is_stable     = true;
+        inline static const bool is_comparison = true;
+        inline static const bool in_place      = false;
+
+        inline static const uint8_t MIN_MERGE  = 64u;
+        inline static const uint8_t MIN_GALLOP = 7u;
 
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, size_t n, Compare cmp = Compare{});
-        static inline bool is_stable()      { return true;  }
-        static inline bool is_comparison()  { return true;  }
-        static inline bool in_place()       { return false; }
+        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
 
     private:
-        static size_t calc_min_run(size_t n);
+        TimSort() = default;
+        
+        static std::size_t calc_min_run(std::size_t n);
 
         template <typename T, typename Compare> 
-        static size_t get_run(T* arr, const size_t n, size_t run_start, Compare cmp);
+        static std::size_t get_run(T* arr, const std::size_t n, std::size_t run_start, Compare cmp);
 
         template <typename T, typename Compare>
-        static void tim_merge(T* arr, size_t start, size_t mid, size_t end, Compare cmp);
+        static void tim_merge(T* arr, std::size_t start, std::size_t mid, std::size_t end, Compare cmp);
 
         template <typename T, typename Compare>
         static ptrdiff_t merge_lo_left(T* arr, std::vector<T> &left, ptrdiff_t start, ptrdiff_t mid, ptrdiff_t end, ptrdiff_t &i, ptrdiff_t &j, ptrdiff_t &k, Compare cmp);
@@ -58,19 +62,19 @@ class TimSort
 };
 
 template <typename T, typename Compare>
-void TimSort::sort(T* arr, size_t n, Compare cmp)
+void TimSort::sort(T* arr, std::size_t n, Compare cmp)
 {
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
 
-    size_t run_start = 0;
-    size_t min_run = calc_min_run(n);
-    std::vector<std::pair<size_t, size_t>> run_stack;
+    std::size_t run_start = 0;
+    std::size_t min_run = calc_min_run(n);
+    std::vector<std::pair<std::size_t, std::size_t>> run_stack;
 
     while (run_start < n) {
         
         // The range of this run is from run_start to run_end (inclusive).
-        size_t run_end = get_run(arr, n, run_start, cmp);
-        size_t run_size = run_end - run_start + 1;
+        std::size_t run_end = get_run(arr, n, run_start, cmp);
+        std::size_t run_size = run_end - run_start + 1;
 
         if (run_size < min_run) {
             run_size = std::min(min_run, n - run_start);
@@ -84,15 +88,15 @@ void TimSort::sort(T* arr, size_t n, Compare cmp)
         // try to merge 
         while (run_stack.size() >= 3) {
 
-            size_t size = run_stack.size();
+            std::size_t size = run_stack.size();
             
             auto [l_A, r_A] = run_stack[size - 3];
             auto [l_B, r_B] = run_stack[size - 2];
             auto [l_C, r_C] = run_stack[size - 1];
 
-            size_t size_A = r_A - l_A + 1;
-            size_t size_B = r_B - l_B + 1;
-            size_t size_C = r_C - l_C + 1;
+            std::size_t size_A = r_A - l_A + 1;
+            std::size_t size_B = r_B - l_B + 1;
+            std::size_t size_C = r_C - l_C + 1;
 
             if (size_A > size_B + size_C && size_B > size_C) break;
 
@@ -116,7 +120,7 @@ void TimSort::sort(T* arr, size_t n, Compare cmp)
 
     // after finding all runs, merge them.
     while (run_stack.size() > 1) {
-        size_t size = run_stack.size();
+        std::size_t size = run_stack.size();
 
         auto [l_B, r_B] = run_stack[size - 2];
         auto [l_C, r_C] = run_stack[size - 1];
@@ -127,7 +131,7 @@ void TimSort::sort(T* arr, size_t n, Compare cmp)
     }
 }
 
-size_t TimSort::calc_min_run(size_t n)
+std::size_t TimSort::calc_min_run(std::size_t n)
 {
     ptrdiff_t plus_one = 0u;
     while (n >= MIN_MERGE) {
@@ -138,9 +142,9 @@ size_t TimSort::calc_min_run(size_t n)
 }
 
 template <typename T, typename Compare> 
-size_t TimSort::get_run(T* arr, const size_t n, size_t run_start, Compare cmp)
+std::size_t TimSort::get_run(T* arr, const std::size_t n, std::size_t run_start, Compare cmp)
 {
-    size_t run_end = run_start;
+    std::size_t run_end = run_start;
     if (run_end + 1 >= n) return run_start;
 
     bool reverse = cmp(arr[run_end + 1], arr[run_end]);
@@ -156,11 +160,11 @@ size_t TimSort::get_run(T* arr, const size_t n, size_t run_start, Compare cmp)
 }
 
 template <typename T, typename Compare>
-void TimSort::tim_merge(T* arr, size_t start, size_t mid, size_t end, Compare cmp)
+void TimSort::tim_merge(T* arr, std::size_t start, std::size_t mid, std::size_t end, Compare cmp)
 {
     // merge [start, mid] and [mid + 1, end]
-    size_t n1 = mid - start + 1;
-    size_t n2 = end - mid;
+    std::size_t n1 = mid - start + 1;
+    std::size_t n2 = end - mid;
 
     if (n1 == 0 || n2 == 0) return;
 

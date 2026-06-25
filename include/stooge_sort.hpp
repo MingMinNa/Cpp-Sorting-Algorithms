@@ -7,6 +7,7 @@
 #pragma once
 
 #include "sort_utils.hpp"
+#include <string>
 #include <cstddef>
 #include <utility>
 #include <stdexcept>
@@ -18,30 +19,31 @@ namespace sort_imp
 class StoogeSort
 {
     public:
-        StoogeSort() = default;
+        inline static const std::string name = "Stooge Sort";
+        inline static const bool is_stable     = false;
+        inline static const bool is_comparison = true;
+        inline static const bool in_place      = true;
 
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, size_t n, Compare cmp = Compare{});
-        static inline bool is_stable()      { return false; }
-        static inline bool is_comparison()  { return true;  }
-        static inline bool in_place()       { return true;  }
+        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
 
     private:
+        StoogeSort() = default;
 
         // Note: [start, end)
         template <typename T, typename Compare>
-        static void stooge_sort(T* arr, size_t start, size_t end, Compare cmp);
+        static void stooge_sort(T* arr, std::size_t start, std::size_t end, Compare cmp);
 };
 
 template <typename T, typename Compare>
-void StoogeSort::sort(T* arr, size_t n, Compare cmp)
+void StoogeSort::sort(T* arr, std::size_t n, Compare cmp)
 {
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
     stooge_sort(arr, 0, n, cmp);
 }
 
 template <typename T, typename Compare>
-void StoogeSort::stooge_sort(T* arr, size_t start, size_t end, Compare cmp)
+void StoogeSort::stooge_sort(T* arr, std::size_t start, std::size_t end, Compare cmp)
 {
     if (start + 1 >= end) return;
 
@@ -49,7 +51,7 @@ void StoogeSort::stooge_sort(T* arr, size_t start, size_t end, Compare cmp)
         std::swap(arr[start], arr[end - 1]);
 
     if (end - start >= 3) {
-        size_t offset = (end - start) / 3;
+        std::size_t offset = (end - start) / 3;
         stooge_sort(arr, start, end - offset, cmp);
         stooge_sort(arr, start + offset, end, cmp);
         stooge_sort(arr, start, end - offset, cmp);

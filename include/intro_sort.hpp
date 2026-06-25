@@ -11,6 +11,7 @@
 #include "heap_sort.hpp"
 #include "quick_sort.hpp"
 #include <bit>
+#include <string>
 #include <cstddef>
 #include <utility>
 #include <stdexcept>
@@ -22,33 +23,39 @@ namespace sort_imp
 class IntroSort
 {
     public:
-        IntroSort() = default;
+        inline static const std::string name = "Intro Sort";
+        inline static const bool is_stable     = false;
+        inline static const bool is_comparison = true;
+        inline static const bool in_place      = true;
 
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, size_t n, Compare cmp = Compare{});
-        static inline bool is_stable()      { return false; }
-        static inline bool is_comparison()  { return true;  }
-        static inline bool in_place()       { return true;  }
+        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
 
     private:
+        IntroSort() = default;
 
         template <typename T, typename Compare>
-        static void intro_sort_depth(T* arr, size_t start, size_t end, size_t depth, Compare cmp);
+        static void intro_sort_depth(
+            T* arr, std::size_t start, std::size_t end, 
+            std::size_t depth, Compare cmp
+        );
 };
 
 template <typename T, typename Compare>
-void IntroSort::sort(T* arr, size_t n, Compare cmp)
+void IntroSort::sort(T* arr, std::size_t n, Compare cmp)
 {
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
 
-    size_t max_depth = (std::bit_width(n) - 1) << 1;
+    std::size_t max_depth = (std::bit_width(n) - 1) << 1;
     intro_sort_depth(arr, 0, n, max_depth, cmp);
 }
 
 template <typename T, typename Compare>
-void IntroSort::intro_sort_depth(T* arr, size_t start, size_t end, size_t depth, Compare cmp) 
-{    
-    size_t n = end - start;
+void IntroSort::intro_sort_depth(
+    T* arr, std::size_t start, std::size_t end, 
+    std::size_t depth, Compare cmp
+) {    
+    std::size_t n = end - start;
 
     if (n < 16) {
         InsertionSort::sort(arr + start, n, cmp);
@@ -59,7 +66,7 @@ void IntroSort::intro_sort_depth(T* arr, size_t start, size_t end, size_t depth,
         return;
     }
 
-    size_t pivot_index = QuickSort::partition(arr, start, end, cmp, true);
+    std::size_t pivot_index = QuickSort::partition(arr, start, end, cmp, true);
     if (pivot_index > start)   intro_sort_depth(arr, start, pivot_index, depth - 1, cmp);
     if (pivot_index + 1 < end) intro_sort_depth(arr, pivot_index + 1, end, depth - 1, cmp);
 }

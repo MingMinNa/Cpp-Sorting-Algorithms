@@ -30,49 +30,49 @@ template <typename T, typename Compare>
 bool same_keys(const std::vector<T> &vec, const std::vector<T> &ref, Compare cmp) 
 {
     if (vec.size() != ref.size()) return false;
-    for (size_t i = 0; i < vec.size(); ++i) {
+    for (std::size_t i = 0; i < vec.size(); ++i) {
         if (!cmp(vec[i], ref[i])) return false;
     }
     return true;
 }
 
 template <typename T>
-std::vector<T> random_vector(size_t n)
+std::vector<T> random_vector(std::size_t n)
 {
     std::vector<T> vec;
     vec.reserve(n);
 
-    for (size_t i = 0; i < n; ++i) {
+    for (std::size_t i = 0; i < n; ++i) {
         vec.emplace_back(random<T>());
     }
     return vec;
 }
 
 template <typename T>
-std::vector<T> make_with_duplicates(size_t n, size_t num_distinct)
+std::vector<T> make_with_duplicates(std::size_t n, std::size_t num_distinct)
 {
     std::vector<T> vec;
     vec.reserve(n);
 
-    for (size_t i = 0; i < n; ++i) {
+    for (std::size_t i = 0; i < n; ++i) {
         vec.emplace_back(random<T>(0, num_distinct - 1));
     }
     return vec;
 }
 
 template <typename T, typename Compare>
-std::vector<T> make_sorted(size_t n, const Compare &cmp)
+std::vector<T> make_sorted(std::size_t n, const Compare &cmp)
 {
     std::vector<T> vec = random_vector<T>(n);
     return ref_sort<T>(vec, cmp);
 }
 
 template <typename T, typename Compare>
-std::vector<T> make_nearly_sorted(size_t n, size_t num_swaps, const Compare &cmp)
+std::vector<T> make_nearly_sorted(std::size_t n, std::size_t num_swaps, const Compare &cmp)
 {
     std::vector<T> vec = make_sorted<T, Compare>(n, cmp);
     
-    for (size_t i = 0; i < num_swaps; ++i) {
+    for (std::size_t i = 0; i < num_swaps; ++i) {
         Int a = random<Int>(0, n - 1);
         Int b = random<Int>(0, n - 1);
         std::swap(vec[a], vec[b]);
@@ -82,7 +82,7 @@ std::vector<T> make_nearly_sorted(size_t n, size_t num_swaps, const Compare &cmp
 }
 
 template <typename T>
-std::vector<T> make_all_equal(size_t n)
+std::vector<T> make_all_equal(std::size_t n)
 {
     T ele = random<T>();
     return std::vector<T>(n, ele);
@@ -146,21 +146,21 @@ struct Result
     std::string           suite_name;
     std::vector<TestCase> cases;
     
-    size_t  total() const 
+    std::size_t  total() const 
     {
         return cases.size();
     }
 
-    size_t passed() const 
+    std::size_t passed() const 
     {
-        return static_cast<size_t>(
+        return static_cast<std::size_t>(
             std::count_if(
                 cases.begin(), cases.end(), 
                 [](const TestCase &c) { return c.passed; })
             );
     }
 
-    size_t failed() const 
+    std::size_t failed() const 
     {
         return total() - passed();
     }
@@ -188,7 +188,7 @@ template <typename T = Element, typename Compare = ElementCmp>
 class TestSuite 
 {
     public:
-        using SortFn = std::function<void(T*, size_t, Compare)>;
+        using SortFn = std::function<void(T*, std::size_t, Compare)>;
 
         TestSuite(
             std::string sort_name, 
@@ -306,7 +306,7 @@ TestCase TestSuite<T, Compare>::test_null_ptr_throws()
         return TestCase(false, func_name, msg.str());
     }
 
-    for (size_t n : test_sizes) {
+    for (std::size_t n : test_sizes) {
 
         bool threw = false;
         try                                   { sort_fn(nullptr, n, asc_cmp); }
@@ -345,7 +345,7 @@ TestCase TestSuite<T, Compare>::test_random()
 {
     std::string func_name = std::format("({}) random tests", TypeName<T>::name);
 
-    for(size_t n : test_sizes) {
+    for (std::size_t n : test_sizes) {
 
         auto vec = random_vector<T>(n);
         auto ref = ref_sort(vec, asc_cmp);
@@ -392,7 +392,7 @@ TestCase TestSuite<T, Compare>::test_reverse_sorted()
 {
     std::string func_name = std::format("({}) reverse-sorted array", TypeName<T>::name);
 
-    for (size_t n : test_sizes) {
+    for (std::size_t n : test_sizes) {
 
         auto vec = random_vector<T>(n);
         std::stable_sort(vec.begin(), vec.end(), des_cmp); 
@@ -413,9 +413,9 @@ TestCase TestSuite<T, Compare>::test_nearly_sorted()
 {
     std::string func_name = std::format("({}) nearly-sorted array", TypeName<T>::name);
 
-    for(size_t n : test_sizes) {
+    for (std::size_t n : test_sizes) {
 
-        size_t swaps = std::max<size_t>(1, n / 10);
+        std::size_t swaps = std::max<std::size_t>(1, n / 10);
         auto vec = make_nearly_sorted<T>(n, swaps, asc_cmp);
         auto ref = ref_sort(vec, asc_cmp);
         sort_fn(vec.data(), vec.size(), asc_cmp);
@@ -433,7 +433,7 @@ TestCase TestSuite<T, Compare>::test_all_equal()
 {
     std::string func_name = std::format("({}) all-equal array", TypeName<T>::name);
 
-    for (size_t n : test_sizes) {
+    for (std::size_t n : test_sizes) {
 
         auto vec = make_all_equal<T>(n);
         auto ref = ref_sort(vec, asc_cmp);
@@ -452,7 +452,7 @@ TestCase TestSuite<T, Compare>::test_high_duplicate_keys()
 {
     std::string func_name = std::format("({}) duplicate keys", TypeName<T>::name);
 
-    for (size_t n : test_sizes) {
+    for (std::size_t n : test_sizes) {
 
         int32_t distinct = random<Int>(2, std::max(2, static_cast<Int>(n / 10)));
         auto vec = make_with_duplicates<T>(n, distinct);
@@ -473,7 +473,7 @@ TestCase TestSuite<T, Compare>::test_stability()
 {
     std::string func_name = std::format("({}) stability", TypeName<T>::name);
 
-    for (size_t n : test_sizes) {
+    for (std::size_t n : test_sizes) {
 
         int32_t distinct = random<Int>(2, std::max(2, static_cast<Int>(n / 10)));
         auto vec = make_with_duplicates<T>(n, distinct);
@@ -493,14 +493,14 @@ template <typename T, typename Compare>
 TestCase TestSuite<T, Compare>::test_partial_range()
 {
     std::string func_name = std::format("({}) partial range sort", TypeName<T>::name);
-    const size_t N = test_sizes.back();
+    const std::size_t N = test_sizes.back();
 
-    for (size_t trial = 0; trial < 5; ++ trial) {
+    for (std::size_t trial = 0; trial < 5; ++ trial) {
         auto vec = random_vector<T>(N);
         auto ref = vec;
 
-        size_t offset = random<Int>(0, N - 2);
-        size_t len    = random<Int>(1, N - offset);
+        std::size_t offset = random<Int>(0, N - 2);
+        std::size_t len    = random<Int>(1, N - offset);
 
         std::stable_sort(
             ref.begin() + offset,
@@ -522,7 +522,7 @@ TestCase TestSuite<T, Compare>::test_partial_range()
 template<typename Sort, typename T, typename Cmp, typename Fn>
 bool test(std::string sort_name, Tests exclude = Tests::None)
 {
-    Fn sort_fn = [](T* arr, size_t n, Cmp cmp) {
+    Fn sort_fn = [](T* arr, std::size_t n, Cmp cmp) {
         Sort::sort(arr, n, cmp);
     };
 
@@ -532,7 +532,7 @@ bool test(std::string sort_name, Tests exclude = Tests::None)
         LessCmp<T>::less,
         GreaterCmp<T>::greater,
         SameKeyCmp<T>::same_key,
-        Sort::is_stable()
+        Sort::is_stable
     );
 
     Result result = suite.run_all(exclude);

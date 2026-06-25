@@ -18,12 +18,12 @@
 namespace sort_test 
 {
 
-extern std::vector<size_t> test_sizes;
+extern std::vector<std::size_t> test_sizes;
 
 /* Int Class */
 using Int = int32_t;
 using IntCmp = std::function<bool(const Int &, const Int &)>;
-using IntFn  = std::function<void(Int*, size_t, IntCmp)>;
+using IntFn  = std::function<void(Int*, std::size_t, IntCmp)>;
 
 extern Int Int_range_min;
 extern Int Int_range_max;
@@ -31,7 +31,7 @@ extern Int Int_range_max;
 /* Float Class */
 using Float = double;
 using FloatCmp = std::function<bool(const Float &, const Float &)>;
-using FloatFn  = std::function<void(Float*, size_t, FloatCmp)>;
+using FloatFn  = std::function<void(Float*, std::size_t, FloatCmp)>;
 
 extern Float Float_range_min;
 extern Float Float_range_max;
@@ -55,13 +55,13 @@ struct Element {
 
     /* The following operators is for non-comparison sorts */
 
-    bool operator< (const Element &other)   const { return key < other.key; }
-    bool operator> (const Element &other)   const { return key > other.key; }
-    size_t operator- (const Element &other) const { return key - other.key; }
-    size_t operator+ (const Element &other) const { return key + other.key; }
-    size_t operator+ (size_t i)             const { return key + i; }
-    size_t operator>>(size_t shift)         const { return static_cast<size_t>(key >> shift); }
-    explicit operator size_t()              const { return static_cast<size_t>(key); }
+    bool operator< (const Element &other)        const { return key < other.key; }
+    bool operator> (const Element &other)        const { return key > other.key; }
+    std::size_t operator- (const Element &other) const { return key - other.key; }
+    std::size_t operator+ (const Element &other) const { return key + other.key; }
+    std::size_t operator+ (std::size_t i)        const { return key + i; }
+    std::size_t operator>>(std::size_t shift)    const { return static_cast<std::size_t>(key >> shift); }
+    explicit operator std::size_t()              const { return static_cast<std::size_t>(key); }
     
     Element  operator++(int)                      { Element tmp = *this; ++ key; return tmp; }   // postfix: e ++
     Element& operator++()                         { ++ key; return *this; }                      // prefix : ++ e
@@ -72,7 +72,7 @@ struct Element {
 };
 
 using ElementCmp = std::function<bool(const Element &, const Element &)>;
-using ElementFn  = std::function<void(Element*, size_t, ElementCmp)>;
+using ElementFn  = std::function<void(Element*, std::size_t, ElementCmp)>;
 
 extern decltype(Element::key) Element_range_min_key;
 extern decltype(Element::key) Element_range_max_key;

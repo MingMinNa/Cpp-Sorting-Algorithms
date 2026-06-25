@@ -7,6 +7,7 @@
 #pragma once
 
 #include "sort_utils.hpp"
+#include <string>
 #include <vector>
 #include <cstddef>
 #include <utility>
@@ -19,6 +20,11 @@ namespace sort_imp
 class ShellSort
 {
     public:
+        inline static const std::string name = "Shell Sort";
+        inline static const bool is_stable     = false;
+        inline static const bool is_comparison = true;
+        inline static const bool in_place      = true;
+        
         inline static const std::vector<uint64_t> PRATT_GAP_SEQUENCE = {
             1llu, 	    2llu, 	    3llu, 	    4llu, 	    6llu, 	    8llu, 	    9llu, 	    12llu, 	    16llu,  	18llu,  	24llu,   	27llu, 	    32llu,  	36llu,  	48llu,  	54llu,  	64llu, 	    72llu, 	    81llu, 	    96llu, 	
             108llu, 	128llu, 	144llu, 	162llu, 	192llu, 	216llu, 	243llu, 	256llu, 	288llu, 	324llu, 	384llu, 	432llu, 	486llu, 	512llu, 	576llu, 	648llu, 	729llu, 	768llu, 	864llu, 	972llu, 	
@@ -29,24 +35,22 @@ class ShellSort
             314928llu, 	331776llu, 	354294llu, 	373248llu, 	393216llu, 	419904llu, 	442368llu, 	472392llu, 	497664llu, 	524288llu, 	531441llu, 	559872llu, 	589824llu, 	629856llu, 	663552llu, 	708588llu, 	746496llu, 	786432llu, 	839808llu, 	884736llu
         };
 
-        ShellSort() = default;
-
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, size_t n, Compare cmp = Compare{});
-        static inline bool is_stable()      { return false; }
-        static inline bool is_comparison()  { return true;  }
-        static inline bool in_place()       { return true;  }
+        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
+    
+    private:
+        ShellSort() = default;
 };
 
 template <typename T, typename Compare>
-void ShellSort::sort(T* arr, size_t n, Compare cmp)
+void ShellSort::sort(T* arr, std::size_t n, Compare cmp)
 {
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
 
-    size_t start = 0, seq_size = PRATT_GAP_SEQUENCE.size();
+    std::size_t start = 0, seq_size = PRATT_GAP_SEQUENCE.size();
 
     // Binary Search for the index of maximum gap < n
-    for (size_t jump = seq_size >> 1; jump >= 1; jump >>= 1) {
+    for (std::size_t jump = seq_size >> 1; jump >= 1; jump >>= 1) {
         while (start + jump < seq_size && PRATT_GAP_SEQUENCE[start + jump] < n) {
             start += jump;
         }
@@ -54,12 +58,12 @@ void ShellSort::sort(T* arr, size_t n, Compare cmp)
 
     for (ptrdiff_t gap_index = start; gap_index >= 0; -- gap_index) {
 
-        size_t gap = PRATT_GAP_SEQUENCE[gap_index];
+        std::size_t gap = PRATT_GAP_SEQUENCE[gap_index];
 
         // insertion sort with gap
-        for (size_t i = gap; i < n; ++i) {
+        for (std::size_t i = gap; i < n; ++i) {
 
-            size_t index = i;
+            std::size_t index = i;
             T ele = arr[i];
 
             while (index >= gap && cmp(ele, arr[index - gap])) {

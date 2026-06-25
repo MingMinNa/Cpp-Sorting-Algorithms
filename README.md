@@ -87,9 +87,9 @@ Each sorting algorithm class provides the following interface:
 // Compare must satisfy strict weak ordering
 template <typename T, typename Compare = std::less<T>>
 static void sort(T* arr, size_t n, Compare cmp = Compare{});
-static inline bool is_stable();     // → whether it is stable
-static inline bool is_comparison(); // → whether it is comparison-based
-static inline bool in_place();      // → whether it is in-place
+inline static const bool is_stable;     // → whether it is stable
+inline static const bool is_comparison; // → whether it is comparison-based
+inline static const bool in_place;      // → whether it is in-place
 ```
 
 ### Example

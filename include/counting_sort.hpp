@@ -7,6 +7,7 @@
 #pragma once
 
 #include "sort_utils.hpp"
+#include <string>
 #include <cstddef>
 #include <utility>
 #include <stdexcept>
@@ -18,22 +19,25 @@ namespace sort_imp
 class CountingSort
 {
     public:
-        CountingSort() = default;
+        inline static const std::string name = "Counting Sort";
+        inline static const bool is_stable     = true;
+        inline static const bool is_comparison = false;
+        inline static const bool in_place      = false;
 
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, size_t n, Compare cmp = Compare{});
-        static inline bool is_stable()      { return true;  }
-        static inline bool is_comparison()  { return false; }
-        static inline bool in_place()       { return false; }
+        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
+    
+    private:
+        CountingSort() = default;
 };
 
 template <typename T, typename Compare>
-void CountingSort::sort(T* arr, size_t n, Compare cmp)
+void CountingSort::sort(T* arr, std::size_t n, Compare cmp)
 {
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
 
     auto [min_ele, max_ele] = find_min_max(arr, n);
-    size_t size = static_cast<size_t>(max_ele - min_ele + 1);
+    std::size_t size = static_cast<std::size_t>(max_ele - min_ele + 1);
 
     // overflow (e.g. max_ele == LLONG_MAX, min_ele == LLONG_MIN, max_ele - min_ele + 1 will be 0)
     if (size == 0) {
@@ -42,9 +46,9 @@ void CountingSort::sort(T* arr, size_t n, Compare cmp)
         );
     }
 
-    std::vector<size_t> counts(size);
+    std::vector<std::size_t> counts(size);
 
-    for (size_t i = 0; i < n; ++i) {
+    for (std::size_t i = 0; i < n; ++i) {
         counts[arr[i] - min_ele] ++;
     }
 
@@ -60,7 +64,7 @@ void CountingSort::sort(T* arr, size_t n, Compare cmp)
     }
 
     for (ptrdiff_t i = n - 1; i >= 0; --i) {
-        size_t rank = counts[temp_arr[i] - min_ele];
+        std::size_t rank = counts[temp_arr[i] - min_ele];
         
         // rank is 1-based index.
         arr[TO_ZERO_BASE(rank)] = temp_arr[i];

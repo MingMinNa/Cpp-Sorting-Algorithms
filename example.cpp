@@ -42,9 +42,9 @@ template <typename Sort>
 void print_traits(const std::string& name)
 {
     std::cout << "Traits of " << name << "\n";
-    std::cout << "  is_stable      : " << (Sort::is_stable() ? "true" : "false") << "\n";
-    std::cout << "  is_comparison  : " << (Sort::is_comparison() ? "true" : "false") << "\n";
-    std::cout << "  in_place       : " << (Sort::in_place() ? "true" : "false") << "\n";
+    std::cout << "  is_stable      : " << (Sort::is_stable ? "true" : "false") << "\n";
+    std::cout << "  is_comparison  : " << (Sort::is_comparison ? "true" : "false") << "\n";
+    std::cout << "  in_place       : " << (Sort::in_place ? "true" : "false") << "\n";
     std::cout << "----------------------\n";
 }
 

@@ -7,6 +7,7 @@
 #pragma once
 
 #include "sort_utils.hpp"
+#include <string>
 #include <cstddef>
 #include <utility>
 #include <stdexcept>
@@ -18,17 +19,20 @@ namespace sort_imp
 class CycleSort
 {
     public:
-        CycleSort() = default;
+        inline static const std::string name = "Cycle Sort";
+        inline static const bool is_stable     = false;
+        inline static const bool is_comparison = true;
+        inline static const bool in_place      = true;
 
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, size_t n, Compare cmp = Compare{});
-        static inline bool is_stable()      { return false; }
-        static inline bool is_comparison()  { return true;  }
-        static inline bool in_place()       { return true;  }
+        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
+    
+    private:
+        CycleSort() = default;
 };
 
 template <typename T, typename Compare>
-void CycleSort::sort(T* arr, size_t n, Compare cmp)
+void CycleSort::sort(T* arr, std::size_t n, Compare cmp)
 {
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
 
@@ -36,12 +40,12 @@ void CycleSort::sort(T* arr, size_t n, Compare cmp)
         return !cmp(a, b) && !cmp(b, a);
     };
 
-    for (size_t i = 0; i < n - 1; ++i) {
+    for (std::size_t i = 0; i < n - 1; ++i) {
 
-        size_t index = i;
+        std::size_t index = i;
         T ele = arr[i];
 
-        for (size_t j = i + 1; j < n; ++j) {
+        for (std::size_t j = i + 1; j < n; ++j) {
             if (cmp(arr[j], ele)) ++ index;
         }
 
@@ -53,7 +57,7 @@ void CycleSort::sort(T* arr, size_t n, Compare cmp)
         while (index != i) {
             index = i;
 
-            for (size_t j = i + 1; j < n; ++j) {
+            for (std::size_t j = i + 1; j < n; ++j) {
                 if (cmp(arr[j], ele)) ++ index;
             }
 

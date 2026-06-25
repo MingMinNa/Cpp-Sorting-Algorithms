@@ -7,6 +7,7 @@
 #pragma once
 
 #include "sort_utils.hpp"
+#include <string>
 #include <cstddef>
 #include <utility>
 #include <stdexcept>
@@ -18,34 +19,35 @@ namespace sort_imp
 class SlowSort
 {
     public:
-        SlowSort() = default;
+        inline static const std::string name = "Slow Sort";
+        inline static const bool is_stable     = false;
+        inline static const bool is_comparison = true;
+        inline static const bool in_place      = true;
 
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, size_t n, Compare cmp = Compare{});
-        static inline bool is_stable()      { return false; }
-        static inline bool is_comparison()  { return true;  }
-        static inline bool in_place()       { return true;  }
+        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
 
     private:
+        SlowSort() = default;
 
         // Note: [start, end)
         template <typename T, typename Compare>
-        static void slow_sort(T* arr, size_t start, size_t end, Compare cmp);
+        static void slow_sort(T* arr, std::size_t start, std::size_t end, Compare cmp);
 };
 
 template <typename T, typename Compare>
-void SlowSort::sort(T* arr, size_t n, Compare cmp)
+void SlowSort::sort(T* arr, std::size_t n, Compare cmp)
 {
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
     slow_sort(arr, 0, n, cmp);
 }
 
 template <typename T, typename Compare>
-void SlowSort::slow_sort(T* arr, size_t start, size_t end, Compare cmp)
+void SlowSort::slow_sort(T* arr, std::size_t start, std::size_t end, Compare cmp)
 {
     if (start + 1 >= end) return;
 
-    size_t mid = (start + end) >> 1;
+    std::size_t mid = (start + end) >> 1;
     slow_sort(arr, start, mid, cmp);
     slow_sort(arr, mid, end, cmp);
 

@@ -29,7 +29,6 @@
 #include "pancake_sort.hpp"
 #include "strand_sort.hpp"
 #include "patience_sort.hpp"
-#include "adaptive_merge_sort.hpp"
 #include "smooth_sort.hpp"
 
 /* Non-Comparison Sort */

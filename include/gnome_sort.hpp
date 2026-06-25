@@ -7,6 +7,7 @@
 #pragma once
 
 #include "sort_utils.hpp"
+#include <string>
 #include <cstddef>
 #include <functional>
 #include <stdexcept>
@@ -17,21 +18,24 @@ namespace sort_imp
 class GnomeSort
 {
     public:
-        GnomeSort() = default;
+        inline static const std::string name = "Gnome Sort";
+        inline static const bool is_stable     = true;
+        inline static const bool is_comparison = true;
+        inline static const bool in_place      = true;
 
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, size_t n, Compare cmp = Compare{});
-        static inline bool is_stable()      { return true; }
-        static inline bool is_comparison()  { return true; }
-        static inline bool in_place()       { return true; }
+        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
+
+    private:
+        GnomeSort() = default;
 };
 
 template <typename T, typename Compare>
-void GnomeSort::sort(T* arr, size_t n, Compare cmp)
+void GnomeSort::sort(T* arr, std::size_t n, Compare cmp)
 {
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
 
-    size_t index = 0;
+    std::size_t index = 0;
     while (index < n) {
         if (index > 0 && cmp(arr[index], arr[index - 1])) {
             std::swap(arr[index - 1], arr[index]);

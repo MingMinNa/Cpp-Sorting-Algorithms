@@ -8,6 +8,7 @@
 
 #include "sort_utils.hpp"
 #include <bit>
+#include <string>
 #include <vector>
 #include <cstddef>
 #include <utility>
@@ -22,7 +23,12 @@ namespace sort_imp
 class SmoothSort
 {
     public:
-        inline static const std::vector<size_t> LEONARDO_SEQUENCE = {
+        inline static const std::string name = "Smooth Sort";
+        inline static const bool is_stable     = false;
+        inline static const bool is_comparison = true;
+        inline static const bool in_place      = true;
+        
+        inline static const std::vector<std::size_t> LEONARDO_SEQUENCE = {
             1ull,	1ull,	3ull,	5ull,	9ull,	15ull,	25ull,	41ull,	67ull,	109ull,	
             177ull,	287ull,	465ull,	753ull,	1219ull,	1973ull,	3193ull,	5167ull,	8361ull,	13529ull,	
             21891ull,	35421ull,	57313ull,	92735ull,	150049ull,	242785ull,	392835ull,	635621ull,	1028457ull,	1664079ull,	
@@ -34,41 +40,39 @@ class SmoothSort
             75778124746287811ull,	122611581443223181ull,	198389706189510993ull,	321001287632734175ull,	519390993822245169ull,	840392281454979345ull,	1359783275277224515ull,	2200175556732203861ull,	3559958832009428377ull,	5760134388741632239ull,	
             9320093220751060617ull,	15080227609492692857ull
         };
-        SmoothSort() = default;
 
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, size_t n, Compare cmp = Compare{});
-        static inline bool is_stable()      { return false; }
-        static inline bool is_comparison()  { return true;  }
-        static inline bool in_place()       { return true;  }
+        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
 
     private:
+        SmoothSort() = default;
+        
         // The rightmost (smallest) order currently in the forest.
-        static inline size_t rightmost_order(uint64_t bits)
+        static inline std::size_t rightmost_order(uint64_t bits)
         {
-            return static_cast<size_t>(std::countr_zero(bits));
+            return static_cast<std::size_t>(std::countr_zero(bits));
         }
     
         // The second-rightmost order (next set bit after the lowest).
-        static inline size_t second_rightmost_order(uint64_t bits)
+        static inline std::size_t second_rightmost_order(uint64_t bits)
         {
             // clear lowest set bit
             uint64_t without_lowest = bits & (bits - 1);   
-            return static_cast<size_t>(std::countr_zero(without_lowest));
+            return static_cast<std::size_t>(std::countr_zero(without_lowest));
         }
 
         template <typename T, typename Compare>
-        static void sift(T* arr, size_t root_pos, size_t order, Compare cmp);
+        static void sift(T* arr, std::size_t root_pos, std::size_t order, Compare cmp);
     
         template <typename T, typename Compare>
         static void trinkle(
-            T* arr, size_t root_pos, size_t order,
+            T* arr, std::size_t root_pos, std::size_t order,
             uint64_t heap_bits, Compare cmp
         );
 };
 
 template <typename T, typename Compare>
-void SmoothSort::sort(T* arr, size_t n, Compare cmp)
+void SmoothSort::sort(T* arr, std::size_t n, Compare cmp)
 {
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
  
@@ -76,12 +80,12 @@ void SmoothSort::sort(T* arr, size_t n, Compare cmp)
 
     uint64_t heap_bits = 0;
  
-    for (size_t i = 0; i < n; ++i) {
+    for (std::size_t i = 0; i < n; ++i) {
  
         if (heap_bits != 0) {
             
-            size_t k = rightmost_order(heap_bits);
-            size_t k2 = second_rightmost_order(heap_bits);
+            std::size_t k = rightmost_order(heap_bits);
+            std::size_t k2 = second_rightmost_order(heap_bits);
  
             if (std::popcount(heap_bits) >= 2) {
                 // Leonardo: L(k + 2) = L(k + 1) + L(k) + 1
@@ -107,14 +111,14 @@ void SmoothSort::sort(T* arr, size_t n, Compare cmp)
 
     /* Phase 2 – Sorted extraction. */
  
-    for (size_t i = n - 1; i > 0; --i) {
+    for (std::size_t i = n - 1; i > 0; --i) {
 
-        size_t order = rightmost_order(heap_bits);
+        std::size_t order = rightmost_order(heap_bits);
         heap_bits &= heap_bits - 1;
  
         if (order >= 2) {
-            size_t right_child = i - 1;
-            size_t left_child  = i - 1 - LEONARDO_SEQUENCE[order - 2];
+            std::size_t right_child = i - 1;
+            std::size_t left_child  = i - 1 - LEONARDO_SEQUENCE[order - 2];
  
             // Expose left child (order-1) and right child (order-2).
             heap_bits |= (1ULL << (order - 1));
@@ -127,18 +131,18 @@ void SmoothSort::sort(T* arr, size_t n, Compare cmp)
 }
  
 template <typename T, typename Compare>
-void SmoothSort::sift(T* arr, size_t root_pos, size_t order, Compare cmp)
+void SmoothSort::sift(T* arr, std::size_t root_pos, std::size_t order, Compare cmp)
 {
     // Orders 0 and 1 are single-element heaps — nothing to sift.
 
     while (order >= 2) {
 
-        size_t right_child = root_pos - 1;
-        size_t left_child  = root_pos - 1 - LEONARDO_SEQUENCE[order - 2];
+        std::size_t right_child = root_pos - 1;
+        std::size_t left_child  = root_pos - 1 - LEONARDO_SEQUENCE[order - 2];
  
         // Find the larger of the two children.
-        size_t larger_child;
-        size_t child_order;
+        std::size_t larger_child;
+        std::size_t child_order;
         
         if (cmp(arr[left_child], arr[right_child])) {
             larger_child = right_child;
@@ -160,11 +164,11 @@ void SmoothSort::sift(T* arr, size_t root_pos, size_t order, Compare cmp)
  
 template <typename T, typename Compare>
 void SmoothSort::trinkle(
-    T* arr, size_t root_pos, size_t order,
+    T* arr, std::size_t root_pos, std::size_t order,
     uint64_t heap_bits, Compare cmp
 ) {
-    size_t current_pos   = root_pos;
-    size_t current_order = order;
+    std::size_t current_pos   = root_pos;
+    std::size_t current_order = order;
  
     while (true) {
 
@@ -172,14 +176,14 @@ void SmoothSort::trinkle(
         uint64_t remaining = heap_bits & ~(1ULL << current_order);
         if (remaining == 0) break;
  
-        size_t left_order = rightmost_order(remaining);
-        size_t left_root  = current_pos - LEONARDO_SEQUENCE[current_order];
+        std::size_t left_order = rightmost_order(remaining);
+        std::size_t left_root  = current_pos - LEONARDO_SEQUENCE[current_order];
  
         if (!cmp(arr[current_pos], arr[left_root])) break;
  
         if (current_order >= 2) {
-            size_t right_child = current_pos - 1;
-            size_t left_child  = current_pos - 1 - LEONARDO_SEQUENCE[current_order - 2];
+            std::size_t right_child = current_pos - 1;
+            std::size_t left_child  = current_pos - 1 - LEONARDO_SEQUENCE[current_order - 2];
  
             if (cmp(arr[left_root], arr[right_child]) ||
                 cmp(arr[left_root], arr[left_child])
@@ -205,7 +209,12 @@ namespace sort_imp
 class SmoothSortV2
 {
     public:
-        inline static const std::vector<size_t> LEONARDO_SEQUENCE = {
+        inline static const std::string name = "Smooth Sort V2";
+        inline static const bool is_stable     = false;
+        inline static const bool is_comparison = true;
+        inline static const bool in_place      = true;
+
+        inline static const std::vector<std::size_t> LEONARDO_SEQUENCE = {
             1ull,	1ull,	3ull,	5ull,	9ull,	15ull,	25ull,	41ull,	67ull,	109ull,	
             177ull,	287ull,	465ull,	753ull,	1219ull,	1973ull,	3193ull,	5167ull,	8361ull,	13529ull,	
             21891ull,	35421ull,	57313ull,	92735ull,	150049ull,	242785ull,	392835ull,	635621ull,	1028457ull,	1664079ull,	
@@ -217,38 +226,36 @@ class SmoothSortV2
             75778124746287811ull,	122611581443223181ull,	198389706189510993ull,	321001287632734175ull,	519390993822245169ull,	840392281454979345ull,	1359783275277224515ull,	2200175556732203861ull,	3559958832009428377ull,	5760134388741632239ull,	
             9320093220751060617ull,	15080227609492692857ull
         };
-        SmoothSortV2() = default;
 
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, size_t n, Compare cmp = Compare{});
-        static inline bool is_stable()      { return false; }
-        static inline bool is_comparison()  { return true;  }
-        static inline bool in_place()       { return true;  }
+        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
 
     private:
+        SmoothSortV2() = default;
+        
         template <typename T, typename Compare>
-        static void sift(T* arr, size_t root_pos, size_t order, Compare cmp);
+        static void sift(T* arr, std::size_t root_pos, std::size_t order, Compare cmp);
  
         template <typename T, typename Compare>
         static void trinkle(
-            T* arr, size_t root_pos, size_t order,
-            const std::vector<size_t>& heap_sizes, Compare cmp
+            T* arr, std::size_t root_pos, std::size_t order,
+            const std::vector<std::size_t>& heap_sizes, Compare cmp
         );
 };
 
 template <typename T, typename Compare>
-void SmoothSortV2::sort(T* arr, size_t n, Compare cmp)
+void SmoothSortV2::sort(T* arr, std::size_t n, Compare cmp)
 {
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
  
     /* Phase 1 – Build the Leonardo heap forest. */
 
     // Leonardo orders of each tree, L → R
-    std::vector<size_t> heap_sizes;  
+    std::vector<std::size_t> heap_sizes;  
     heap_sizes.reserve(64);
  
-    for (size_t i = 0; i < n; ++i) {
-        size_t size = heap_sizes.size();
+    for (std::size_t i = 0; i < n; ++i) {
+        std::size_t size = heap_sizes.size();
  
         if (size >= 2 && heap_sizes[size - 2] == heap_sizes[size - 1] + 1) {
             // Leonardo: L(k + 2) = L(k + 1) + L(k) + 1
@@ -267,14 +274,14 @@ void SmoothSortV2::sort(T* arr, size_t n, Compare cmp)
  
     /* Phase 2 – Sorted extraction. */
 
-    for (size_t i = n - 1; i > 0; --i) {
+    for (std::size_t i = n - 1; i > 0; --i) {
 
-        size_t order = heap_sizes.back();
+        std::size_t order = heap_sizes.back();
         heap_sizes.pop_back();
  
         if (order >= 2) {
-            size_t right_child = i - 1;
-            size_t left_child  = i - 1 - LEONARDO_SEQUENCE[order - 2];
+            std::size_t right_child = i - 1;
+            std::size_t left_child  = i - 1 - LEONARDO_SEQUENCE[order - 2];
  
             // Push left child's tree (order-1), then right child's tree (order-2).
             heap_sizes.push_back(order - 1);
@@ -287,18 +294,18 @@ void SmoothSortV2::sort(T* arr, size_t n, Compare cmp)
 }
 
 template <typename T, typename Compare>
-void SmoothSortV2::sift(T* arr, size_t root_pos, size_t order, Compare cmp)
+void SmoothSortV2::sift(T* arr, std::size_t root_pos, std::size_t order, Compare cmp)
 {
     // Orders 0 and 1 are single-element heaps — nothing to sift.
 
     while (order >= 2) {
 
-        size_t right_child = root_pos - 1;
-        size_t left_child  = root_pos - 1 - LEONARDO_SEQUENCE[order - 2];
+        std::size_t right_child = root_pos - 1;
+        std::size_t left_child  = root_pos - 1 - LEONARDO_SEQUENCE[order - 2];
  
         // Find the larger of the two children.
-        size_t larger_child;
-        size_t child_order;
+        std::size_t larger_child;
+        std::size_t child_order;
         
         if (cmp(arr[left_child], arr[right_child])) {
             larger_child = right_child;
@@ -320,22 +327,22 @@ void SmoothSortV2::sift(T* arr, size_t root_pos, size_t order, Compare cmp)
 
 template <typename T, typename Compare>
 void SmoothSortV2::trinkle(
-    T* arr, size_t root_pos, size_t order,
-    const std::vector<size_t>& heap_sizes, Compare cmp
+    T* arr, std::size_t root_pos, std::size_t order,
+    const std::vector<std::size_t>& heap_sizes, Compare cmp
 ) {
-    size_t current_pos   = root_pos;
-    size_t current_order = order;
-    size_t heap_idx = heap_sizes.size() - 1;
+    std::size_t current_pos   = root_pos;
+    std::size_t current_order = order;
+    std::size_t heap_idx = heap_sizes.size() - 1;
  
     while (heap_idx > 0) {
         // Position of the left neighbor root.
-        size_t left_root = current_pos - LEONARDO_SEQUENCE[current_order];
+        std::size_t left_root = current_pos - LEONARDO_SEQUENCE[current_order];
  
         if (!cmp(arr[current_pos], arr[left_root])) break;
  
         if (current_order >= 2) {
-            size_t right_child = current_pos - 1;
-            size_t left_child  = current_pos - 1 - LEONARDO_SEQUENCE[current_order - 2];
+            std::size_t right_child = current_pos - 1;
+            std::size_t left_child  = current_pos - 1 - LEONARDO_SEQUENCE[current_order - 2];
  
             if (cmp(arr[left_root], arr[right_child]) ||
                 cmp(arr[left_root], arr[left_child])

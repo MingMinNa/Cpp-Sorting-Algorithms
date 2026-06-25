@@ -7,6 +7,7 @@
 #pragma once
 
 #include "sort_utils.hpp"
+#include <string>
 #include <cstddef>
 #include <utility>
 #include <cstring>
@@ -19,24 +20,28 @@ namespace sort_imp
 class RadixSort
 {
     public:
-        inline static const size_t RADIX = 1u << 8;
-        RadixSort() = default;
+        inline static const std::string name = "Radix Sort";
+        inline static const bool is_stable     = true;
+        inline static const bool is_comparison = false;
+        inline static const bool in_place      = false;
+
+        inline static const std::size_t RADIX = 1u << 8;
 
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, size_t n, Compare cmp = Compare{});
-        static inline bool is_stable()      { return true;  }
-        static inline bool is_comparison()  { return false; }
-        static inline bool in_place()       { return false; }
+        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
+    
+    private:
+        RadixSort() = default;
 };
 
 template <typename T, typename Compare>
-void RadixSort::sort(T* arr, size_t n, Compare cmp)
+void RadixSort::sort(T* arr, std::size_t n, Compare cmp)
 {
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
 
     // Note: radix must be at least 2.
-    // General Case: size_t radix = ..., div = 1;
-    size_t radix = RADIX, pow = 0;
+    // General Case: std::size_t radix = ..., div = 1;
+    std::size_t radix = RADIX, pow = 0;
     auto [min_ele, max_ele] = find_min_max(arr, n);
     bool descending = cmp(max_ele, min_ele);
     std::vector<T> temp_arr(arr, arr + n);
@@ -44,14 +49,14 @@ void RadixSort::sort(T* arr, size_t n, Compare cmp)
     // General Case: max_ele >= div
     while ((max_ele >> pow) > 0) {
         
-        memcpy(temp_arr.data(), arr, n * sizeof(T));
+        std::copy(arr, arr + n, temp_arr.data());
 
         // Radix sort
         std::vector<T> counts(radix);
 
-        for (size_t i = 0; i < n; ++i) {
-            // General Case: size_t radix_index = (temp_arr[i] / div) % radix;
-            size_t radix_index = (temp_arr[i] >> pow) & (radix - 1);
+        for (std::size_t i = 0; i < n; ++i) {
+            // General Case: std::size_t radix_index = (temp_arr[i] / div) % radix;
+            std::size_t radix_index = (temp_arr[i] >> pow) & (radix - 1);
             counts[radix_index] ++;
         }
 
@@ -65,9 +70,9 @@ void RadixSort::sort(T* arr, size_t n, Compare cmp)
         }
 
         for (ptrdiff_t i = n - 1; i >= 0; --i) {
-            // General Case: size_t radix_index = (temp_arr[i] / div) % radix;
-            size_t radix_index = (temp_arr[i] >> pow) & (radix - 1);
-            size_t rank = static_cast<size_t>(counts[radix_index]);
+            // General Case: std::size_t radix_index = (temp_arr[i] / div) % radix;
+            std::size_t radix_index = (temp_arr[i] >> pow) & (radix - 1);
+            std::size_t rank = static_cast<std::size_t>(counts[radix_index]);
 
             // rank is 1-based index.
             arr[TO_ZERO_BASE(rank)] = temp_arr[i];

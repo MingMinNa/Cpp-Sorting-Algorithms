@@ -8,6 +8,7 @@
 
 #include "sort_utils.hpp"
 #include <stack>
+#include <string>
 #include <cstddef>
 #include <utility>
 #include <stdexcept>
@@ -19,55 +20,54 @@ namespace sort_imp
 class AdaptiveMergeSort
 {
     public:
-        static constexpr bool RANDOM_PIVOT_DEFAULT = true;
-
-        AdaptiveMergeSort() = default;
+        inline static const std::string name = "Adaptive Merge Sort";
+        inline static const bool is_stable     = true;
+        inline static const bool is_comparison = true;
+        inline static const bool in_place      = false;
 
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, size_t n, Compare cmp = Compare{});
-        static inline bool is_stable()      { return true;  }
-        static inline bool is_comparison()  { return true;  }
-        static inline bool in_place()       { return false; }
+        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
 
     private:
+        AdaptiveMergeSort() = default;
 
         /* Same as merge method in MergeSort */
         // Note: [start, mid), [mid, end)
         template <typename T, typename Compare>
-        static void merge(T* arr, size_t start, size_t mid, size_t end, Compare cmp);
+        static void merge(T* arr, std::size_t start, std::size_t mid, std::size_t end, Compare cmp);
 
         /* Same as get_run method in TimSort */
         template <typename T, typename Compare> 
-        static size_t get_run(T* arr, const size_t n, size_t run_start, Compare cmp);
+        static std::size_t get_run(T* arr, const std::size_t n, std::size_t run_start, Compare cmp);
 };
 
 template <typename T, typename Compare>
-void AdaptiveMergeSort::sort(T* arr, size_t n, Compare cmp)
+void AdaptiveMergeSort::sort(T* arr, std::size_t n, Compare cmp)
 {
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
     
-    size_t run_start = 0;
-    std::vector<std::pair<size_t, size_t>> run_stack;
+    std::size_t run_start = 0;
+    std::vector<std::pair<std::size_t, std::size_t>> run_stack;
 
     while (run_start < n) {
 
         // The range of this run is from run_start to run_end (inclusive).
-        size_t run_end = get_run(arr, n, run_start, cmp);
+        std::size_t run_end = get_run(arr, n, run_start, cmp);
         run_stack.push_back({run_start, run_end});
         run_start = run_end + 1;
 
         /* Same as rule in TimSort */
         while (run_stack.size() >= 3) {
 
-            size_t size = run_stack.size();
+            std::size_t size = run_stack.size();
 
             auto [l_A, r_A] = run_stack[size - 3];
             auto [l_B, r_B] = run_stack[size - 2];
             auto [l_C, r_C] = run_stack[size - 1];
 
-            size_t size_A = r_A - l_A + 1;
-            size_t size_B = r_B - l_B + 1;
-            size_t size_C = r_C - l_C + 1;
+            std::size_t size_A = r_A - l_A + 1;
+            std::size_t size_B = r_B - l_B + 1;
+            std::size_t size_C = r_C - l_C + 1;
 
             if (size_A > size_B + size_C && size_B > size_C) break;
 
@@ -91,7 +91,7 @@ void AdaptiveMergeSort::sort(T* arr, size_t n, Compare cmp)
     // after finding all runs, merge them.
     while (run_stack.size() > 1) {
 
-        size_t size = run_stack.size();
+        std::size_t size = run_stack.size();
 
         auto [l_B, r_B] = run_stack[size - 2];
         auto [l_C, r_C] = run_stack[size - 1];
@@ -103,14 +103,14 @@ void AdaptiveMergeSort::sort(T* arr, size_t n, Compare cmp)
 }
 
 template <typename T, typename Compare>
-void AdaptiveMergeSort::merge(T* arr, size_t start, size_t mid, size_t end, Compare cmp)
+void AdaptiveMergeSort::merge(T* arr, std::size_t start, std::size_t mid, std::size_t end, Compare cmp)
 {
-    size_t n1 = mid - start;
-    size_t n2 = end - mid;
+    std::size_t n1 = mid - start;
+    std::size_t n2 = end - mid;
     
     std::vector<T> l_vec(arr + start, arr + mid);
     std::vector<T> r_vec(arr + mid, arr + end);
-    size_t i = 0, j = 0, k = start;
+    std::size_t i = 0, j = 0, k = start;
 
     while (i < n1 && j < n2) {
         if (cmp(r_vec[j], l_vec[i])) arr[k ++] = r_vec[j ++];
@@ -122,9 +122,9 @@ void AdaptiveMergeSort::merge(T* arr, size_t start, size_t mid, size_t end, Comp
 }
 
 template <typename T, typename Compare> 
-size_t AdaptiveMergeSort::get_run(T* arr, const size_t n, size_t run_start, Compare cmp)
+std::size_t AdaptiveMergeSort::get_run(T* arr, const std::size_t n, std::size_t run_start, Compare cmp)
 {
-    size_t run_end = run_start;
+    std::size_t run_end = run_start;
     if (run_end + 1 >= n) return run_start;
 
     bool reverse = cmp(arr[run_end + 1], arr[run_end]);

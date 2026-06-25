@@ -15,7 +15,7 @@ using namespace sort_test;
 
 /* Global Variables */
 
-std::vector<size_t> sort_test::test_sizes 
+std::vector<std::size_t> sort_test::test_sizes 
     = { 1u, 2u, 3u, 5u, 8u, 10u, 23u, 57u, 100u, 500u, 1000u, 5000u };
 
 Int sort_test::Int_range_min = -10000;
@@ -28,7 +28,7 @@ decltype(Element::key) sort_test::Element_range_min_key = 0;
 decltype(Element::key) sort_test::Element_range_max_key = 20000;
 
 using Sort = ShellSort;
-std::string sort_name = "Shell Sort";
+std::string sort_name = Sort::name;
 
 int main()
 {

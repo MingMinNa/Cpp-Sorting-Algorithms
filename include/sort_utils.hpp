@@ -18,7 +18,7 @@
 namespace sort_imp
 {
 
-size_t random_generate(size_t lower_bound, size_t upper_bound) 
+std::size_t random_generate(std::size_t lower_bound, std::size_t upper_bound) 
 {
     if (lower_bound > upper_bound)
         throw std::invalid_argument(
@@ -26,12 +26,12 @@ size_t random_generate(size_t lower_bound, size_t upper_bound)
         );
 
     static std::mt19937_64 gen(std::random_device{}());
-    std::uniform_int_distribution<size_t> dist(lower_bound, upper_bound);
+    std::uniform_int_distribution<std::size_t> dist(lower_bound, upper_bound);
     return dist(gen);
 }
 
 template <typename T>
-void check_array_valid(const T* arr, size_t n) 
+void check_array_valid(const T* arr, std::size_t n) 
 {
     if (!arr && n > 0) {
         throw std::invalid_argument(
@@ -41,10 +41,10 @@ void check_array_valid(const T* arr, size_t n)
 }
 
 template <typename T, typename Compare>
-bool check_sorted(T* arr, size_t n, Compare cmp)
+bool check_sorted(T* arr, std::size_t n, Compare cmp)
 {
     check_array_valid<T>(arr, n);
-    for (size_t i = 1; i < n; ++i) {
+    for (std::size_t i = 1; i < n; ++i) {
         if (cmp(arr[i], arr[i - 1])) {
             return false;
         }
@@ -53,14 +53,14 @@ bool check_sorted(T* arr, size_t n, Compare cmp)
 }
 
 template <typename T>
-std::pair<T, T> find_min_max(const T* arr, size_t n)
+std::pair<T, T> find_min_max(const T* arr, std::size_t n)
 {
     if (!arr || n == 0) 
         throw std::invalid_argument(
             "The array cannot be empty"
         );
 
-    size_t i = 1;
+    std::size_t i = 1;
     T min_ele = arr[0], max_ele = arr[0];
     T smaller = min_ele, larger  = max_ele;
 

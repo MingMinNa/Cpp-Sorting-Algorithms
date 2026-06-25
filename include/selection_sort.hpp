@@ -7,6 +7,7 @@
 #pragma once
 
 #include "sort_utils.hpp"
+#include <string>
 #include <cstddef>
 #include <utility>
 #include <stdexcept>
@@ -18,24 +19,27 @@ namespace sort_imp
 class SelectionSort
 {
     public:
-        SelectionSort() = default;
+        inline static const std::string name = "Selection Sort";
+        inline static const bool is_stable     = false;
+        inline static const bool is_comparison = true;
+        inline static const bool in_place      = true;
 
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, size_t n, Compare cmp = Compare{});
-        static inline bool is_stable()      { return false; }
-        static inline bool is_comparison()  { return true;  }
-        static inline bool in_place()       { return true;  }
+        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
+
+    private:
+        SelectionSort() = default;
 };
 
 template <typename T, typename Compare>
-void SelectionSort::sort(T* arr, size_t n, Compare cmp)
+void SelectionSort::sort(T* arr, std::size_t n, Compare cmp)
 {
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
 
-    for (size_t i = 1; i < n; ++i) {
+    for (std::size_t i = 1; i < n; ++i) {
         
-        size_t index = i - 1;
-        for (size_t j = i; j < n; ++j) {
+        std::size_t index = i - 1;
+        for (std::size_t j = i; j < n; ++j) {
             if (cmp(arr[j], arr[index])) {
                 index = j;
             }

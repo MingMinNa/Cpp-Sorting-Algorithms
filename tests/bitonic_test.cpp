@@ -15,7 +15,7 @@ using namespace sort_test;
 
 /* Global Variables */
 
-std::vector<size_t> sort_test::test_sizes 
+std::vector<std::size_t> sort_test::test_sizes 
     = { 1u, 2u, 4u, 8u, 16u, 128u, 512u, 2048u };
 
 Int sort_test::Int_range_min = -10000;
@@ -28,7 +28,7 @@ decltype(Element::key) sort_test::Element_range_min_key = 0;
 decltype(Element::key) sort_test::Element_range_max_key = 20000;
 
 using Sort = BitonicSort;
-std::string sort_name = "Bitonic Sort";
+std::string sort_name = Sort::name;
 Tests exclude = Tests::PartialRange;
 
 int main()

@@ -7,6 +7,7 @@
 #pragma once
 
 #include "sort_utils.hpp"
+#include <string>
 #include <cstddef>
 #include <functional>
 #include <stdexcept>
@@ -17,50 +18,52 @@ namespace sort_imp
 class HeapSort
 {
     public:
-        HeapSort() = default;
+        inline static const std::string name = "Heap Sort";
+        inline static const bool is_stable     = false;
+        inline static const bool is_comparison = true;
+        inline static const bool in_place      = true;
 
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, size_t n, Compare cmp = Compare{});
-        static inline bool is_stable()      { return false; }
-        static inline bool is_comparison()  { return true;  }
-        static inline bool in_place()       { return true;  }
+        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
 
     private:
+        HeapSort() = default;
+        
         template <typename T, typename Compare>
-        static void build_heap(T* arr, size_t n, Compare cmp);
+        static void build_heap(T* arr, std::size_t n, Compare cmp);
 
         template <typename T, typename Compare>
-        static void heapify(T* arr, size_t n, size_t curr_index, Compare cmp);
+        static void heapify(T* arr, std::size_t n, std::size_t curr_index, Compare cmp);
 };
 
 template <typename T, typename Compare>
-void HeapSort::sort(T* arr, size_t n, Compare cmp)
+void HeapSort::sort(T* arr, std::size_t n, Compare cmp)
 {
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
 
     build_heap<T, Compare>(arr, n, cmp);
 
-    for (size_t i = n; i > 0; --i) {
+    for (std::size_t i = n; i > 0; --i) {
         std::swap(arr[TO_ZERO_BASE(i)], arr[0]);
         heapify(arr, i - 1, 1, cmp);
     }
 }
 
 template <typename T, typename Compare>
-void HeapSort::build_heap(T* arr, size_t n, Compare cmp)
+void HeapSort::build_heap(T* arr, std::size_t n, Compare cmp)
 {
-    for (size_t i = (n >> 1) + 1; i > 0; --i) {
+    for (std::size_t i = (n >> 1) + 1; i > 0; --i) {
         heapify(arr, n, i, cmp);
     }
 }
 
 template <typename T, typename Compare>
-void HeapSort::heapify(T* arr, size_t n, size_t curr_index, Compare cmp)
+void HeapSort::heapify(T* arr, std::size_t n, std::size_t curr_index, Compare cmp)
 {
     while (true) {
-        size_t left  = curr_index << 1;
-        size_t right = left + 1;
-        size_t next_index = curr_index;
+        std::size_t left  = curr_index << 1;
+        std::size_t right = left + 1;
+        std::size_t next_index = curr_index;
 
         // Note: left and right are 1-based index.
         if (left  <= n && cmp(arr[TO_ZERO_BASE(next_index)], arr[TO_ZERO_BASE(left)] )) next_index = left;

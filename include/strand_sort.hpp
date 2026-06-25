@@ -8,6 +8,7 @@
 
 #include "sort_utils.hpp"
 #include <list>
+#include <string>
 #include <cstddef>
 #include <utility>
 #include <stdexcept>
@@ -19,31 +20,32 @@ namespace sort_imp
 class StrandSort
 {
     public:
-        StrandSort() = default;
+        inline static const std::string name = "Strand Sort";
+        inline static const bool is_stable     = true;
+        inline static const bool is_comparison = true;
+        inline static const bool in_place      = false;
 
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, size_t n, Compare cmp = Compare{});
+        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
         template <typename T, typename Compare = std::less<T>>
         static void sort(std::list<T> &list, Compare cmp = Compare{});
-        static inline bool is_stable()      { return true;  }
-        static inline bool is_comparison()  { return true;  }
-        static inline bool in_place()       { return false; }
 
     private:
+        StrandSort() = default;
 
         template <typename T, typename Compare>
         static void strand_sort(std::list<T> &list, std::list<T> &sorted_list, Compare cmp);
 };
 
 template <typename T, typename Compare>
-void StrandSort::sort(T* arr, size_t n, Compare cmp)
+void StrandSort::sort(T* arr, std::size_t n, Compare cmp)
 {
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
 
     std::list<T> list(arr, arr + n), sorted_list;
     strand_sort(list, sorted_list, cmp);
 
-    size_t index = 0;
+    std::size_t index = 0;
     for (auto & ele : sorted_list) {
         arr[index ++] = ele;
     }
