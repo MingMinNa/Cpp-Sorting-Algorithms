@@ -18,6 +18,7 @@ Cpp-Sorting-Algorithms/
 ├── tests/
 ├── benchmark/
 ├── docs/
+├── CMakeLists.txt
 └── README.md
 ```
 
