@@ -1,15 +1,13 @@
 # Cpp-Sorting-Algorithms
 
-English | <a href="README.zh-TW.md">繁體中文</a>
+<a href="README.md">English</a> | 繁體中文
 
 ![C++23](https://img.shields.io/badge/C%2B%2B-23-blue) [![License](https://img.shields.io/badge/License-MIT-green)](./LICENSE)
 
-This project aims to implement various sorting algorithms in a simple and easy-to-understand way,   
-along with visualizations of their processes and correctness proofs.  
+本專案旨在以簡單且易於理解的方式實作各種排序演算法，並提供相關流程展示與證明。  
+期望能將本專案發展成兼具實作、學習與參考價值的排序演算法資源。
 
-The goal is to make this repository a useful resource for learning, implementation, and reference.
-
-## Project Structure
+## 專案架構
 ```
 Cpp-Sorting-Algorithms/
 │
@@ -18,15 +16,14 @@ Cpp-Sorting-Algorithms/
 ├── tests/
 ├── benchmark/
 ├── docs/
-└── README.md
+└── README.zh-TW.md
 ```
 
-## Implemented Sorting
+## 已實作的排序演算法
 
-There are many sorting algorithms in the world, and not all are included here.  
-Currently implemented algorithms are listed below:
+排序演算法千千萬萬，實在難以全數囊括，目前已實作的演算法如下：
 
-### Comparison-based Sorting
+### 比較排序法
 
 <table>
 <tr>
@@ -66,7 +63,7 @@ Currently implemented algorithms are listed below:
 </tr>
 </table>
 
-### Non-comparison Sorting
+### 非比較排序法
 
 <table>
 <tr>
@@ -77,21 +74,20 @@ Currently implemented algorithms are listed below:
 </tr>
 </table>
 
-## Usage
+## 使用方法
 
-All source code is located in the `include/` folder.  
-Each sorting algorithm class provides the following interface:
+原始程式碼位於 `include/` 資料夾內，每個排序演算法類別均提供以下的方法。
 
 ```C++
-// Compare must satisfy strict weak ordering
+// Compare 必須滿足嚴格弱序
 template <typename T, typename Compare = std::less<T>>
 static void sort(T* arr, size_t n, Compare cmp = Compare{});
-static inline bool is_stable();     // → whether it is stable
-static inline bool is_comparison(); // → whether it is comparison-based
-static inline bool in_place();      // → whether it is in-place
+static inline bool is_stable();     // → 是否為穩定排序
+static inline bool is_comparison(); // → 是否為比較排序
+static inline bool in_place();      // → 是否為原地排序
 ```
 
-### Example
+以下為使用範例
 ```C++
 #include "include/bubble_sort.hpp"
 #include <functional>
@@ -113,12 +109,11 @@ int main()
 }
 ```
 
-Full example: [`example.cpp`](./example.cpp)
+完整範例請看 [`example.cpp`](./example.cpp)。
 
-### Notes
-Some algorithms have specific constraints:
-- Counting Sort does not support floating-point types.
-- Bitonic Sort requires the sequence size to be a power of 2.
+此外，有些排序法會有各自的限制，例如：
+- Counting Sort 不適用於浮點數資料型態上。
+- Bitonic Sort 要求序列長度必須是 2 的次方。
 
-Some limitations come from the algorithm itself, while others come from implementation choices.  
-Please check `docs/algos/` and the source code before using to avoid unexpected issues.
+有些是演算法本身的限制，而有些是實作上的考量。  
+在使用前，請先參照 `docs/algos/` 中的檔案與原始碼實作，以免踩坑。
