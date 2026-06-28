@@ -1,0 +1,1123 @@
+Algo,DataOrder,Size,Time(ns)
+Heap Sort,Random,16,1333.33
+Quick Sort,Random,16,7700
+Merge Sort,Random,16,7166.67
+Adaptive Merge Sort,Random,16,4000
+Tournament Sort,Random,16,1966.67
+Intro Sort,Random,16,1366.67
+Tim Sort,Random,16,2400
+Smooth Sort,Random,16,2300
+Smooth Sort V2,Random,16,2666.67
+Patience Sort,Random,16,8100
+Bitonic Sort,Random,16,1900
+Heap Sort,Random,32,1866.67
+Quick Sort,Random,32,2233.33
+Merge Sort,Random,32,7100
+Adaptive Merge Sort,Random,32,8500
+Tournament Sort,Random,32,2766.67
+Intro Sort,Random,32,1900
+Tim Sort,Random,32,3433.33
+Smooth Sort,Random,32,3800
+Smooth Sort V2,Random,32,4133.33
+Patience Sort,Random,32,9766.67
+Bitonic Sort,Random,32,3533.33
+Heap Sort,Random,64,3933.33
+Quick Sort,Random,64,4666.67
+Merge Sort,Random,64,25566.7
+Adaptive Merge Sort,Random,64,21100
+Tournament Sort,Random,64,5300
+Intro Sort,Random,64,4733.33
+Tim Sort,Random,64,7533.33
+Smooth Sort,Random,64,8266.67
+Smooth Sort V2,Random,64,8400
+Patience Sort,Random,64,20433.3
+Bitonic Sort,Random,64,8133.33
+Heap Sort,Random,128,8366.67
+Quick Sort,Random,128,11066.7
+Merge Sort,Random,128,52133.3
+Adaptive Merge Sort,Random,128,27866.7
+Tournament Sort,Random,128,13100
+Intro Sort,Random,128,9600
+Tim Sort,Random,128,16466.7
+Smooth Sort,Random,128,19066.7
+Smooth Sort V2,Random,128,19766.7
+Patience Sort,Random,128,32100
+Bitonic Sort,Random,128,20666.7
+Heap Sort,Random,256,18200
+Quick Sort,Random,256,23300
+Merge Sort,Random,256,64900
+Adaptive Merge Sort,Random,256,51800
+Tournament Sort,Random,256,24533.3
+Intro Sort,Random,256,19766.7
+Tim Sort,Random,256,32633.3
+Smooth Sort,Random,256,40233.3
+Smooth Sort V2,Random,256,44433.3
+Patience Sort,Random,256,56366.7
+Bitonic Sort,Random,256,44566.7
+Heap Sort,Random,512,34633.3
+Quick Sort,Random,512,49766.7
+Merge Sort,Random,512,136733
+Adaptive Merge Sort,Random,512,103233
+Tournament Sort,Random,512,63533.3
+Intro Sort,Random,512,41933.3
+Tim Sort,Random,512,61300
+Smooth Sort,Random,512,76766.7
+Smooth Sort V2,Random,512,86466.7
+Patience Sort,Random,512,100833
+Bitonic Sort,Random,512,92466.7
+Heap Sort,Random,1024,70600
+Quick Sort,Random,1024,97800
+Merge Sort,Random,1024,260933
+Adaptive Merge Sort,Random,1024,202733
+Tournament Sort,Random,1024,105733
+Intro Sort,Random,1024,81233.3
+Tim Sort,Random,1024,129133
+Smooth Sort,Random,1024,151867
+Smooth Sort V2,Random,1024,157400
+Patience Sort,Random,1024,212467
+Bitonic Sort,Random,1024,175700
+Heap Sort,Random,2048,104267
+Quick Sort,Random,2048,143500
+Merge Sort,Random,2048,339167
+Adaptive Merge Sort,Random,2048,344067
+Tournament Sort,Random,2048,150267
+Intro Sort,Random,2048,104267
+Tim Sort,Random,2048,154967
+Smooth Sort,Random,2048,266967
+Smooth Sort V2,Random,2048,267967
+Patience Sort,Random,2048,287033
+Bitonic Sort,Random,2048,256500
+Heap Sort,Random,4096,163367
+Quick Sort,Random,4096,255067
+Merge Sort,Random,4096,849733
+Adaptive Merge Sort,Random,4096,664367
+Tournament Sort,Random,4096,466233
+Intro Sort,Random,4096,373800
+Tim Sort,Random,4096,444667
+Smooth Sort,Random,4096,499767
+Smooth Sort V2,Random,4096,413733
+Patience Sort,Random,4096,452833
+Bitonic Sort,Random,4096,516133
+Heap Sort,Random,8192,347000
+Quick Sort,Random,8192,500233
+Merge Sort,Random,8192,1.20743e+06
+Adaptive Merge Sort,Random,8192,983667
+Tournament Sort,Random,8192,578900
+Intro Sort,Random,8192,470900
+Tim Sort,Random,8192,704933
+Smooth Sort,Random,8192,798367
+Smooth Sort V2,Random,8192,819500
+Patience Sort,Random,8192,1.01723e+06
+Bitonic Sort,Random,8192,1.16353e+06
+Heap Sort,Random,16384,837367
+Quick Sort,Random,16384,1.0538e+06
+Merge Sort,Random,16384,2.9218e+06
+Adaptive Merge Sort,Random,16384,2.23177e+06
+Tournament Sort,Random,16384,1.23953e+06
+Intro Sort,Random,16384,959233
+Tim Sort,Random,16384,1.65643e+06
+Smooth Sort,Random,16384,2.39427e+06
+Smooth Sort V2,Random,16384,1.73013e+06
+Patience Sort,Random,16384,1.91733e+06
+Bitonic Sort,Random,16384,2.38233e+06
+Heap Sort,Random,32768,1.88613e+06
+Quick Sort,Random,32768,2.2123e+06
+Merge Sort,Random,32768,5.14223e+06
+Adaptive Merge Sort,Random,32768,4.2206e+06
+Tournament Sort,Random,32768,2.61813e+06
+Intro Sort,Random,32768,2.10163e+06
+Tim Sort,Random,32768,2.9647e+06
+Smooth Sort,Random,32768,3.60223e+06
+Smooth Sort V2,Random,32768,3.7224e+06
+Patience Sort,Random,32768,4.12023e+06
+Bitonic Sort,Random,32768,5.16937e+06
+Heap Sort,Random,65536,4.05287e+06
+Quick Sort,Random,65536,6.19763e+06
+Merge Sort,Random,65536,1.07786e+07
+Adaptive Merge Sort,Random,65536,9.01777e+06
+Tournament Sort,Random,65536,8.15727e+06
+Intro Sort,Random,65536,4.33663e+06
+Tim Sort,Random,65536,7.4525e+06
+Smooth Sort,Random,65536,8.37337e+06
+Smooth Sort V2,Random,65536,7.906e+06
+Patience Sort,Random,65536,8.24577e+06
+Bitonic Sort,Random,65536,1.1813e+07
+Heap Sort,Random,131072,9.51083e+06
+Quick Sort,Random,131072,1.06369e+07
+Merge Sort,Random,131072,2.47025e+07
+Adaptive Merge Sort,Random,131072,1.90431e+07
+Tournament Sort,Random,131072,1.56632e+07
+Intro Sort,Random,131072,1.01278e+07
+Tim Sort,Random,131072,1.64732e+07
+Smooth Sort,Random,131072,1.73148e+07
+Smooth Sort V2,Random,131072,1.69289e+07
+Patience Sort,Random,131072,2.04359e+07
+Bitonic Sort,Random,131072,2.88183e+07
+Heap Sort,Random,262144,2.15203e+07
+Quick Sort,Random,262144,2.10747e+07
+Merge Sort,Random,262144,4.69532e+07
+Adaptive Merge Sort,Random,262144,4.0124e+07
+Tournament Sort,Random,262144,3.12997e+07
+Intro Sort,Random,262144,2.00703e+07
+Tim Sort,Random,262144,2.94881e+07
+Smooth Sort,Random,262144,3.9562e+07
+Smooth Sort V2,Random,262144,3.88987e+07
+Patience Sort,Random,262144,4.19867e+07
+Bitonic Sort,Random,262144,5.41625e+07
+Heap Sort,Random,524288,5.11971e+07
+Quick Sort,Random,524288,4.91358e+07
+Merge Sort,Random,524288,1.05473e+08
+Adaptive Merge Sort,Random,524288,8.33407e+07
+Tournament Sort,Random,524288,8.18805e+07
+Intro Sort,Random,524288,4.46184e+07
+Tim Sort,Random,524288,6.28584e+07
+Smooth Sort,Random,524288,8.82986e+07
+Smooth Sort V2,Random,524288,1.02146e+08
+Patience Sort,Random,524288,9.55413e+07
+Bitonic Sort,Random,524288,1.17847e+08
+Heap Sort,Random,1048576,1.36913e+08
+Quick Sort,Random,1048576,1.08906e+08
+Merge Sort,Random,1048576,2.15357e+08
+Adaptive Merge Sort,Random,1048576,1.85422e+08
+Tournament Sort,Random,1048576,2.47665e+08
+Intro Sort,Random,1048576,1.02985e+08
+Tim Sort,Random,1048576,1.42616e+08
+Smooth Sort,Random,1048576,2.02271e+08
+Smooth Sort V2,Random,1048576,2.19429e+08
+Patience Sort,Random,1048576,1.99801e+08
+Bitonic Sort,Random,1048576,2.58742e+08
+Heap Sort,Sorted,16,500
+Quick Sort,Sorted,16,1000
+Merge Sort,Sorted,16,3100
+Adaptive Merge Sort,Sorted,16,1300
+Tournament Sort,Sorted,16,966.667
+Intro Sort,Sorted,16,433.333
+Tim Sort,Sorted,16,666.667
+Smooth Sort,Sorted,16,766.667
+Smooth Sort V2,Sorted,16,1333.33
+Patience Sort,Sorted,16,4633.33
+Bitonic Sort,Sorted,16,1066.67
+Heap Sort,Sorted,32,833.333
+Quick Sort,Sorted,32,1200
+Merge Sort,Sorted,32,3766.67
+Adaptive Merge Sort,Sorted,32,1366.67
+Tournament Sort,Sorted,32,1300
+Intro Sort,Sorted,32,733.333
+Tim Sort,Sorted,32,1166.67
+Smooth Sort,Sorted,32,766.667
+Smooth Sort V2,Sorted,32,933.333
+Patience Sort,Sorted,32,4800
+Bitonic Sort,Sorted,32,1700
+Heap Sort,Sorted,64,1666.67
+Quick Sort,Sorted,64,2933.33
+Merge Sort,Sorted,64,8800
+Adaptive Merge Sort,Sorted,64,1733.33
+Tournament Sort,Sorted,64,3666.67
+Intro Sort,Sorted,64,1533.33
+Tim Sort,Sorted,64,1200
+Smooth Sort,Sorted,64,1433.33
+Smooth Sort V2,Sorted,64,1600
+Patience Sort,Sorted,64,10400
+Bitonic Sort,Sorted,64,4133.33
+Heap Sort,Sorted,128,3800
+Quick Sort,Sorted,128,5500
+Merge Sort,Sorted,128,14366.7
+Adaptive Merge Sort,Sorted,128,1500
+Tournament Sort,Sorted,128,5233.33
+Intro Sort,Sorted,128,2333.33
+Tim Sort,Sorted,128,866.667
+Smooth Sort,Sorted,128,2066.67
+Smooth Sort V2,Sorted,128,2400
+Patience Sort,Sorted,128,16300
+Bitonic Sort,Sorted,128,6966.67
+Heap Sort,Sorted,256,6600
+Quick Sort,Sorted,256,8700
+Merge Sort,Sorted,256,28566.7
+Adaptive Merge Sort,Sorted,256,1133.33
+Tournament Sort,Sorted,256,11533.3
+Intro Sort,Sorted,256,4100
+Tim Sort,Sorted,256,1000
+Smooth Sort,Sorted,256,4100
+Smooth Sort V2,Sorted,256,4433.33
+Patience Sort,Sorted,256,30333.3
+Bitonic Sort,Sorted,256,15033.3
+Heap Sort,Sorted,512,14600
+Quick Sort,Sorted,512,17466.7
+Merge Sort,Sorted,512,57966.7
+Adaptive Merge Sort,Sorted,512,1733.33
+Tournament Sort,Sorted,512,29800
+Intro Sort,Sorted,512,9500
+Tim Sort,Sorted,512,1266.67
+Smooth Sort,Sorted,512,7500
+Smooth Sort V2,Sorted,512,8333.33
+Patience Sort,Sorted,512,66133.3
+Bitonic Sort,Sorted,512,31700
+Heap Sort,Sorted,1024,26000
+Quick Sort,Sorted,1024,34833.3
+Merge Sort,Sorted,1024,116567
+Adaptive Merge Sort,Sorted,1024,2600
+Tournament Sort,Sorted,1024,90266.7
+Intro Sort,Sorted,1024,17600
+Tim Sort,Sorted,1024,1800
+Smooth Sort,Sorted,1024,14433.3
+Smooth Sort V2,Sorted,1024,16133.3
+Patience Sort,Sorted,1024,150300
+Bitonic Sort,Sorted,1024,71266.7
+Heap Sort,Sorted,2048,69000
+Quick Sort,Sorted,2048,71666.7
+Merge Sort,Sorted,2048,242467
+Adaptive Merge Sort,Sorted,2048,7266.67
+Tournament Sort,Sorted,2048,160167
+Intro Sort,Sorted,2048,58333.3
+Tim Sort,Sorted,2048,9300
+Smooth Sort,Sorted,2048,25166.7
+Smooth Sort V2,Sorted,2048,27400
+Patience Sort,Sorted,2048,326833
+Bitonic Sort,Sorted,2048,131367
+Heap Sort,Sorted,4096,104333
+Quick Sort,Sorted,4096,116600
+Merge Sort,Sorted,4096,353767
+Adaptive Merge Sort,Sorted,4096,15733.3
+Tournament Sort,Sorted,4096,278500
+Intro Sort,Sorted,4096,64333.3
+Tim Sort,Sorted,4096,14366.7
+Smooth Sort,Sorted,4096,47200
+Smooth Sort V2,Sorted,4096,48000
+Patience Sort,Sorted,4096,520200
+Bitonic Sort,Sorted,4096,249233
+Heap Sort,Sorted,8192,199067
+Quick Sort,Sorted,8192,231233
+Merge Sort,Sorted,8192,779900
+Adaptive Merge Sort,Sorted,8192,35000
+Tournament Sort,Sorted,8192,1.10363e+06
+Intro Sort,Sorted,8192,126233
+Tim Sort,Sorted,8192,37666.7
+Smooth Sort,Sorted,8192,137800
+Smooth Sort V2,Sorted,8192,228100
+Patience Sort,Sorted,8192,2.4814e+06
+Bitonic Sort,Sorted,8192,1.04107e+06
+Heap Sort,Sorted,16384,735633
+Quick Sort,Sorted,16384,455767
+Merge Sort,Sorted,16384,1.60953e+06
+Adaptive Merge Sort,Sorted,16384,58133.3
+Tournament Sort,Sorted,16384,1.2479e+06
+Intro Sort,Sorted,16384,241333
+Tim Sort,Sorted,16384,51066.7
+Smooth Sort,Sorted,16384,163667
+Smooth Sort V2,Sorted,16384,176233
+Patience Sort,Sorted,16384,2.15037e+06
+Bitonic Sort,Sorted,16384,1.2092e+06
+Heap Sort,Sorted,32768,911433
+Quick Sort,Sorted,32768,936867
+Merge Sort,Sorted,32768,2.97217e+06
+Adaptive Merge Sort,Sorted,32768,104767
+Tournament Sort,Sorted,32768,2.4523e+06
+Intro Sort,Sorted,32768,519400
+Tim Sort,Sorted,32768,103133
+Smooth Sort,Sorted,32768,319567
+Smooth Sort V2,Sorted,32768,350600
+Patience Sort,Sorted,32768,4.0956e+06
+Bitonic Sort,Sorted,32768,2.46977e+06
+Heap Sort,Sorted,65536,1.91727e+06
+Quick Sort,Sorted,65536,1.7855e+06
+Merge Sort,Sorted,65536,5.92657e+06
+Adaptive Merge Sort,Sorted,65536,196000
+Tournament Sort,Sorted,65536,5.6603e+06
+Intro Sort,Sorted,65536,1.3753e+06
+Tim Sort,Sorted,65536,281900
+Smooth Sort,Sorted,65536,864067
+Smooth Sort V2,Sorted,65536,775133
+Patience Sort,Sorted,65536,8.6157e+06
+Bitonic Sort,Sorted,65536,5.82157e+06
+Heap Sort,Sorted,131072,4.85437e+06
+Quick Sort,Sorted,131072,4.6619e+06
+Merge Sort,Sorted,131072,1.28401e+07
+Adaptive Merge Sort,Sorted,131072,909900
+Tournament Sort,Sorted,131072,1.13307e+07
+Intro Sort,Sorted,131072,2.07517e+06
+Tim Sort,Sorted,131072,653633
+Smooth Sort,Sorted,131072,1.35103e+06
+Smooth Sort V2,Sorted,131072,1.46713e+06
+Patience Sort,Sorted,131072,1.85736e+07
+Bitonic Sort,Sorted,131072,1.35128e+07
+Heap Sort,Sorted,262144,9.87147e+06
+Quick Sort,Sorted,262144,9.5933e+06
+Merge Sort,Sorted,262144,2.96416e+07
+Adaptive Merge Sort,Sorted,262144,2.2721e+06
+Tournament Sort,Sorted,262144,2.68572e+07
+Intro Sort,Sorted,262144,7.6112e+06
+Tim Sort,Sorted,262144,559167
+Smooth Sort,Sorted,262144,2.92247e+06
+Smooth Sort V2,Sorted,262144,2.858e+06
+Patience Sort,Sorted,262144,3.8369e+07
+Bitonic Sort,Sorted,262144,2.57485e+07
+Heap Sort,Sorted,524288,2.2923e+07
+Quick Sort,Sorted,524288,2.25514e+07
+Merge Sort,Sorted,524288,5.47804e+07
+Adaptive Merge Sort,Sorted,524288,3.49807e+06
+Tournament Sort,Sorted,524288,5.04753e+07
+Intro Sort,Sorted,524288,9.68933e+06
+Tim Sort,Sorted,524288,1.2517e+06
+Smooth Sort,Sorted,524288,6.0044e+06
+Smooth Sort V2,Sorted,524288,7.17703e+06
+Patience Sort,Sorted,524288,9.19496e+07
+Bitonic Sort,Sorted,524288,5.99725e+07
+Heap Sort,Sorted,1048576,4.75305e+07
+Quick Sort,Sorted,1048576,3.94665e+07
+Merge Sort,Sorted,1048576,1.13051e+08
+Adaptive Merge Sort,Sorted,1048576,6.7472e+06
+Tournament Sort,Sorted,1048576,1.25571e+08
+Intro Sort,Sorted,1048576,1.97806e+07
+Tim Sort,Sorted,1048576,2.7443e+06
+Smooth Sort,Sorted,1048576,1.45783e+07
+Smooth Sort V2,Sorted,1048576,1.45382e+07
+Patience Sort,Sorted,1048576,1.79645e+08
+Bitonic Sort,Sorted,1048576,1.37452e+08
+Heap Sort,Reverse-Sorted,16,433.333
+Quick Sort,Reverse-Sorted,16,666.667
+Merge Sort,Reverse-Sorted,16,2600
+Adaptive Merge Sort,Reverse-Sorted,16,1066.67
+Tournament Sort,Reverse-Sorted,16,733.333
+Intro Sort,Reverse-Sorted,16,500
+Tim Sort,Reverse-Sorted,16,633.333
+Smooth Sort,Reverse-Sorted,16,700
+Smooth Sort V2,Reverse-Sorted,16,1966.67
+Patience Sort,Reverse-Sorted,16,1466.67
+Bitonic Sort,Reverse-Sorted,16,733.333
+Heap Sort,Reverse-Sorted,32,600
+Quick Sort,Reverse-Sorted,32,1000
+Merge Sort,Reverse-Sorted,32,2800
+Adaptive Merge Sort,Reverse-Sorted,32,1200
+Tournament Sort,Reverse-Sorted,32,933.333
+Intro Sort,Reverse-Sorted,32,700
+Tim Sort,Reverse-Sorted,32,833.333
+Smooth Sort,Reverse-Sorted,32,1100
+Smooth Sort V2,Reverse-Sorted,32,1166.67
+Patience Sort,Reverse-Sorted,32,1366.67
+Bitonic Sort,Reverse-Sorted,32,1166.67
+Heap Sort,Reverse-Sorted,64,1400
+Quick Sort,Reverse-Sorted,64,1966.67
+Merge Sort,Reverse-Sorted,64,5300
+Adaptive Merge Sort,Reverse-Sorted,64,1100
+Tournament Sort,Reverse-Sorted,64,2266.67
+Intro Sort,Reverse-Sorted,64,1333.33
+Tim Sort,Reverse-Sorted,64,733.333
+Smooth Sort,Reverse-Sorted,64,2166.67
+Smooth Sort V2,Reverse-Sorted,64,2300
+Patience Sort,Reverse-Sorted,64,2133.33
+Bitonic Sort,Reverse-Sorted,64,2633.33
+Heap Sort,Reverse-Sorted,128,2800
+Quick Sort,Reverse-Sorted,128,3833.33
+Merge Sort,Reverse-Sorted,128,10500
+Adaptive Merge Sort,Reverse-Sorted,128,1500
+Tournament Sort,Reverse-Sorted,128,4500
+Intro Sort,Reverse-Sorted,128,2400
+Tim Sort,Reverse-Sorted,128,733.333
+Smooth Sort,Reverse-Sorted,128,4733.33
+Smooth Sort V2,Reverse-Sorted,128,5033.33
+Patience Sort,Reverse-Sorted,128,3300
+Bitonic Sort,Reverse-Sorted,128,5333.33
+Heap Sort,Reverse-Sorted,256,5933.33
+Quick Sort,Reverse-Sorted,256,7333.33
+Merge Sort,Reverse-Sorted,256,20733.3
+Adaptive Merge Sort,Reverse-Sorted,256,1533.33
+Tournament Sort,Reverse-Sorted,256,9633.33
+Intro Sort,Reverse-Sorted,256,4966.67
+Tim Sort,Reverse-Sorted,256,866.667
+Smooth Sort,Reverse-Sorted,256,10133.3
+Smooth Sort V2,Reverse-Sorted,256,10933.3
+Patience Sort,Reverse-Sorted,256,5766.67
+Bitonic Sort,Reverse-Sorted,256,10766.7
+Heap Sort,Reverse-Sorted,512,13033.3
+Quick Sort,Reverse-Sorted,512,15200
+Merge Sort,Reverse-Sorted,512,42333.3
+Adaptive Merge Sort,Reverse-Sorted,512,1800
+Tournament Sort,Reverse-Sorted,512,19400
+Intro Sort,Reverse-Sorted,512,11066.7
+Tim Sort,Reverse-Sorted,512,1300
+Smooth Sort,Reverse-Sorted,512,23300
+Smooth Sort V2,Reverse-Sorted,512,25233.3
+Patience Sort,Reverse-Sorted,512,11066.7
+Bitonic Sort,Reverse-Sorted,512,24300
+Heap Sort,Reverse-Sorted,1024,27033.3
+Quick Sort,Reverse-Sorted,1024,29500
+Merge Sort,Reverse-Sorted,1024,84766.7
+Adaptive Merge Sort,Reverse-Sorted,1024,3300
+Tournament Sort,Reverse-Sorted,1024,60700
+Intro Sort,Reverse-Sorted,1024,19100
+Tim Sort,Reverse-Sorted,1024,1733.33
+Smooth Sort,Reverse-Sorted,1024,49566.7
+Smooth Sort V2,Reverse-Sorted,1024,60100
+Patience Sort,Reverse-Sorted,1024,20900
+Bitonic Sort,Reverse-Sorted,1024,50766.7
+Heap Sort,Reverse-Sorted,2048,51933.3
+Quick Sort,Reverse-Sorted,2048,59100
+Merge Sort,Reverse-Sorted,2048,169267
+Adaptive Merge Sort,Reverse-Sorted,2048,20333.3
+Tournament Sort,Reverse-Sorted,2048,115333
+Intro Sort,Reverse-Sorted,2048,37966.7
+Tim Sort,Reverse-Sorted,2048,2533.33
+Smooth Sort,Reverse-Sorted,2048,117600
+Smooth Sort V2,Reverse-Sorted,2048,121933
+Patience Sort,Reverse-Sorted,2048,42566.7
+Bitonic Sort,Reverse-Sorted,2048,167567
+Heap Sort,Reverse-Sorted,4096,129567
+Quick Sort,Reverse-Sorted,4096,144800
+Merge Sort,Reverse-Sorted,4096,375633
+Adaptive Merge Sort,Reverse-Sorted,4096,20433.3
+Tournament Sort,Reverse-Sorted,4096,354467
+Intro Sort,Reverse-Sorted,4096,83566.7
+Tim Sort,Reverse-Sorted,4096,4533.33
+Smooth Sort,Reverse-Sorted,4096,254367
+Smooth Sort V2,Reverse-Sorted,4096,250033
+Patience Sort,Reverse-Sorted,4096,80733.3
+Bitonic Sort,Reverse-Sorted,4096,339567
+Heap Sort,Reverse-Sorted,8192,238567
+Quick Sort,Reverse-Sorted,8192,288900
+Merge Sort,Reverse-Sorted,8192,706967
+Adaptive Merge Sort,Reverse-Sorted,8192,28766.7
+Tournament Sort,Reverse-Sorted,8192,617767
+Intro Sort,Reverse-Sorted,8192,165600
+Tim Sort,Reverse-Sorted,8192,9133.33
+Smooth Sort,Reverse-Sorted,8192,484833
+Smooth Sort V2,Reverse-Sorted,8192,506100
+Patience Sort,Reverse-Sorted,8192,176400
+Bitonic Sort,Reverse-Sorted,8192,565367
+Heap Sort,Reverse-Sorted,16384,600133
+Quick Sort,Reverse-Sorted,16384,528767
+Merge Sort,Reverse-Sorted,16384,1.41383e+06
+Adaptive Merge Sort,Reverse-Sorted,16384,53400
+Tournament Sort,Reverse-Sorted,16384,1.34087e+06
+Intro Sort,Reverse-Sorted,16384,386033
+Tim Sort,Reverse-Sorted,16384,17700
+Smooth Sort,Reverse-Sorted,16384,1.02423e+06
+Smooth Sort V2,Reverse-Sorted,16384,1.5152e+06
+Patience Sort,Reverse-Sorted,16384,550433
+Bitonic Sort,Reverse-Sorted,16384,1.69227e+06
+Heap Sort,Reverse-Sorted,32768,1.3765e+06
+Quick Sort,Reverse-Sorted,32768,1.01313e+06
+Merge Sort,Reverse-Sorted,32768,3.1036e+06
+Adaptive Merge Sort,Reverse-Sorted,32768,127033
+Tournament Sort,Reverse-Sorted,32768,3.41947e+06
+Intro Sort,Reverse-Sorted,32768,704533
+Tim Sort,Reverse-Sorted,32768,46366.7
+Smooth Sort,Reverse-Sorted,32768,2.05517e+06
+Smooth Sort V2,Reverse-Sorted,32768,2.14417e+06
+Patience Sort,Reverse-Sorted,32768,707267
+Bitonic Sort,Reverse-Sorted,32768,3.34097e+06
+Heap Sort,Reverse-Sorted,65536,2.29177e+06
+Quick Sort,Reverse-Sorted,65536,2.10913e+06
+Merge Sort,Reverse-Sorted,65536,6.1167e+06
+Adaptive Merge Sort,Reverse-Sorted,65536,378833
+Tournament Sort,Reverse-Sorted,65536,8.833e+06
+Intro Sort,Reverse-Sorted,65536,1.4416e+06
+Tim Sort,Reverse-Sorted,65536,74633.3
+Smooth Sort,Reverse-Sorted,65536,4.6385e+06
+Smooth Sort V2,Reverse-Sorted,65536,4.4817e+06
+Patience Sort,Reverse-Sorted,65536,1.46273e+06
+Bitonic Sort,Reverse-Sorted,65536,5.4785e+06
+Heap Sort,Reverse-Sorted,131072,4.75863e+06
+Quick Sort,Reverse-Sorted,131072,5.10507e+06
+Merge Sort,Reverse-Sorted,131072,1.23221e+07
+Adaptive Merge Sort,Reverse-Sorted,131072,1.0489e+06
+Tournament Sort,Reverse-Sorted,131072,1.38792e+07
+Intro Sort,Reverse-Sorted,131072,3.08957e+06
+Tim Sort,Reverse-Sorted,131072,215767
+Smooth Sort,Reverse-Sorted,131072,8.91273e+06
+Smooth Sort V2,Reverse-Sorted,131072,9.44453e+06
+Patience Sort,Reverse-Sorted,131072,3.16e+06
+Bitonic Sort,Reverse-Sorted,131072,1.32279e+07
+Heap Sort,Reverse-Sorted,262144,1.05455e+07
+Quick Sort,Reverse-Sorted,262144,9.21383e+06
+Merge Sort,Reverse-Sorted,262144,2.5343e+07
+Adaptive Merge Sort,Reverse-Sorted,262144,2.07347e+06
+Tournament Sort,Reverse-Sorted,262144,2.89023e+07
+Intro Sort,Reverse-Sorted,262144,6.3014e+06
+Tim Sort,Reverse-Sorted,262144,971900
+Smooth Sort,Reverse-Sorted,262144,1.87156e+07
+Smooth Sort V2,Reverse-Sorted,262144,1.80944e+07
+Patience Sort,Reverse-Sorted,262144,5.9635e+06
+Bitonic Sort,Reverse-Sorted,262144,2.68664e+07
+Heap Sort,Reverse-Sorted,524288,2.21487e+07
+Quick Sort,Reverse-Sorted,524288,1.90686e+07
+Merge Sort,Reverse-Sorted,524288,5.2001e+07
+Adaptive Merge Sort,Reverse-Sorted,524288,5.53913e+06
+Tournament Sort,Reverse-Sorted,524288,5.75582e+07
+Intro Sort,Reverse-Sorted,524288,1.36311e+07
+Tim Sort,Reverse-Sorted,524288,1.0477e+06
+Smooth Sort,Reverse-Sorted,524288,3.56877e+07
+Smooth Sort V2,Reverse-Sorted,524288,4.06099e+07
+Patience Sort,Reverse-Sorted,524288,1.47375e+07
+Bitonic Sort,Reverse-Sorted,524288,5.69509e+07
+Heap Sort,Reverse-Sorted,1048576,5.59392e+07
+Quick Sort,Reverse-Sorted,1048576,4.16513e+07
+Merge Sort,Reverse-Sorted,1048576,1.11898e+08
+Adaptive Merge Sort,Reverse-Sorted,1048576,7.8926e+06
+Tournament Sort,Reverse-Sorted,1048576,1.38887e+08
+Intro Sort,Reverse-Sorted,1048576,2.79696e+07
+Tim Sort,Reverse-Sorted,1048576,2.1342e+06
+Smooth Sort,Reverse-Sorted,1048576,7.89093e+07
+Smooth Sort V2,Reverse-Sorted,1048576,8.70839e+07
+Patience Sort,Reverse-Sorted,1048576,2.92667e+07
+Bitonic Sort,Reverse-Sorted,1048576,1.34708e+08
+Heap Sort,Nearly-Sorted,16,633.333
+Quick Sort,Nearly-Sorted,16,766.667
+Merge Sort,Nearly-Sorted,16,2566.67
+Adaptive Merge Sort,Nearly-Sorted,16,1400
+Tournament Sort,Nearly-Sorted,16,866.667
+Intro Sort,Nearly-Sorted,16,466.667
+Tim Sort,Nearly-Sorted,16,633.333
+Smooth Sort,Nearly-Sorted,16,700
+Smooth Sort V2,Nearly-Sorted,16,1166.67
+Patience Sort,Nearly-Sorted,16,4533.33
+Bitonic Sort,Nearly-Sorted,16,1133.33
+Heap Sort,Nearly-Sorted,32,1200
+Quick Sort,Nearly-Sorted,32,966.667
+Merge Sort,Nearly-Sorted,32,2933.33
+Adaptive Merge Sort,Nearly-Sorted,32,1366.67
+Tournament Sort,Nearly-Sorted,32,1033.33
+Intro Sort,Nearly-Sorted,32,433.333
+Tim Sort,Nearly-Sorted,32,933.333
+Smooth Sort,Nearly-Sorted,32,700
+Smooth Sort V2,Nearly-Sorted,32,866.667
+Patience Sort,Nearly-Sorted,32,4200
+Bitonic Sort,Nearly-Sorted,32,8966.67
+Heap Sort,Nearly-Sorted,64,1600
+Quick Sort,Nearly-Sorted,64,1800
+Merge Sort,Nearly-Sorted,64,5400
+Adaptive Merge Sort,Nearly-Sorted,64,2733.33
+Tournament Sort,Nearly-Sorted,64,2133.33
+Intro Sort,Nearly-Sorted,64,866.667
+Tim Sort,Nearly-Sorted,64,1133.33
+Smooth Sort,Nearly-Sorted,64,966.667
+Smooth Sort V2,Nearly-Sorted,64,1133.33
+Patience Sort,Nearly-Sorted,64,6766.67
+Bitonic Sort,Nearly-Sorted,64,2733.33
+Heap Sort,Nearly-Sorted,128,3133.33
+Quick Sort,Nearly-Sorted,128,3133.33
+Merge Sort,Nearly-Sorted,128,10400
+Adaptive Merge Sort,Nearly-Sorted,128,2100
+Tournament Sort,Nearly-Sorted,128,4233.33
+Intro Sort,Nearly-Sorted,128,1600
+Tim Sort,Nearly-Sorted,128,1000
+Smooth Sort,Nearly-Sorted,128,1600
+Smooth Sort V2,Nearly-Sorted,128,1900
+Patience Sort,Nearly-Sorted,128,12666.7
+Bitonic Sort,Nearly-Sorted,128,5433.33
+Heap Sort,Nearly-Sorted,256,6700
+Quick Sort,Nearly-Sorted,256,6000
+Merge Sort,Nearly-Sorted,256,20933.3
+Adaptive Merge Sort,Nearly-Sorted,256,4500
+Tournament Sort,Nearly-Sorted,256,9066.67
+Intro Sort,Nearly-Sorted,256,3366.67
+Tim Sort,Nearly-Sorted,256,2166.67
+Smooth Sort,Nearly-Sorted,256,4000
+Smooth Sort V2,Nearly-Sorted,256,4700
+Patience Sort,Nearly-Sorted,256,26000
+Bitonic Sort,Nearly-Sorted,256,11633.3
+Heap Sort,Nearly-Sorted,512,11600
+Quick Sort,Nearly-Sorted,512,13200
+Merge Sort,Nearly-Sorted,512,117933
+Adaptive Merge Sort,Nearly-Sorted,512,10633.3
+Tournament Sort,Nearly-Sorted,512,19966.7
+Intro Sort,Nearly-Sorted,512,7800
+Tim Sort,Nearly-Sorted,512,7500
+Smooth Sort,Nearly-Sorted,512,10766.7
+Smooth Sort V2,Nearly-Sorted,512,11800
+Patience Sort,Nearly-Sorted,512,58766.7
+Bitonic Sort,Nearly-Sorted,512,27333.3
+Heap Sort,Nearly-Sorted,1024,25033.3
+Quick Sort,Nearly-Sorted,1024,30566.7
+Merge Sort,Nearly-Sorted,1024,85466.7
+Adaptive Merge Sort,Nearly-Sorted,1024,15266.7
+Tournament Sort,Nearly-Sorted,1024,46400
+Intro Sort,Nearly-Sorted,1024,16233.3
+Tim Sort,Nearly-Sorted,1024,54100
+Smooth Sort,Nearly-Sorted,1024,22133.3
+Smooth Sort V2,Nearly-Sorted,1024,25633.3
+Patience Sort,Nearly-Sorted,1024,106267
+Bitonic Sort,Nearly-Sorted,1024,79333.3
+Heap Sort,Nearly-Sorted,2048,60333.3
+Quick Sort,Nearly-Sorted,2048,65066.7
+Merge Sort,Nearly-Sorted,2048,204933
+Adaptive Merge Sort,Nearly-Sorted,2048,32866.7
+Tournament Sort,Nearly-Sorted,2048,110767
+Intro Sort,Nearly-Sorted,2048,53066.7
+Tim Sort,Nearly-Sorted,2048,26466.7
+Smooth Sort,Nearly-Sorted,2048,59066.7
+Smooth Sort V2,Nearly-Sorted,2048,66133.3
+Patience Sort,Nearly-Sorted,2048,272000
+Bitonic Sort,Nearly-Sorted,2048,193067
+Heap Sort,Nearly-Sorted,4096,180533
+Quick Sort,Nearly-Sorted,4096,200767
+Merge Sort,Nearly-Sorted,4096,581267
+Adaptive Merge Sort,Nearly-Sorted,4096,84466.7
+Tournament Sort,Nearly-Sorted,4096,352067
+Intro Sort,Nearly-Sorted,4096,108367
+Tim Sort,Nearly-Sorted,4096,68966.7
+Smooth Sort,Nearly-Sorted,4096,114933
+Smooth Sort V2,Nearly-Sorted,4096,118633
+Patience Sort,Nearly-Sorted,4096,500933
+Bitonic Sort,Nearly-Sorted,4096,290333
+Heap Sort,Nearly-Sorted,8192,241033
+Quick Sort,Nearly-Sorted,8192,320433
+Merge Sort,Nearly-Sorted,8192,765600
+Adaptive Merge Sort,Nearly-Sorted,8192,157533
+Tournament Sort,Nearly-Sorted,8192,467500
+Intro Sort,Nearly-Sorted,8192,176933
+Tim Sort,Nearly-Sorted,8192,183900
+Smooth Sort,Nearly-Sorted,8192,272233
+Smooth Sort V2,Nearly-Sorted,8192,199833
+Patience Sort,Nearly-Sorted,8192,893400
+Bitonic Sort,Nearly-Sorted,8192,693500
+Heap Sort,Nearly-Sorted,16384,577533
+Quick Sort,Nearly-Sorted,16384,563600
+Merge Sort,Nearly-Sorted,16384,2.54403e+06
+Adaptive Merge Sort,Nearly-Sorted,16384,537833
+Tournament Sort,Nearly-Sorted,16384,907567
+Intro Sort,Nearly-Sorted,16384,335800
+Tim Sort,Nearly-Sorted,16384,232133
+Smooth Sort,Nearly-Sorted,16384,373933
+Smooth Sort V2,Nearly-Sorted,16384,449967
+Patience Sort,Nearly-Sorted,16384,2.00903e+06
+Bitonic Sort,Nearly-Sorted,16384,1.30967e+06
+Heap Sort,Nearly-Sorted,32768,1.15453e+06
+Quick Sort,Nearly-Sorted,32768,1.05237e+06
+Merge Sort,Nearly-Sorted,32768,2.97877e+06
+Adaptive Merge Sort,Nearly-Sorted,32768,686300
+Tournament Sort,Nearly-Sorted,32768,2.0715e+06
+Intro Sort,Nearly-Sorted,32768,872867
+Tim Sort,Nearly-Sorted,32768,675067
+Smooth Sort,Nearly-Sorted,32768,654433
+Smooth Sort V2,Nearly-Sorted,32768,905367
+Patience Sort,Nearly-Sorted,32768,5.86253e+06
+Bitonic Sort,Nearly-Sorted,32768,2.85717e+06
+Heap Sort,Nearly-Sorted,65536,3.32323e+06
+Quick Sort,Nearly-Sorted,65536,3.24057e+06
+Merge Sort,Nearly-Sorted,65536,1.81753e+07
+Adaptive Merge Sort,Nearly-Sorted,65536,1.46373e+06
+Tournament Sort,Nearly-Sorted,65536,4.6807e+06
+Intro Sort,Nearly-Sorted,65536,1.4187e+06
+Tim Sort,Nearly-Sorted,65536,953800
+Smooth Sort,Nearly-Sorted,65536,1.28723e+06
+Smooth Sort V2,Nearly-Sorted,65536,1.43757e+06
+Patience Sort,Nearly-Sorted,65536,9.20857e+06
+Bitonic Sort,Nearly-Sorted,65536,6.20837e+06
+Heap Sort,Nearly-Sorted,131072,5.47517e+06
+Quick Sort,Nearly-Sorted,131072,5.355e+06
+Merge Sort,Nearly-Sorted,131072,2.66076e+07
+Adaptive Merge Sort,Nearly-Sorted,131072,3.8067e+06
+Tournament Sort,Nearly-Sorted,131072,9.6279e+06
+Intro Sort,Nearly-Sorted,131072,3.23987e+06
+Tim Sort,Nearly-Sorted,131072,2.06027e+06
+Smooth Sort,Nearly-Sorted,131072,2.55303e+06
+Smooth Sort V2,Nearly-Sorted,131072,2.8621e+06
+Patience Sort,Nearly-Sorted,131072,1.8759e+07
+Bitonic Sort,Nearly-Sorted,131072,1.40383e+07
+Heap Sort,Nearly-Sorted,262144,1.16407e+07
+Quick Sort,Nearly-Sorted,262144,9.62283e+06
+Merge Sort,Nearly-Sorted,262144,2.56642e+07
+Adaptive Merge Sort,Nearly-Sorted,262144,8.23287e+06
+Tournament Sort,Nearly-Sorted,262144,2.1778e+07
+Intro Sort,Nearly-Sorted,262144,6.50147e+06
+Tim Sort,Nearly-Sorted,262144,4.713e+06
+Smooth Sort,Nearly-Sorted,262144,5.1496e+06
+Smooth Sort V2,Nearly-Sorted,262144,6.83657e+06
+Patience Sort,Nearly-Sorted,262144,4.70652e+07
+Bitonic Sort,Nearly-Sorted,262144,2.73033e+07
+Heap Sort,Nearly-Sorted,524288,3.34724e+07
+Quick Sort,Nearly-Sorted,524288,2.06947e+07
+Merge Sort,Nearly-Sorted,524288,5.75973e+07
+Adaptive Merge Sort,Nearly-Sorted,524288,1.79073e+07
+Tournament Sort,Nearly-Sorted,524288,5.56686e+07
+Intro Sort,Nearly-Sorted,524288,1.49567e+07
+Tim Sort,Nearly-Sorted,524288,1.41709e+07
+Smooth Sort,Nearly-Sorted,524288,1.23662e+07
+Smooth Sort V2,Nearly-Sorted,524288,1.66731e+07
+Patience Sort,Nearly-Sorted,524288,1.08417e+08
+Bitonic Sort,Nearly-Sorted,524288,7.29662e+07
+Heap Sort,Nearly-Sorted,1048576,6.79555e+07
+Quick Sort,Nearly-Sorted,1048576,4.86698e+07
+Merge Sort,Nearly-Sorted,1048576,1.10642e+08
+Adaptive Merge Sort,Nearly-Sorted,1048576,4.28887e+07
+Tournament Sort,Nearly-Sorted,1048576,1.04917e+08
+Intro Sort,Nearly-Sorted,1048576,2.90925e+07
+Tim Sort,Nearly-Sorted,1048576,2.51022e+07
+Smooth Sort,Nearly-Sorted,1048576,2.95493e+07
+Smooth Sort V2,Nearly-Sorted,1048576,2.74933e+07
+Patience Sort,Nearly-Sorted,1048576,2.4846e+08
+Bitonic Sort,Nearly-Sorted,1048576,1.70079e+08
+Heap Sort,Few-Unique,16,1433.33
+Quick Sort,Few-Unique,16,1433.33
+Merge Sort,Few-Unique,16,16933.3
+Adaptive Merge Sort,Few-Unique,16,3833.33
+Tournament Sort,Few-Unique,16,1833.33
+Intro Sort,Few-Unique,16,1200
+Tim Sort,Few-Unique,16,2533.33
+Smooth Sort,Few-Unique,16,1833.33
+Smooth Sort V2,Few-Unique,16,5166.67
+Patience Sort,Few-Unique,16,4166.67
+Bitonic Sort,Few-Unique,16,1900
+Heap Sort,Few-Unique,32,2200
+Quick Sort,Few-Unique,32,1866.67
+Merge Sort,Few-Unique,32,6900
+Adaptive Merge Sort,Few-Unique,32,5133.33
+Tournament Sort,Few-Unique,32,2300
+Intro Sort,Few-Unique,32,1666.67
+Tim Sort,Few-Unique,32,3300
+Smooth Sort,Few-Unique,32,3400
+Smooth Sort V2,Few-Unique,32,3800
+Patience Sort,Few-Unique,32,5700
+Bitonic Sort,Few-Unique,32,3433.33
+Heap Sort,Few-Unique,64,4566.67
+Quick Sort,Few-Unique,64,3633.33
+Merge Sort,Few-Unique,64,14233.3
+Adaptive Merge Sort,Few-Unique,64,11366.7
+Tournament Sort,Few-Unique,64,5400
+Intro Sort,Few-Unique,64,2766.67
+Tim Sort,Few-Unique,64,6466.67
+Smooth Sort,Few-Unique,64,8433.33
+Smooth Sort V2,Few-Unique,64,8733.33
+Patience Sort,Few-Unique,64,10933.3
+Bitonic Sort,Few-Unique,64,7766.67
+Heap Sort,Few-Unique,128,8533.33
+Quick Sort,Few-Unique,128,7466.67
+Merge Sort,Few-Unique,128,28566.7
+Adaptive Merge Sort,Few-Unique,128,34300
+Tournament Sort,Few-Unique,128,14633.3
+Intro Sort,Few-Unique,128,6366.67
+Tim Sort,Few-Unique,128,14700
+Smooth Sort,Few-Unique,128,27033.3
+Smooth Sort V2,Few-Unique,128,21066.7
+Patience Sort,Few-Unique,128,23433.3
+Bitonic Sort,Few-Unique,128,17166.7
+Heap Sort,Few-Unique,256,17366.7
+Quick Sort,Few-Unique,256,16100
+Merge Sort,Few-Unique,256,60566.7
+Adaptive Merge Sort,Few-Unique,256,48700
+Tournament Sort,Few-Unique,256,639433
+Intro Sort,Few-Unique,256,11600
+Tim Sort,Few-Unique,256,27800
+Smooth Sort,Few-Unique,256,42400
+Smooth Sort V2,Few-Unique,256,50600
+Patience Sort,Few-Unique,256,39500
+Bitonic Sort,Few-Unique,256,37366.7
+Heap Sort,Few-Unique,512,35866.7
+Quick Sort,Few-Unique,512,34933.3
+Merge Sort,Few-Unique,512,121000
+Adaptive Merge Sort,Few-Unique,512,117700
+Tournament Sort,Few-Unique,512,43400
+Intro Sort,Few-Unique,512,35033.3
+Tim Sort,Few-Unique,512,55666.7
+Smooth Sort,Few-Unique,512,94433.3
+Smooth Sort V2,Few-Unique,512,88366.7
+Patience Sort,Few-Unique,512,94333.3
+Bitonic Sort,Few-Unique,512,73533.3
+Heap Sort,Few-Unique,1024,64266.7
+Quick Sort,Few-Unique,1024,78466.7
+Merge Sort,Few-Unique,1024,250500
+Adaptive Merge Sort,Few-Unique,1024,169900
+Tournament Sort,Few-Unique,1024,81600
+Intro Sort,Few-Unique,1024,54800
+Tim Sort,Few-Unique,1024,154300
+Smooth Sort,Few-Unique,1024,184367
+Smooth Sort V2,Few-Unique,1024,202533
+Patience Sort,Few-Unique,1024,187500
+Bitonic Sort,Few-Unique,1024,182167
+Heap Sort,Few-Unique,2048,139800
+Quick Sort,Few-Unique,2048,164500
+Merge Sort,Few-Unique,2048,386033
+Adaptive Merge Sort,Few-Unique,2048,283500
+Tournament Sort,Few-Unique,2048,147300
+Intro Sort,Few-Unique,2048,114200
+Tim Sort,Few-Unique,2048,161100
+Smooth Sort,Few-Unique,2048,270033
+Smooth Sort V2,Few-Unique,2048,306500
+Patience Sort,Few-Unique,2048,236667
+Bitonic Sort,Few-Unique,2048,225433
+Heap Sort,Few-Unique,4096,158267
+Quick Sort,Few-Unique,4096,226633
+Merge Sort,Few-Unique,4096,641867
+Adaptive Merge Sort,Few-Unique,4096,638233
+Tournament Sort,Few-Unique,4096,270333
+Intro Sort,Few-Unique,4096,180567
+Tim Sort,Few-Unique,4096,356400
+Smooth Sort,Few-Unique,4096,591000
+Smooth Sort V2,Few-Unique,4096,623733
+Patience Sort,Few-Unique,4096,521100
+Bitonic Sort,Few-Unique,4096,518533
+Heap Sort,Few-Unique,8192,307100
+Quick Sort,Few-Unique,8192,544333
+Merge Sort,Few-Unique,8192,1.13587e+06
+Adaptive Merge Sort,Few-Unique,8192,976733
+Tournament Sort,Few-Unique,8192,523500
+Intro Sort,Few-Unique,8192,322200
+Tim Sort,Few-Unique,8192,561633
+Smooth Sort,Few-Unique,8192,1.12477e+06
+Smooth Sort V2,Few-Unique,8192,1.17543e+06
+Patience Sort,Few-Unique,8192,1.1696e+06
+Bitonic Sort,Few-Unique,8192,1.84977e+06
+Heap Sort,Few-Unique,16384,1.10913e+06
+Quick Sort,Few-Unique,16384,1.6676e+06
+Merge Sort,Few-Unique,16384,2.88723e+06
+Adaptive Merge Sort,Few-Unique,16384,2.12727e+06
+Tournament Sort,Few-Unique,16384,1.49223e+06
+Intro Sort,Few-Unique,16384,989667
+Tim Sort,Few-Unique,16384,1.87643e+06
+Smooth Sort,Few-Unique,16384,3.82143e+06
+Smooth Sort V2,Few-Unique,16384,2.94133e+06
+Patience Sort,Few-Unique,16384,1.83677e+06
+Bitonic Sort,Few-Unique,16384,2.01773e+06
+Heap Sort,Few-Unique,32768,1.5514e+06
+Quick Sort,Few-Unique,32768,2.73213e+06
+Merge Sort,Few-Unique,32768,4.75727e+06
+Adaptive Merge Sort,Few-Unique,32768,3.57743e+06
+Tournament Sort,Few-Unique,32768,2.41247e+06
+Intro Sort,Few-Unique,32768,1.38647e+06
+Tim Sort,Few-Unique,32768,2.3972e+06
+Smooth Sort,Few-Unique,32768,4.8666e+06
+Smooth Sort V2,Few-Unique,32768,5.04633e+06
+Patience Sort,Few-Unique,32768,3.31643e+06
+Bitonic Sort,Few-Unique,32768,5.31213e+06
+Heap Sort,Few-Unique,65536,3.5048e+06
+Quick Sort,Few-Unique,65536,9.2038e+06
+Merge Sort,Few-Unique,65536,9.74823e+06
+Adaptive Merge Sort,Few-Unique,65536,7.24947e+06
+Tournament Sort,Few-Unique,65536,5.5222e+06
+Intro Sort,Few-Unique,65536,2.72853e+06
+Tim Sort,Few-Unique,65536,5.7003e+06
+Smooth Sort,Few-Unique,65536,1.12299e+07
+Smooth Sort V2,Few-Unique,65536,1.17278e+07
+Patience Sort,Few-Unique,65536,1.04804e+07
+Bitonic Sort,Few-Unique,65536,1.1771e+07
+Heap Sort,Few-Unique,131072,8.9177e+06
+Quick Sort,Few-Unique,131072,1.57731e+07
+Merge Sort,Few-Unique,131072,2.04949e+07
+Adaptive Merge Sort,Few-Unique,131072,2.35741e+07
+Tournament Sort,Few-Unique,131072,1.96842e+07
+Intro Sort,Few-Unique,131072,6.22853e+06
+Tim Sort,Few-Unique,131072,1.1083e+07
+Smooth Sort,Few-Unique,131072,2.21385e+07
+Smooth Sort V2,Few-Unique,131072,2.46962e+07
+Patience Sort,Few-Unique,131072,1.90537e+07
+Bitonic Sort,Few-Unique,131072,3.00088e+07
+Heap Sort,Few-Unique,262144,2.3027e+07
+Quick Sort,Few-Unique,262144,3.75733e+07
+Merge Sort,Few-Unique,262144,4.33776e+07
+Adaptive Merge Sort,Few-Unique,262144,3.4458e+07
+Tournament Sort,Few-Unique,262144,3.20605e+07
+Intro Sort,Few-Unique,262144,1.40259e+07
+Tim Sort,Few-Unique,262144,2.62134e+07
+Smooth Sort,Few-Unique,262144,4.96782e+07
+Smooth Sort V2,Few-Unique,262144,4.79861e+07
+Patience Sort,Few-Unique,262144,3.37992e+07
+Bitonic Sort,Few-Unique,262144,4.58572e+07
+Heap Sort,Few-Unique,524288,4.24045e+07
+Quick Sort,Few-Unique,524288,1.06446e+08
+Merge Sort,Few-Unique,524288,9.59357e+07
+Adaptive Merge Sort,Few-Unique,524288,7.74155e+07
+Tournament Sort,Few-Unique,524288,8.32022e+07
+Intro Sort,Few-Unique,524288,2.6111e+07
+Tim Sort,Few-Unique,524288,5.03929e+07
+Smooth Sort,Few-Unique,524288,1.18775e+08
+Smooth Sort V2,Few-Unique,524288,1.02729e+08
+Patience Sort,Few-Unique,524288,7.92861e+07
+Bitonic Sort,Few-Unique,524288,9.885e+07
+Heap Sort,Few-Unique,1048576,1.28154e+08
+Quick Sort,Few-Unique,1048576,2.65791e+08
+Merge Sort,Few-Unique,1048576,1.84153e+08
+Adaptive Merge Sort,Few-Unique,1048576,1.54534e+08
+Tournament Sort,Few-Unique,1048576,2.64766e+08
+Intro Sort,Few-Unique,1048576,6.15108e+07
+Tim Sort,Few-Unique,1048576,1.01755e+08
+Smooth Sort,Few-Unique,1048576,2.34794e+08
+Smooth Sort V2,Few-Unique,1048576,2.27666e+08
+Patience Sort,Few-Unique,1048576,1.8789e+08
+Bitonic Sort,Few-Unique,1048576,2.31992e+08
+Heap Sort,Partial-Reverse,16,666.667
+Quick Sort,Partial-Reverse,16,1133.33
+Merge Sort,Partial-Reverse,16,2033.33
+Adaptive Merge Sort,Partial-Reverse,16,1233.33
+Tournament Sort,Partial-Reverse,16,866.667
+Intro Sort,Partial-Reverse,16,466.667
+Tim Sort,Partial-Reverse,16,700
+Smooth Sort,Partial-Reverse,16,766.667
+Smooth Sort V2,Partial-Reverse,16,966.667
+Patience Sort,Partial-Reverse,16,3966.67
+Bitonic Sort,Partial-Reverse,16,1333.33
+Heap Sort,Partial-Reverse,32,1000
+Quick Sort,Partial-Reverse,32,1200
+Merge Sort,Partial-Reverse,32,3133.33
+Adaptive Merge Sort,Partial-Reverse,32,1700
+Tournament Sort,Partial-Reverse,32,1333.33
+Intro Sort,Partial-Reverse,32,700
+Tim Sort,Partial-Reverse,32,1233.33
+Smooth Sort,Partial-Reverse,32,1166.67
+Smooth Sort V2,Partial-Reverse,32,1233.33
+Patience Sort,Partial-Reverse,32,3633.33
+Bitonic Sort,Partial-Reverse,32,1666.67
+Heap Sort,Partial-Reverse,64,1900
+Quick Sort,Partial-Reverse,64,1700
+Merge Sort,Partial-Reverse,64,5733.33
+Adaptive Merge Sort,Partial-Reverse,64,3366.67
+Tournament Sort,Partial-Reverse,64,2766.67
+Intro Sort,Partial-Reverse,64,1300
+Tim Sort,Partial-Reverse,64,1933.33
+Smooth Sort,Partial-Reverse,64,1766.67
+Smooth Sort V2,Partial-Reverse,64,2000
+Patience Sort,Partial-Reverse,64,8033.33
+Bitonic Sort,Partial-Reverse,64,3200
+Heap Sort,Partial-Reverse,128,3600
+Quick Sort,Partial-Reverse,128,3300
+Merge Sort,Partial-Reverse,128,11566.7
+Adaptive Merge Sort,Partial-Reverse,128,4766.67
+Tournament Sort,Partial-Reverse,128,5466.67
+Intro Sort,Partial-Reverse,128,2633.33
+Tim Sort,Partial-Reverse,128,3133.33
+Smooth Sort,Partial-Reverse,128,4966.67
+Smooth Sort V2,Partial-Reverse,128,5033.33
+Patience Sort,Partial-Reverse,128,11233.3
+Bitonic Sort,Partial-Reverse,128,6633.33
+Heap Sort,Partial-Reverse,256,6933.33
+Quick Sort,Partial-Reverse,256,7000
+Merge Sort,Partial-Reverse,256,23533.3
+Adaptive Merge Sort,Partial-Reverse,256,6800
+Tournament Sort,Partial-Reverse,256,11700
+Intro Sort,Partial-Reverse,256,5000
+Tim Sort,Partial-Reverse,256,4266.67
+Smooth Sort,Partial-Reverse,256,8533.33
+Smooth Sort V2,Partial-Reverse,256,9533.33
+Patience Sort,Partial-Reverse,256,23500
+Bitonic Sort,Partial-Reverse,256,12900
+Heap Sort,Partial-Reverse,512,15133.3
+Quick Sort,Partial-Reverse,512,13666.7
+Merge Sort,Partial-Reverse,512,45600
+Adaptive Merge Sort,Partial-Reverse,512,10866.7
+Tournament Sort,Partial-Reverse,512,24933.3
+Intro Sort,Partial-Reverse,512,9733.33
+Tim Sort,Partial-Reverse,512,7566.67
+Smooth Sort,Partial-Reverse,512,17300
+Smooth Sort V2,Partial-Reverse,512,19233.3
+Patience Sort,Partial-Reverse,512,41466.7
+Bitonic Sort,Partial-Reverse,512,27200
+Heap Sort,Partial-Reverse,1024,30200
+Quick Sort,Partial-Reverse,1024,27500
+Merge Sort,Partial-Reverse,1024,87633.3
+Adaptive Merge Sort,Partial-Reverse,1024,21266.7
+Tournament Sort,Partial-Reverse,1024,322467
+Intro Sort,Partial-Reverse,1024,19333.3
+Tim Sort,Partial-Reverse,1024,19133.3
+Smooth Sort,Partial-Reverse,1024,32266.7
+Smooth Sort V2,Partial-Reverse,1024,52866.7
+Patience Sort,Partial-Reverse,1024,109533
+Bitonic Sort,Partial-Reverse,1024,61966.7
+Heap Sort,Partial-Reverse,2048,63966.7
+Quick Sort,Partial-Reverse,2048,57733.3
+Merge Sort,Partial-Reverse,2048,181767
+Adaptive Merge Sort,Partial-Reverse,2048,33333.3
+Tournament Sort,Partial-Reverse,2048,121967
+Intro Sort,Partial-Reverse,2048,38133.3
+Tim Sort,Partial-Reverse,2048,18400
+Smooth Sort,Partial-Reverse,2048,69666.7
+Smooth Sort V2,Partial-Reverse,2048,72366.7
+Patience Sort,Partial-Reverse,2048,173667
+Bitonic Sort,Partial-Reverse,2048,127033
+Heap Sort,Partial-Reverse,4096,127633
+Quick Sort,Partial-Reverse,4096,111100
+Merge Sort,Partial-Reverse,4096,342167
+Adaptive Merge Sort,Partial-Reverse,4096,43966.7
+Tournament Sort,Partial-Reverse,4096,257267
+Intro Sort,Partial-Reverse,4096,73933.3
+Tim Sort,Partial-Reverse,4096,26800
+Smooth Sort,Partial-Reverse,4096,122367
+Smooth Sort V2,Partial-Reverse,4096,124533
+Patience Sort,Partial-Reverse,4096,357767
+Bitonic Sort,Partial-Reverse,4096,266300
+Heap Sort,Partial-Reverse,8192,271567
+Quick Sort,Partial-Reverse,8192,224167
+Merge Sort,Partial-Reverse,8192,776600
+Adaptive Merge Sort,Partial-Reverse,8192,104067
+Tournament Sort,Partial-Reverse,8192,582233
+Intro Sort,Partial-Reverse,8192,150967
+Tim Sort,Partial-Reverse,8192,50000
+Smooth Sort,Partial-Reverse,8192,256700
+Smooth Sort V2,Partial-Reverse,8192,270500
+Patience Sort,Partial-Reverse,8192,717533
+Bitonic Sort,Partial-Reverse,8192,575433
+Heap Sort,Partial-Reverse,16384,577933
+Quick Sort,Partial-Reverse,16384,491300
+Merge Sort,Partial-Reverse,16384,1.43353e+06
+Adaptive Merge Sort,Partial-Reverse,16384,149967
+Tournament Sort,Partial-Reverse,16384,1.19237e+06
+Intro Sort,Partial-Reverse,16384,307033
+Tim Sort,Partial-Reverse,16384,106967
+Smooth Sort,Partial-Reverse,16384,513733
+Smooth Sort V2,Partial-Reverse,16384,527433
+Patience Sort,Partial-Reverse,16384,1.641e+06
+Bitonic Sort,Partial-Reverse,16384,1.25937e+06
+Heap Sort,Partial-Reverse,32768,1.25293e+06
+Quick Sort,Partial-Reverse,32768,973633
+Merge Sort,Partial-Reverse,32768,3.1282e+06
+Adaptive Merge Sort,Partial-Reverse,32768,350333
+Tournament Sort,Partial-Reverse,32768,2.5519e+06
+Intro Sort,Partial-Reverse,32768,669400
+Tim Sort,Partial-Reverse,32768,215967
+Smooth Sort,Partial-Reverse,32768,1.14727e+06
+Smooth Sort V2,Partial-Reverse,32768,1.266e+06
+Patience Sort,Partial-Reverse,32768,3.3341e+06
+Bitonic Sort,Partial-Reverse,32768,3.0007e+06
+Heap Sort,Partial-Reverse,65536,2.78277e+06
+Quick Sort,Partial-Reverse,65536,2.06567e+06
+Merge Sort,Partial-Reverse,65536,7.32647e+06
+Adaptive Merge Sort,Partial-Reverse,65536,658300
+Tournament Sort,Partial-Reverse,65536,5.7313e+06
+Intro Sort,Partial-Reverse,65536,1.44193e+06
+Tim Sort,Partial-Reverse,65536,385800
+Smooth Sort,Partial-Reverse,65536,2.97933e+06
+Smooth Sort V2,Partial-Reverse,65536,3.05653e+06
+Patience Sort,Partial-Reverse,65536,1.01e+07
+Bitonic Sort,Partial-Reverse,65536,8.56943e+06
+Heap Sort,Partial-Reverse,131072,1.00339e+07
+Quick Sort,Partial-Reverse,131072,5.02537e+06
+Merge Sort,Partial-Reverse,131072,2.12772e+07
+Adaptive Merge Sort,Partial-Reverse,131072,3.18897e+06
+Tournament Sort,Partial-Reverse,131072,1.92906e+07
+Intro Sort,Partial-Reverse,131072,5.13673e+06
+Tim Sort,Partial-Reverse,131072,841200
+Smooth Sort,Partial-Reverse,131072,5.50353e+06
+Smooth Sort V2,Partial-Reverse,131072,5.1194e+06
+Patience Sort,Partial-Reverse,131072,1.73221e+07
+Bitonic Sort,Partial-Reverse,131072,1.77737e+07
+Heap Sort,Partial-Reverse,262144,1.32117e+07
+Quick Sort,Partial-Reverse,262144,9.06733e+06
+Merge Sort,Partial-Reverse,262144,2.76317e+07
+Adaptive Merge Sort,Partial-Reverse,262144,3.2554e+06
+Tournament Sort,Partial-Reverse,262144,3.03794e+07
+Intro Sort,Partial-Reverse,262144,9.95023e+06
+Tim Sort,Partial-Reverse,262144,2.7227e+06
+Smooth Sort,Partial-Reverse,262144,9.455e+06
+Smooth Sort V2,Partial-Reverse,262144,9.9207e+06
+Patience Sort,Partial-Reverse,262144,3.93608e+07
+Bitonic Sort,Partial-Reverse,262144,2.5895e+07
+Heap Sort,Partial-Reverse,524288,3.43356e+07
+Quick Sort,Partial-Reverse,524288,2.21751e+07
+Merge Sort,Partial-Reverse,524288,5.12774e+07
+Adaptive Merge Sort,Partial-Reverse,524288,8.4041e+06
+Tournament Sort,Partial-Reverse,524288,5.22729e+07
+Intro Sort,Partial-Reverse,524288,1.4107e+07
+Tim Sort,Partial-Reverse,524288,4.5172e+06
+Smooth Sort,Partial-Reverse,524288,1.86887e+07
+Smooth Sort V2,Partial-Reverse,524288,1.88399e+07
+Patience Sort,Partial-Reverse,524288,7.33235e+07
+Bitonic Sort,Partial-Reverse,524288,5.94409e+07
+Heap Sort,Partial-Reverse,1048576,6.06033e+07
+Quick Sort,Partial-Reverse,1048576,3.94913e+07
+Merge Sort,Partial-Reverse,1048576,1.0743e+08
+Adaptive Merge Sort,Partial-Reverse,1048576,2.22034e+07
+Tournament Sort,Partial-Reverse,1048576,1.24436e+08
+Intro Sort,Partial-Reverse,1048576,2.79673e+07
+Tim Sort,Partial-Reverse,1048576,9.38017e+06
+Smooth Sort,Partial-Reverse,1048576,4.3645e+07
+Smooth Sort V2,Partial-Reverse,1048576,4.10584e+07
+Patience Sort,Partial-Reverse,1048576,1.60765e+08
+Bitonic Sort,Partial-Reverse,1048576,1.41312e+08

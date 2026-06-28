@@ -13,10 +13,9 @@ The goal is to make this repository a useful resource for learning, implementati
 ```
 Cpp-Sorting-Algorithms/
 │
-├── include/    
-├── src/
+├── include/
 ├── tests/
-├── benchmark/
+├── benchmarks/
 ├── docs/
 ├── CMakeLists.txt
 └── README.md

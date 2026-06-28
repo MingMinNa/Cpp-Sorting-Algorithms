@@ -11,10 +11,9 @@
 ```
 Cpp-Sorting-Algorithms/
 │
-├── include/    
-├── src/
+├── include/
 ├── tests/
-├── benchmark/
+├── benchmarks/
 ├── docs/
 ├── CMakeLists.txt
 └── README.zh-TW.md
