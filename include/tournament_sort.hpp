@@ -22,7 +22,7 @@ class TournamentSort
 {
     public:
         inline static const std::string name = "Tournament Sort";
-        inline static const bool is_stable     = false;
+        inline static const bool is_stable     = true;
         inline static const bool is_comparison = true;
         inline static const bool in_place      = false;
 

@@ -51,7 +51,7 @@ void RadixSort::sort(T* arr, std::size_t n, Compare cmp)
         
         std::copy(arr, arr + n, temp_arr.data());
 
-        // Radix sort
+        // Counting Sort
         std::vector<T> counts(radix);
 
         for (std::size_t i = 0; i < n; ++i) {
