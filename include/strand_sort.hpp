@@ -34,7 +34,11 @@ class StrandSort
         StrandSort() = default;
 
         template <typename T, typename Compare>
-        static void strand_sort(std::list<T> &list, std::list<T> &sorted_list, Compare cmp);
+        static void strand_sort(
+            std::list<T> &list, 
+            std::list<T> &sorted_list, 
+            Compare cmp
+        );
 };
 
 template <typename T, typename Compare>
@@ -61,8 +65,11 @@ void StrandSort::sort(std::list<T> &list, Compare cmp)
 }
 
 template <typename T, typename Compare>
-void StrandSort::strand_sort(std::list<T> &list, std::list<T> &sorted_list, Compare cmp)
-{
+void StrandSort::strand_sort(
+    std::list<T> &list, 
+    std::list<T> &sorted_list, 
+    Compare cmp
+) {
     if (list.empty()) return;
 
     std::list<T> sublist;

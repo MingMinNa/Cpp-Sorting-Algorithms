@@ -60,7 +60,9 @@ void PatienceSort::sort(T* arr, std::size_t n, Compare cmp)
         return cmp(std::get<0>(b), std::get<0>(a));
     };
  
-    std::priority_queue<Entry, std::vector<Entry>, decltype(heap_cmp)> pq(heap_cmp);
+    std::priority_queue<
+        Entry, std::vector<Entry>, decltype(heap_cmp)
+    > pq(heap_cmp);
  
     for (std::size_t i = 0; i < piles.size(); ++i) {
         if (!piles[i].empty()) {

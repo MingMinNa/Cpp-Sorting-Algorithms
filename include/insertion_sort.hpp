@@ -81,8 +81,8 @@ void BinaryInsertionSort::sort(T* arr, std::size_t n, Compare cmp)
 
     for (std::size_t i = 1; i < n; ++i) {
 
-        T ele = arr[i];
         std::size_t index = i;
+        T ele = arr[i];
 
         for (std::size_t jump = i; jump >= 1; jump >>= 1) {
             while (index >= jump && cmp(ele, arr[index - jump])) {

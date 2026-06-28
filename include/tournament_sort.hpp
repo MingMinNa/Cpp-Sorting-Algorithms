@@ -7,6 +7,7 @@
 #pragma once
 
 #include "sort_utils.hpp"
+#include <bit>
 #include <string>
 #include <vector>
 #include <cstddef>
@@ -48,11 +49,10 @@ void TournamentSort::sort(T* arr, std::size_t n, Compare cmp)
 {
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
 
-    std::size_t leaves = 1u, tree_size;
-    for (; leaves < n; leaves <<= 1);
-    tree_size = leaves << 1;
+    std::size_t leaves = std::bit_ceil(n);
+    std::size_t tree_size = leaves << 1;
 
-    std::vector<T>      temp_arr(arr, arr + n);
+    std::vector<T> temp_arr(arr, arr + n);
     std::vector<std::size_t> tree(tree_size, std::numeric_limits<std::size_t>::max());
 
     for (std::size_t i = 0; i < n; ++i) {

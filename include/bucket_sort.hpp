@@ -44,7 +44,10 @@ void BucketSort::sort(T* arr, std::size_t n, Compare cmp, std::size_t num_bucket
 
     // if num_buckets is not specified, set it to sqrt(n) + 1
     if (num_buckets == 0) {
-        num_buckets = std::min(MAX_NUM_BUCKETS, static_cast<std::size_t>(std::sqrt(n)) + 1);
+        num_buckets = std::min(
+            MAX_NUM_BUCKETS, 
+            static_cast<std::size_t>(std::sqrt(n)) + 1
+        );
     }
 
     auto [min_ele, max_ele] = find_min_max(arr, n);

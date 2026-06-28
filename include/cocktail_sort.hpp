@@ -49,6 +49,8 @@ void CocktailSort::sort(T* arr, std::size_t n, Compare cmp)
         }
         right --;
 
+        if (!swapped) break;
+
         for (std::size_t i = right; i > left; --i) {
             if (cmp(arr[i], arr[i - 1])) {
                 std::swap(arr[i - 1], arr[i]);

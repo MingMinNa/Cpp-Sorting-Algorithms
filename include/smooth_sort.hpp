@@ -87,14 +87,12 @@ void SmoothSort::sort(T* arr, std::size_t n, Compare cmp)
             std::size_t k = rightmost_order(heap_bits);
             std::size_t k2 = second_rightmost_order(heap_bits);
  
-            if (std::popcount(heap_bits) >= 2) {
-                // Leonardo: L(k + 2) = L(k + 1) + L(k) + 1
-                if (k2 == k + 1) {
-                    heap_bits &= ~(1ULL << k);        // remove order k
-                    heap_bits &= ~(1ULL << k2);       // remove order k+1
-                    heap_bits |=  (1ULL << (k2 + 1)); // add order k+2
-                    goto do_trinkle;
-                }
+            // Leonardo: L(k + 2) = L(k + 1) + L(k) + 1
+            if (k2 == k + 1) {
+                heap_bits &= ~(1ULL << k);        // remove order k
+                heap_bits &= ~(1ULL << k2);       // remove order k+1
+                heap_bits |=  (1ULL << (k2 + 1)); // add order k+2
+                goto do_trinkle;
             }
  
             // No consecutive pair at the right end.

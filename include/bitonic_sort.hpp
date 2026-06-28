@@ -49,7 +49,7 @@ void BitonicSort::sort(T* arr, std::size_t n, Compare cmp)
         );
     }
 
-    bitonic_sort(arr, n, cmp, 1);
+    bitonic_sort(arr, n, cmp, true);
 }
 
 template <typename T, typename Compare>
@@ -67,7 +67,6 @@ template <typename T, typename Compare>
 void BitonicSort::bitonic_merge(T* arr, std::size_t n, Compare cmp, bool flag)
 {
     if (n > 1) {
-
         std::size_t mid = n >> 1;
         for (std::size_t i = 0; i < mid; ++i) {
             if (

@@ -62,7 +62,7 @@ std::pair<T, T> find_min_max(const T* arr, std::size_t n)
 
     std::size_t i = 1;
     T min_ele = arr[0], max_ele = arr[0];
-    T smaller = min_ele, larger  = max_ele;
+    T smaller = min_ele, larger = max_ele;
 
     if (n % 2 == 0) {
         max_ele = (arr[0] > arr[1]) ? (arr[0]) : (arr[1]);

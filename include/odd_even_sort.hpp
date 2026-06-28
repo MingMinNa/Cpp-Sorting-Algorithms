@@ -43,9 +43,9 @@ void OddEvenSort::sort(T* arr, std::size_t n, Compare cmp)
         for (std::size_t odd_even = 0; odd_even < 2; ++ odd_even) {
             for (std::size_t i = odd_even; i < n - 1; i += 2) {
                 if (cmp(arr[i + 1], arr[i])) {
-					std::swap(arr[i], arr[i + 1]);
-					swapped = true;
-				}
+                    std::swap(arr[i], arr[i + 1]);
+                    swapped = true;
+                }
             }
         }
     }

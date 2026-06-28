@@ -37,7 +37,10 @@ void FlashSort::sort(T* arr, std::size_t n, Compare cmp)
 {
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
 
-    std::size_t num_classes = std::max(static_cast<std::size_t>(n * 0.43), static_cast<std::size_t>(2));
+    std::size_t num_classes = std::max(
+        static_cast<std::size_t>(n * 0.43), 
+        static_cast<std::size_t>(2)
+    );
     std::vector<std::size_t> classes(num_classes, 0);
 
     auto [min_ele, max_ele] = find_min_max(arr, n);
@@ -45,8 +48,8 @@ void FlashSort::sort(T* arr, std::size_t n, Compare cmp)
 
     auto calc_index = [&](const T &ele) -> std::size_t {
         std::size_t index = static_cast<std::size_t>(
-            (num_classes - 1) * (static_cast<std::size_t>(ele - min_ele)) / 
-                                 static_cast<double>( max_ele - min_ele)
+            (num_classes - 1) * (static_cast<double>(ele - min_ele)) / 
+                                 static_cast<double>(max_ele - min_ele)
         );
         index = (index >= num_classes) ? (num_classes - 1) : (index);
         return (descending) ? (num_classes - 1 - index) : (index);
@@ -62,7 +65,7 @@ void FlashSort::sort(T* arr, std::size_t n, Compare cmp)
     }
 
     std::size_t count = 0;
-    std::size_t i     = 0;
+    std::size_t i = 0;
  
     while (count < n) {
 

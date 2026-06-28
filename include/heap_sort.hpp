@@ -71,7 +71,10 @@ void HeapSort::heapify(T* arr, std::size_t n, std::size_t curr_index, Compare cm
 
         if (next_index == curr_index) return;
 
-        std::swap(arr[TO_ZERO_BASE(curr_index)], arr[TO_ZERO_BASE(next_index)]);
+        std::swap(
+            arr[TO_ZERO_BASE(curr_index)], 
+            arr[TO_ZERO_BASE(next_index)]
+        );
         curr_index = next_index;
     }
 }
