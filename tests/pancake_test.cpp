@@ -4,7 +4,7 @@
  * @author MingMinNa
  */
 
-#include "../include/pancake_sort.hpp"
+#include "../include/CppSortingAlgos/pancake_sort.hpp"
 #include "test_datatypes.hpp"
 #include "test_utils.hpp"
 #include <vector>

@@ -4,7 +4,7 @@
  * @author MingMinNa
  */
 
-#include "include/bubble_sort.hpp"
+#include "include/CppSortingAlgos/bubble_sort.hpp"
 
 #include <vector>
 #include <iostream>
@@ -62,7 +62,7 @@ int main()
         {10, 7}
     };
 
-    print_traits<Sort>("BubbleSort");
+    print_traits<Sort>(Sort::name);
     print(data, "Original");
 
     Sort::sort(data.data(), data.size(), less_cmp);
@@ -76,7 +76,7 @@ int main()
 
 /* Output as below */
 /*
-    Traits of BubbleSort
+    Traits of Bubble Sort
     is_stable      : true
     is_comparison  : true
     in_place       : true

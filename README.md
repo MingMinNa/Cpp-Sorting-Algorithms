@@ -4,16 +4,14 @@ English | <a href="README.zh-TW.md">繁體中文</a>
 
 ![C++23](https://img.shields.io/badge/C%2B%2B-23-blue) [![License](https://img.shields.io/badge/License-MIT-green)](./LICENSE)
 
-This project aims to implement various sorting algorithms in a simple and easy-to-understand way,   
-along with visualizations of their processes and correctness proofs.  
-
+This project aims to implement various sorting algorithms in a simple and easy-to-understand way.  
 The goal is to make this repository a useful resource for learning, implementation, and reference.
 
 ## Project Structure
 ```
 Cpp-Sorting-Algorithms/
 │
-├── include/
+├── include/CppSortingAlgos/
 ├── tests/
 ├── benchmarks/
 ├── docs/
@@ -33,35 +31,35 @@ Currently implemented algorithms are listed below:
     <td><a>Bubble Sort</a></td>
     <td><a>Cocktail Sort</a></td>
     <td><a>Gnome Sort</a></td>
-    <td><a>Selection Sort</a></td>
     <td><a>Insertion Sort</a></td>
+    <td><a>Binary Insertion Sort</a></td>
 </tr>
 <tr>
+    <td><a>Selection Sort</a></td>
     <td><a>Shell Sort</a></td>
     <td><a>Heap Sort</a></td>
     <td><a>Quick Sort</a></td>
     <td><a>Merge Sort</a></td>
-    <td><a>Intro Sort</a></td>
 </tr>
 <tr>
+    <td><a>Intro Sort</a></td>
     <td><a>Tim Sort</a></td>
     <td><a>Slow Sort</a></td>
     <td><a>Stooge Sort</a></td>
     <td><a>Comb Sort</a></td>
-    <td><a>Cycle Sort</a></td>
 </tr>
 <tr>
+    <td><a>Cycle Sort</a></td>
     <td><a>Bitonic Sort</a></td>
     <td><a>Tournament Sort</a></td>
     <td><a>Odd-Even Sort</a></td>
     <td><a>Pancake Sort</a></td>
-    <td><a>Strand Sort</a></td>
 </tr>
 <tr>
+    <td><a>Strand Sort</a></td>
     <td><a>Patience Sort</a></td>
     <td><a>Adaptive Merge Sort</a></td>
     <td><a>Smooth Sort</a></td>
-    <td></td>
     <td></td>
 </tr>
 </table>
@@ -79,7 +77,7 @@ Currently implemented algorithms are listed below:
 
 ## Usage
 
-All source code is located in the `include/` folder.  
+All source code is located in the `include/CppSortingAlgos/` folder.  
 Each sorting algorithm class provides the following interface:
 
 ```C++
@@ -93,7 +91,7 @@ inline static const bool in_place;      // → whether it is in-place
 
 ### Example
 ```C++
-#include "include/bubble_sort.hpp"
+#include "include/CppSortingAlgos/bubble_sort.hpp"
 #include <functional>
 
 int main()
@@ -116,9 +114,9 @@ int main()
 Full example: [`example.cpp`](./example.cpp)
 
 ### Notes
-Some algorithms have specific constraints:
+Some algorithms have specific constraints, for example:
 - Counting Sort does not support floating-point types.
-- Bitonic Sort requires the sequence size to be a power of 2.
+- Bitonic Sort requires the sequence size to be a power of $2$.
 
 Some limitations come from the algorithm itself, while others come from implementation choices.  
-Please check `docs/algos/` and the source code before using to avoid unexpected issues.
+Please check [`docs/Sortings.md`](docs/Sortings.md) and the source code before using to avoid unexpected issues.

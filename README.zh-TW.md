@@ -4,14 +4,14 @@
 
 ![C++23](https://img.shields.io/badge/C%2B%2B-23-blue) [![License](https://img.shields.io/badge/License-MIT-green)](./LICENSE)
 
-本專案旨在以簡單且易於理解的方式實作各種排序演算法，並提供相關流程展示與證明。  
+本專案旨在以簡單且易於理解的方式實作各種排序演算法。  
 期望能將本專案發展成兼具實作、學習與參考價值的排序演算法資源。
 
 ## 專案架構
 ```
 Cpp-Sorting-Algorithms/
 │
-├── include/
+├── include/CppSortingAlgos/
 ├── tests/
 ├── benchmarks/
 ├── docs/
@@ -30,35 +30,35 @@ Cpp-Sorting-Algorithms/
     <td><a>Bubble Sort</a></td>
     <td><a>Cocktail Sort</a></td>
     <td><a>Gnome Sort</a></td>
-    <td><a>Selection Sort</a></td>
     <td><a>Insertion Sort</a></td>
+    <td><a>Binary Insertion Sort</a></td>
 </tr>
 <tr>
+    <td><a>Selection Sort</a></td>
     <td><a>Shell Sort</a></td>
     <td><a>Heap Sort</a></td>
     <td><a>Quick Sort</a></td>
     <td><a>Merge Sort</a></td>
-    <td><a>Intro Sort</a></td>
 </tr>
 <tr>
+    <td><a>Intro Sort</a></td>
     <td><a>Tim Sort</a></td>
     <td><a>Slow Sort</a></td>
     <td><a>Stooge Sort</a></td>
     <td><a>Comb Sort</a></td>
-    <td><a>Cycle Sort</a></td>
 </tr>
 <tr>
+    <td><a>Cycle Sort</a></td>
     <td><a>Bitonic Sort</a></td>
     <td><a>Tournament Sort</a></td>
     <td><a>Odd-Even Sort</a></td>
     <td><a>Pancake Sort</a></td>
-    <td><a>Strand Sort</a></td>
 </tr>
 <tr>
+    <td><a>Strand Sort</a></td>
     <td><a>Patience Sort</a></td>
     <td><a>Adaptive Merge Sort</a></td>
     <td><a>Smooth Sort</a></td>
-    <td></td>
     <td></td>
 </tr>
 </table>
@@ -76,7 +76,7 @@ Cpp-Sorting-Algorithms/
 
 ## 使用方法
 
-原始程式碼位於 `include/` 資料夾內，每個排序演算法類別均提供以下的方法。
+原始程式碼位於 `include/CppSortingAlgos/` 資料夾內，每個排序演算法類別均提供以下的方法。
 
 ```C++
 // Compare 必須滿足嚴格弱序
@@ -89,7 +89,7 @@ inline static const bool in_place;      // → 是否為原地排序
 
 以下為使用範例
 ```C++
-#include "include/bubble_sort.hpp"
+#include "include/CppSortingAlgos/bubble_sort.hpp"
 #include <functional>
 
 int main()
@@ -113,7 +113,7 @@ int main()
 
 此外，有些排序法會有各自的限制，例如：
 - Counting Sort 不適用於浮點數資料型態上。
-- Bitonic Sort 要求序列長度必須是 2 的次方。
+- Bitonic Sort 要求序列長度必須是 $2$ 的次方。
 
 有些是演算法本身的限制，而有些是實作上的考量。  
-在使用前，請先參照 `docs/algos/` 中的檔案與原始碼實作，以免踩坑。
+在使用前，請先參照 [`docs/Sortings.zh-TW.md`](docs/Sortings.zh-TW.md) 中的檔案與原始碼，以免踩坑。

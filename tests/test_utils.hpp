@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "../include/sort_collection.hpp"
+#include "../include/CppSortingAlgos/sort_collection.hpp"
 #include "test_datatypes.hpp"
 #include <string>
 #include <vector>

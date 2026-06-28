@@ -4,7 +4,7 @@
  * @author MingMinNa
  */
 
-#include "../include/sort_collection.hpp"
+#include "../include/CppSortingAlgos/sort_collection.hpp"
 #include "benchmark_utils.hpp"
 
 #include <cstring>

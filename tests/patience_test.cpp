@@ -4,7 +4,7 @@
  * @author MingMinNa
  */
 
-#include "../include/patience_sort.hpp"
+#include "../include/CppSortingAlgos/patience_sort.hpp"
 #include "test_datatypes.hpp"
 #include "test_utils.hpp"
 #include <vector>

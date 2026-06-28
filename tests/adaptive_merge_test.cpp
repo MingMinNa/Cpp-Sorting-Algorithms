@@ -4,7 +4,7 @@
  * @author MingMinNa
  */
 
-#include "../include/adaptive_merge_sort.hpp"
+#include "../include/CppSortingAlgos/adaptive_merge_sort.hpp"
 #include "test_datatypes.hpp"
 #include "test_utils.hpp"
 #include <vector>

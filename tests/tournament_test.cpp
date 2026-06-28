@@ -4,7 +4,7 @@
  * @author MingMinNa
  */
 
-#include "../include/tournament_sort.hpp"
+#include "../include/CppSortingAlgos/tournament_sort.hpp"
 #include "test_datatypes.hpp"
 #include "test_utils.hpp"
 #include <vector>
