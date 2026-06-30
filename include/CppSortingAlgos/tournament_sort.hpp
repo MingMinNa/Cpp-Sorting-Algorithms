@@ -50,26 +50,47 @@ void TournamentSort::sort(T* arr, std::size_t n, Compare cmp)
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
 
     std::size_t leaves = std::bit_ceil(n);
-    std::size_t tree_size = leaves << 1;
+    std::size_t tree_size = leaves + n;
+    leaves = n;
 
     std::vector<T> temp_arr(arr, arr + n);
     std::vector<std::size_t> tree(tree_size, std::numeric_limits<std::size_t>::max());
 
     for (std::size_t i = 0; i < n; ++i) {
-        tree[leaves + i] = i;
+        tree[tree_size - leaves + i] = i;
     }
 
-    for (std::size_t i = leaves - 1; i >= 1; --i) {
-        std::size_t left  = tree[2 * i];
-        std::size_t right = tree[2 * i + 1];
+    std::size_t l_range = tree_size - leaves; 
+    std::size_t r_range = tree_size - 1;
+    std::size_t left, right;
+
+    l_range >>= 1;
+    r_range >>= 1;
+
+    for (std::size_t i = l_range; i <= r_range; ++i) {
+        left  = tree[i << 1];
+        right = tree[std::min((i << 1) + 1, tree_size - 1)];
         tree[i] = beats(temp_arr.data(), n, left, right, cmp) ? left : right;
+    }
+
+    l_range >>= 1;
+    r_range >>= 1;
+
+    while (l_range >= 1) {
+        for (std::size_t i = l_range; i <= r_range; ++i) {
+            left  = tree[i << 1];
+            right = tree[(i << 1) + 1];
+            tree[i] = beats(temp_arr.data(), n, left, right, cmp) ? left : right;
+        }
+        l_range >>= 1;
+        r_range >>= 1;
     }
 
     for (std::size_t i = 0; i < n; ++i) {
         std::size_t winner = tree[1];
         arr[i] = temp_arr[winner];
 
-        std::size_t leaf_index = leaves + winner;
+        std::size_t leaf_index = tree_size - leaves + winner;
         tree[leaf_index] = std::numeric_limits<std::size_t>::max(); 
         update(tree, temp_arr.data(), n, leaf_index, cmp);
     }
@@ -89,11 +110,17 @@ void TournamentSort::update(
     const T* arr, std::size_t n,
     std::size_t index, Compare cmp
 ) {
+    std::size_t tree_size = tree.size();
+    index >>= 1;
+    
+    std::size_t left  = tree[index << 1];
+    std::size_t right = tree[std::min((index << 1) + 1, tree_size - 1)];
+    tree[index] = beats(arr, n, left, right, cmp) ? left : right;
     index >>= 1;
 
     while (index >= 1) {
-        std::size_t left  = tree[2 * index];
-        std::size_t right = tree[2 * index + 1];
+        left  = tree[index << 1];
+        right = tree[(index << 1) + 1];
         tree[index] = beats(arr, n, left, right, cmp) ? left : right;
         index >>= 1;
     }
