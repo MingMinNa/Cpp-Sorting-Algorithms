@@ -55,25 +55,26 @@ To generate plots from benchmark results, Python dependencies must be installed 
 3. **Run the plotting script**:
 
     ```bash
-    $ python plot.py
+    $ python ./benchmarks/plot.py
 
     # Parameters 
     #     --comp      Optional. Comparison type. 
     #     --size      Optional. Input size to plot. 
+    #     --mode      Optional. Chart mode to generate. 
     # Accepted values and defaults 
-    #     --comp      ["fast", "slow", "non", "all"]  Default: all 
-    #     --size      Integer                         Default: Maximum size in dataset
+    #     --comp      ["fast", "slow", "non", "all"]    Default: all 
+    #     --size      Integer                           Default: Maximum size in dataset
+    #     --mode      ["bar", "trend", "both"]          Default: both
     ```
 
     ### Example: 
 
     ```bash
-    $ python plot.py --comp fast --size 131072
+    $ python ./benchmarks/plot.py --comp fast --size 131072 --mode both
     ```
 
 ## Output Images
 Generated plots will be saved to `benchmarks/images/`.
 
-<img src="../benchmarks/images/fast-comp_Random_1048576.png" width="50%"/>  
-<img src="../benchmarks/images/slow-comp_Random_16384.png" width="50%"/>  
-<img src="../benchmarks/images/non-comp_Random_65536.png" width="50%"/>  
+<img src="../benchmarks/images/fast-comp_bar_Random_1048576.png" width="50%"/>  
+<img src="../benchmarks/images/slow-comp_trend_Random.png" width="50%"/>  
