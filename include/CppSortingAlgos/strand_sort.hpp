@@ -70,24 +70,23 @@ void StrandSort::strand_sort(
     std::list<T> &sorted_list, 
     Compare cmp
 ) {
-    if (list.empty()) return;
+    while (!list.empty()) {
+        std::list<T> sublist;
+        sublist.push_back(list.front());
+        list.pop_front();
 
-    std::list<T> sublist;
-    sublist.push_back(list.front());
-    list.pop_front();
+        for (auto it = list.begin(); it != list.end();) {
+            if (!cmp(*it, sublist.back())) {
+                sublist.push_back(*it);
+                it = list.erase(it);
+            }
+            else {
+                ++it;
+            }
+        }
 
-    for (auto it = list.begin(); it != list.end();) {
-        if (!cmp(*it, sublist.back())) {
-            sublist.push_back(*it);
-            it = list.erase(it);
-        }
-        else {
-            ++ it;
-        }
+        sorted_list.merge(sublist, cmp);
     }
-
-    sorted_list.merge(sublist, cmp);
-    strand_sort(list, sorted_list, cmp);
 }
 
 } // namespace sort_imp
