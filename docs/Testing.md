@@ -1,4 +1,4 @@
-# Benckmarks
+# Testing
 
 This section describes how to build and run the test suite for sorting algorithms.
 

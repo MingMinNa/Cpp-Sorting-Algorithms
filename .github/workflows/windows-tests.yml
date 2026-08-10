@@ -1,0 +1,27 @@
+name: Windows-Tests
+
+on: [push, pull_request, workflow_dispatch]
+
+env:
+  CTEST_OUTPUT_ON_FAILURE: 1
+  CTEST_NO_TESTS_ACTION: error
+
+jobs:
+  build-and-test:
+    strategy:
+      fail-fast: false
+
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Configure
+        run: cmake -S . -B build -DENABLE_TESTS=ON -DENABLE_BENCHMARKS=OFF
+
+      - name: Build
+        run: cmake --build build --config Debug
+
+      - name: Test
+        shell: bash
+        run: ctest --test-dir build -C Debug
