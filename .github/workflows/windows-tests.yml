@@ -20,8 +20,7 @@ jobs:
         run: cmake -S . -B build -DENABLE_TESTS=ON -DENABLE_BENCHMARKS=OFF
 
       - name: Build
-        run: cmake --build build --config Debug
+        run: cmake --build build --config Release
 
-      - name: Test
-        shell: bash
-        run: ctest --test-dir build -C Debug
+      - name: Tests
+        run: ctest --test-dir build -C Release

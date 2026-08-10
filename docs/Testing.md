@@ -15,14 +15,25 @@ $ cmake --version
 ## Build Instructions
 Configure and build the project using CMake:
 ```bash
-$ cmake -S . -B build
-$ cmake --build build
+# Build with GCC
+$ cmake -S . -B build -DENABLE_TESTS=ON
+$ cmake --build build 
+
+# Build with MSVC
+$ cmake -S . -B build -G "Visual Studio 17 2022" -DENABLE_TESTS=ON
+$ cmake --build build --config Release
 ```
+
+Run `cmake --help` to see the full list of generators available on your system.
 
 ## Run Tests
 Tests are executed using CTest:
 ```bash
+# With GCC
 $ ctest --test-dir build
+
+# With MSVC
+$ ctest --test-dir build -C Release
 ```
 
 ## Example Output

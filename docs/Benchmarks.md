@@ -16,16 +16,27 @@ $ cmake --version
 ## Build Instructions
 Configure and build the project using CMake:
 ```bash
-$ cmake -S . -B build
+# Build with GCC
+$ cmake -S . -B build -DENABLE_BENCHMARKS=ON
 $ cmake --build build
+
+# Build with MSVC
+$ cmake -S . -B build -G "Visual Studio 17 2022" -DENABLE_BENCHMARKS=ON
+$ cmake --build build --config Release
 ```
 
 ## Running Benchmarks
 After a successful build, execute the benchmark binaries:
 ```bash
-$ ./build/bench_fast   # Fast comparison-based sorting algorithms
-$ ./build/bench_slow   # Slow comparison-based sorting algorithms
-$ ./build/bench_non    # Non-comparison sorting algorithms
+# With GCC
+$ ./build/bench_fast     # Fast comparison-based sorting algorithms
+$ ./build/bench_slow     # Slow comparison-based sorting algorithms
+$ ./build/bench_non_comp # Non-comparison sorting algorithms
+
+# With MSVC (Release)
+$ .\build\Release\bench_fast.exe
+$ .\build\Release\bench_slow.exe
+$ .\build\Release\bench_non_comp.exe
 ```
 
 ## Output Files

@@ -10,17 +10,6 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 option(ENABLE_TESTS "Build tests" ON)
 option(ENABLE_BENCHMARKS "Build benchmarks" ON)
 
-# Common compile warnings (clean baseline)
-if (MSVC)
-    add_compile_options(/W4)
-else()
-    add_compile_options(
-        -Wall 
-        -Wextra 
-        -Wpedantic
-    )
-endif()
-
 # Library
 add_library(sorting_lib INTERFACE)
 
@@ -30,13 +19,51 @@ target_include_directories(sorting_lib
 )
 
 # Build type specific flags
+function(apply_warning_flags target)
+    if(MSVC)
+        target_compile_options(${target} PRIVATE
+            /W4
+        )
+    else()
+        target_compile_options(${target} PRIVATE
+            -Wall
+            -Wextra
+            -Wpedantic
+        )
+    endif()
+endfunction()
+
 function(apply_release_flags target)
     if (MSVC)
-        target_compile_options(${target} PRIVATE /O2)
+        target_compile_options(${target} 
+            PRIVATE
+                $<$<CONFIG:Release>:/O2>
+        )
     else()
-        target_compile_options(${target} PRIVATE -O3)
+        target_compile_options(${target} 
+            PRIVATE 
+                -O3
+        )
     endif()
-    target_compile_definitions(${target} PRIVATE NDEBUG)
+    target_compile_definitions(${target} 
+        PRIVATE
+            $<$<CONFIG:Release>:NDEBUG>
+    )
+endfunction()
+
+function(apply_test_flags target)
+    if (MSVC)
+        target_compile_options(${target} 
+            PRIVATE
+                $<$<CONFIG:Release>:/O2>
+        )
+    else()
+        target_compile_options(${target} 
+            PRIVATE 
+                -O2
+                -march=native
+        )
+    endif()
 endfunction()
 
 # Tests
@@ -55,6 +82,8 @@ if(ENABLE_TESTS)
             PRIVATE 
                 sorting_lib
         )
+        apply_warning_flags(${name})
+        apply_test_flags(${name})
         add_test(NAME ${name} COMMAND ${name})
     endforeach()
 endif()
@@ -73,7 +102,7 @@ if(ENABLE_BENCHMARKS)
             PRIVATE 
                 sorting_lib
         )
-
+        apply_warning_flags(${name})
         apply_release_flags(${name})
     endforeach()
 endif()

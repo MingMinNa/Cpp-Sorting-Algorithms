@@ -10,6 +10,7 @@
 #include <vector>
 #include <chrono>
 #include <random>
+#include <numeric>
 #include <iomanip>
 #include <cstddef>
 #include <fstream>
