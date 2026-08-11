@@ -120,3 +120,30 @@ Some algorithms have specific constraints, for example:
 
 Some limitations come from the algorithm itself, while others come from implementation choices.  
 Please check [`docs/Sortings.md`](docs/Sortings.md) and the source code before using to avoid unexpected issues.
+
+## Installation
+To use this library in your own CMake project, you can add it with CMake's `FetchContent` module.  
+Add the following to your `CMakeLists.txt`:  
+```cmake
+include(FetchContent)
+
+FetchContent_Declare(
+    CppSortingAlgos
+    GIT_REPOSITORY https://github.com/MingMinNa/Cpp-Sorting-Algorithms.git
+    GIT_TAG v1.0.0
+)
+
+FetchContent_MakeAvailable(CppSortingAlgos)
+
+add_executable(<target_name>
+    <source_file>.cpp
+    ...
+)
+
+target_link_libraries(<target_name>
+    PRIVATE
+        CppSortingAlgos::sort_algo
+)
+```
+
+If you want to modify the code, download the source and copy `include/CppSortingAlgos` folder into your project.

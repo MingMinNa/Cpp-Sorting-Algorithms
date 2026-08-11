@@ -117,3 +117,30 @@ int main()
 
 有些是演算法本身的限制，而有些是實作上的考量。  
 在使用前，請先參照 [`docs/Sortings.zh-TW.md`](docs/Sortings.zh-TW.md) 中的檔案與原始碼，以免踩坑。
+
+## 安裝
+若要在你自己的 CMake 專案中使用這個函式庫，可以透過 CMake 的 `FetchContent` 模組加入。  
+請在你的 `CMakeLists.txt` 中加入以下內容：  
+```cmake
+include(FetchContent)
+
+FetchContent_Declare(
+    CppSortingAlgos
+    GIT_REPOSITORY https://github.com/MingMinNa/Cpp-Sorting-Algorithms.git
+    GIT_TAG v1.0.0
+)
+
+FetchContent_MakeAvailable(CppSortingAlgos)
+
+add_executable(<target_name>
+    <source_file>.cpp
+    ...
+)
+
+target_link_libraries(<target_name>
+    PRIVATE
+        CppSortingAlgos::sort_algo
+)
+```
+
+如果你想修改程式碼，可以下載原始碼，並把 `include/CppSortingAlgos` 資料夾複製到你的專案中。
