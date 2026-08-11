@@ -14,7 +14,7 @@
 #include <stdexcept>
 #include <functional>
 
-namespace sort_imp 
+namespace sort_algo 
 {
 
 class AdaptiveMergeSort
@@ -211,5 +211,5 @@ void AdaptiveMergeSort::merge_force_collapse(
     }
 }
 
-} // namespace sort_imp
+} // namespace sort_algo
 

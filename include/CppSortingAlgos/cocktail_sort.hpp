@@ -12,7 +12,7 @@
 #include <functional>
 #include <stdexcept>
 
-namespace sort_imp 
+namespace sort_algo 
 {
 
 class CocktailSort
@@ -61,4 +61,4 @@ void CocktailSort::sort(T* arr, std::size_t n, Compare cmp)
     }
 }
 
-} // namespace sort_imp
+} // namespace sort_algo

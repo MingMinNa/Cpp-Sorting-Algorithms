@@ -12,7 +12,7 @@
 #include <functional>
 #include <stdexcept>
 
-namespace sort_imp 
+namespace sort_algo 
 {
 
 class HeapSort
@@ -79,4 +79,4 @@ void HeapSort::heapify(T* arr, std::size_t n, std::size_t curr_index, Compare cm
     }
 }
 
-} // namespace sort_imp
+} // namespace sort_algo

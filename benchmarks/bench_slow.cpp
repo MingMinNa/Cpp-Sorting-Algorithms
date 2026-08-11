@@ -13,7 +13,7 @@
 #include <optional>
 #include <iostream>
 
-using namespace sort_imp;
+using namespace sort_algo;
 using namespace sort_benchmark;
 
 std::optional<std::size_t> seed = std::nullopt;

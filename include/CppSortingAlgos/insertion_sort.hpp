@@ -15,7 +15,7 @@
 
 /* ————————————— Insertion Sort ————————————— */
 
-namespace sort_imp 
+namespace sort_algo 
 {
 
 class InsertionSort
@@ -52,11 +52,11 @@ void InsertionSort::sort(T* arr, std::size_t n, Compare cmp)
     }
 }
 
-} // namespace sort_imp
+} // namespace sort_algo
 
 /* ————————————— Binary Insertion Sort ————————————— */
 
-namespace sort_imp 
+namespace sort_algo 
 {
 
 class BinaryInsertionSort
@@ -98,5 +98,5 @@ void BinaryInsertionSort::sort(T* arr, std::size_t n, Compare cmp)
     }
 }
 
-} // namespace sort_imp
+} // namespace sort_algo
 

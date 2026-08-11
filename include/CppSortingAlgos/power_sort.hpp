@@ -16,7 +16,7 @@
 #include <algorithm>
 #include <functional>
 
-namespace sort_imp 
+namespace sort_algo 
 {
 
 class PowerSort
@@ -582,4 +582,4 @@ void PowerSort::merge_force_collapse(
     }
 }
 
-} // namespace sort_imp
+} // namespace sort_algo

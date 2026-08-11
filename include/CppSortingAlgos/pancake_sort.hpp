@@ -13,7 +13,7 @@
 #include <stdexcept>
 #include <functional>
 
-namespace sort_imp 
+namespace sort_algo 
 {
 
 class PancakeSort
@@ -68,5 +68,5 @@ std::size_t PancakeSort::find_index(T* arr, std::size_t n, Compare cmp)
     return index;
 }
 
-} // namespace sort_imp
+} // namespace sort_algo
 

@@ -13,7 +13,7 @@
 #include <stdexcept>
 #include <functional>
 
-namespace sort_imp 
+namespace sort_algo 
 {
 
 class CombSort
@@ -59,4 +59,4 @@ void CombSort::sort(T* arr, std::size_t n, Compare cmp)
     }
 }
 
-} // namespace sort_imp
+} // namespace sort_algo

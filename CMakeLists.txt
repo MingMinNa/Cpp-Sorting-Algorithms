@@ -7,16 +7,19 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Build options
-option(ENABLE_TESTS "Build tests" ON)
-option(ENABLE_BENCHMARKS "Build benchmarks" ON)
+option(ENABLE_TESTS "Build tests" OFF)
+option(ENABLE_BENCHMARKS "Build benchmarks" OFF)
 
 # Library
-add_library(sorting_lib INTERFACE)
+add_library(sort_algo INTERFACE)
 
-target_include_directories(sorting_lib 
+target_include_directories(sort_algo 
     INTERFACE
         ${CMAKE_CURRENT_SOURCE_DIR}/include/CppSortingAlgos
 )
+
+# Alias
+add_library(CppSortingAlgos::sort_algo ALIAS sort_algo)
 
 # Build type specific flags
 function(apply_warning_flags target)
@@ -80,7 +83,7 @@ if(ENABLE_TESTS)
         add_executable(${name} ${src})
         target_link_libraries(${name} 
             PRIVATE 
-                sorting_lib
+                sort_algo
         )
         apply_warning_flags(${name})
         apply_test_flags(${name})
@@ -100,7 +103,7 @@ if(ENABLE_BENCHMARKS)
         add_executable(${name} ${src})
         target_link_libraries(${name} 
             PRIVATE 
-                sorting_lib
+                sort_algo
         )
         apply_warning_flags(${name})
         apply_release_flags(${name})

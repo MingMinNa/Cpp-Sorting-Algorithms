@@ -13,7 +13,7 @@
 #include <stdexcept>
 #include <functional>
 
-namespace sort_imp 
+namespace sort_algo 
 {
 
 class MergeSort
@@ -76,5 +76,5 @@ void MergeSort::merge(T* arr, std::size_t start, std::size_t mid, std::size_t en
     while (j < n2) arr[k ++] = r_vec[j ++];
 }
 
-} // namespace sort_imp
+} // namespace sort_algo
 

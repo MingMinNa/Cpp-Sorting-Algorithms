@@ -14,7 +14,7 @@
 #include <stdexcept>
 #include <functional>
 
-namespace sort_imp 
+namespace sort_algo 
 {
 
 class BucketSort
@@ -85,5 +85,5 @@ void BucketSort::sort(T* arr, std::size_t n, Compare cmp, std::size_t num_bucket
     }
 }
 
-} // namespace sort_imp
+} // namespace sort_algo
 

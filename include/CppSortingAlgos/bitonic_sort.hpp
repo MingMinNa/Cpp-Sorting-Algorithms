@@ -13,7 +13,7 @@
 #include <stdexcept>
 #include <functional>
 
-namespace sort_imp 
+namespace sort_algo 
 {
 
 class BitonicSort
@@ -80,4 +80,4 @@ void BitonicSort::bitonic_merge(T* arr, std::size_t n, Compare cmp, bool flag)
     }
 }
 
-} // namespace sort_imp
+} // namespace sort_algo

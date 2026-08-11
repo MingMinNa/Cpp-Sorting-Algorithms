@@ -13,7 +13,7 @@
 #include <stdexcept>
 #include <functional>
 
-namespace sort_imp 
+namespace sort_algo 
 {
 
 class SlowSort
@@ -57,5 +57,5 @@ void SlowSort::slow_sort(T* arr, std::size_t start, std::size_t end, Compare cmp
     slow_sort(arr, start, end - 1, cmp);
 }
 
-} // namespace sort_imp
+} // namespace sort_algo
 

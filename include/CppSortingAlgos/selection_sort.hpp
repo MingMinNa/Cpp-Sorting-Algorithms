@@ -13,7 +13,7 @@
 #include <stdexcept>
 #include <functional>
 
-namespace sort_imp 
+namespace sort_algo 
 {
 
 class SelectionSort
@@ -49,5 +49,5 @@ void SelectionSort::sort(T* arr, std::size_t n, Compare cmp)
     }
 }
 
-} // namespace sort_imp
+} // namespace sort_algo
 

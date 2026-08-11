@@ -99,15 +99,15 @@ int main()
     size_t n = 5;
     int arr[] = {1, 7, 3, 2, 6};
 
-    // "sort_imp"   is the namespace.
+    // "sort_algo"  is the namespace.
     // "BubbleSort" is the class.
     // "sort"       is the method.
 
-    sort_imp::BubbleSort::sort(arr, n, std::less<int>());      // ascending
-    sort_imp::BubbleSort::sort(arr, n, std::greater<int>());   // descending
+    sort_algo::BubbleSort::sort(arr, n, std::less<int>());      // ascending
+    sort_algo::BubbleSort::sort(arr, n, std::greater<int>());   // descending
 
     // For vector, you can use 
-    // sort_imp::BubbleSort::sort(vec.data(), vec.size(), less<int>());
+    // sort_algo::BubbleSort::sort(vec.data(), vec.size(), less<int>());
 }
 ```
 

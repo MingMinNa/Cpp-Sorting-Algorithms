@@ -17,7 +17,7 @@
 #include <stdexcept>
 #include <functional>
 
-namespace sort_imp 
+namespace sort_algo 
 {
 
 class IntroSort
@@ -71,5 +71,5 @@ void IntroSort::intro_sort_depth(
     if (pivot_index + 1 < end) intro_sort_depth(arr, pivot_index + 1, end, depth - 1, cmp);
 }
 
-} // namespace sort_imp
+} // namespace sort_algo
 

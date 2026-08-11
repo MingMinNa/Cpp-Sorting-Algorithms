@@ -12,7 +12,7 @@
 #include <functional>
 #include <stdexcept>
 
-namespace sort_imp 
+namespace sort_algo 
 {
 
 class GnomeSort
@@ -47,4 +47,4 @@ void GnomeSort::sort(T* arr, std::size_t n, Compare cmp)
     }
 }
 
-} // namespace sort_imp
+} // namespace sort_algo

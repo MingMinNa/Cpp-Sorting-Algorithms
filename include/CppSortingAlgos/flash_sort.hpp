@@ -14,7 +14,7 @@
 #include <stdexcept>
 #include <functional>
 
-namespace sort_imp 
+namespace sort_algo 
 {
 
 class FlashSort
@@ -86,5 +86,5 @@ void FlashSort::sort(T* arr, std::size_t n, Compare cmp)
     InsertionSort::sort(arr, n, cmp);
 }
 
-} // namespace sort_imp
+} // namespace sort_algo
 

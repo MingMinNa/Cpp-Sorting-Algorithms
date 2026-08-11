@@ -50,7 +50,7 @@ void print_traits(const std::string& name)
 
 int main()
 {
-    using Sort = sort_imp::BubbleSort;
+    using Sort = sort_algo::BubbleSort;
 
     std::vector<Element> data = {
         {70, 1},

@@ -17,7 +17,7 @@
 
 /* ————————————— Smooth Sort Version 1 ————————————— */
 
-namespace sort_imp 
+namespace sort_algo 
 {
 
 class SmoothSort
@@ -197,11 +197,11 @@ void SmoothSort::trinkle(
     sift(arr, current_pos, current_order, cmp);
 }
 
-} // namespace sort_imp
+} // namespace sort_algo
 
 /* ————————————— Smooth Sort Version 2 ————————————— */
 
-namespace sort_imp 
+namespace sort_algo 
 {
 
 class SmoothSortV2
@@ -357,5 +357,5 @@ void SmoothSortV2::trinkle(
     sift(arr, current_pos, current_order, cmp);
 }
 
-} // namespace sort_imp
+} // namespace sort_algo
 

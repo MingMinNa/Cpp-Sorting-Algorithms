@@ -15,7 +15,7 @@
 #include <stdexcept>
 #include <functional>
 
-namespace sort_imp 
+namespace sort_algo 
 {
 
 class PatienceSort
@@ -101,5 +101,5 @@ std::size_t PatienceSort::binary_search(
     return index + 1;
 }
 
-} // namespace sort_imp
+} // namespace sort_algo
 

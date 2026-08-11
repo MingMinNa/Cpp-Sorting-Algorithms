@@ -10,7 +10,7 @@
 #include <vector>
 #include <string>
 
-using namespace sort_imp;
+using namespace sort_algo;
 using namespace sort_test;
 
 /* Global Variables */

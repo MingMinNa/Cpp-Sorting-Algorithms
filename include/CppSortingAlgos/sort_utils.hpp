@@ -15,7 +15,7 @@
 #define TO_ZERO_BASE(x) ((x) - 1)
 #define TO_ONE_BASE(x)  ((x) + 1)
 
-namespace sort_imp
+namespace sort_algo
 {
 
 std::size_t random_generate(std::size_t lower_bound, std::size_t upper_bound) 
@@ -86,4 +86,4 @@ std::pair<T, T> find_min_max(const T* arr, std::size_t n)
     return {min_ele, max_ele};
 }
 
-} // namespace sort_imp
+} // namespace sort_algo

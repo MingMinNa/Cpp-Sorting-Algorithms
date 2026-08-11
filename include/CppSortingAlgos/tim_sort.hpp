@@ -16,7 +16,7 @@
 #include <algorithm>
 #include <functional>
 
-namespace sort_imp
+namespace sort_algo
 {
 
 class TimSort
@@ -527,4 +527,4 @@ void TimSort::merge_force_collapse(
     }
 }
 
-} // namespace sort_imp
+} // namespace sort_algo

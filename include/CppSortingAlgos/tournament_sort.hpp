@@ -15,7 +15,7 @@
 #include <stdexcept>
 #include <functional>
 
-namespace sort_imp 
+namespace sort_algo 
 {
 
 class TournamentSort
@@ -126,5 +126,5 @@ void TournamentSort::update(
     }
 }
 
-} // namespace sort_imp
+} // namespace sort_algo
 

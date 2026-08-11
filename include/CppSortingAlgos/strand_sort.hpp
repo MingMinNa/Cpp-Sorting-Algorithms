@@ -14,7 +14,7 @@
 #include <stdexcept>
 #include <functional>
 
-namespace sort_imp 
+namespace sort_algo 
 {
 
 class StrandSort
@@ -89,5 +89,5 @@ void StrandSort::strand_sort(
     }
 }
 
-} // namespace sort_imp
+} // namespace sort_algo
 

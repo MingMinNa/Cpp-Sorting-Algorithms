@@ -13,7 +13,7 @@
 #include <stdexcept>
 #include <functional>
 
-namespace sort_imp 
+namespace sort_algo 
 {
 
 class StoogeSort
@@ -58,5 +58,5 @@ void StoogeSort::stooge_sort(T* arr, std::size_t start, std::size_t end, Compare
     }
 }
 
-} // namespace sort_imp
+} // namespace sort_algo
 

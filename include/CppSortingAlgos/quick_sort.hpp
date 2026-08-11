@@ -13,7 +13,7 @@
 #include <stdexcept>
 #include <functional>
 
-namespace sort_imp 
+namespace sort_algo 
 {
 
 class QuickSort
@@ -95,5 +95,5 @@ std::size_t QuickSort::partition(
     return i;
 }
 
-} // namespace sort_imp
+} // namespace sort_algo
 
