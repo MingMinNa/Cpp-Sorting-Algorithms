@@ -14,7 +14,7 @@ English | <a href="Sortings.zh-TW.md">繁體中文</a>
 | Shell (Pratt)   | ✓          | ✗      | ✓        | $O(n\log^2 n)$ | $O(n\log^2 n)$ | $O(n\log^2 n)$ | $O(1)$        |
 | Slow Sort       | ✓          | ✗      | ✓        | $O(n^{(\lg n) / 2})$| $O(n^{(\lg n) / 2})$| $O(n^{(\lg n) / 2})$| $O(\log n)$   |
 | Stooge Sort     | ✓          | ✗      | ✓        | $O(n^{2.71})$  | $O(n^{2.71})$  | $O(n^{2.71})$  | $O(\log n)$   |
-| Comb Sort       | ✓          | ✗      | ✓        | $O(n \log n)$  | $O(n^2)$       | $O(n^2)$       | $O(1)$        |
+| Comb Sort       | ✓          | ✗      | ✓        | $O(n \log n)$  | $O(n^2/2^p)$   | $O(n^2)$       | $O(1)$        |
 | Cycle Sort      | ✓          | ✗      | ✓        | $O(n^2)$       | $O(n^2)$       | $O(n^2)$       | $O(1)$        |
 | Bitonic Sort    | ✓          | ✗      | ✓        | $O(n\log^2 n)$ | $O(n\log^2 n)$ | $O(n\log^2 n)$ | $O(\log n)$   |
 | Odd-Even Sort   | ✓          | ✓      | ✓        | $O(n)$         | $O(n^2)$       | $O(n^2)$       | $O(1)$        |
@@ -29,7 +29,8 @@ English | <a href="Sortings.zh-TW.md">繁體中文</a>
 | Tim Sort        | ✓          | ✓      | ✗        | $O(n)$         | $O(n\log n)$   | $O(n\log n)$   | $O(n)$        |
 | Smooth Sort     | ✓          | ✗      | ✓        | $O(n)$         | $O(n\log n)$   | $O(n\log n)$   | $O(1)$        |
 | Intro Sort      | ✓          | ✗      | ✓        | $O(n\log n)$   | $O(n\log n)$   | $O(n\log n)$   | $O(\log n)$   |
-| Counting Sort   | ✗          | ✓      | ✗        | $O(n + k)$     | $O(n + k)$     | $O(n + k)$     | $O(k)$        |
+| Power Sort      | ✓          | ✓      | ✗        | $O(n)$         | $O(n\log n)$   | $O(n\log n)$   | $O(n)$        |
+| Counting Sort   | ✗          | ✓      | ✗        | $O(n + k)$     | $O(n + k)$     | $O(n + k)$     | $O(n + k)$    |
 | Radix Sort      | ✗          | ✓      | ✗        | $O(d(n + k))$  | $O(d(n + k))$  | $O(d(n + k))$  | $O(n + k)$    |
 | Bucket Sort     | ✗          | ✓      | ✗        | $O(n + k)$     | $O(n + k)$     | $O(n^2)$       | $O(n + k)$    |
 | Flash Sort      | ✗          | ✗      | ✗        | $O(n + k)$     | $O(n + k)$     | $O(n^2)$       | $O(k)$        |

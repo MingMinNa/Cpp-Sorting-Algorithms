@@ -31,6 +31,7 @@
 #include "patience_sort.hpp"
 #include "adaptive_merge_sort.hpp"
 #include "smooth_sort.hpp"
+#include "power_sort.hpp"
 
 /* Non-Comparison Sort */
 

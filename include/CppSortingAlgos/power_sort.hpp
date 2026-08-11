@@ -1,6 +1,6 @@
 /**
- * @file tim_sort.hpp
- * @brief  Class for Tim sort.
+ * @file power_sort.hpp
+ * @brief  Class for power sort.
  * @author MingMinNa
  */
 
@@ -16,25 +16,32 @@
 #include <algorithm>
 #include <functional>
 
-namespace sort_imp
+namespace sort_imp 
 {
 
-class TimSort
+class PowerSort
 {
     public:
-        inline static const std::string name = "Tim Sort";
+        inline static const std::string name = "Power Sort";
         inline static const bool is_stable     = true;
         inline static const bool is_comparison = true;
         inline static const bool in_place      = false;
-
+        
         inline static const uint8_t MIN_MERGE  = 64u;
         inline static const uint8_t MIN_GALLOP = 7u;
 
         template <typename T, typename Compare = std::less<T>>
         static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
-
+        
     private:
-        TimSort() = default;
+
+        struct Run {
+            std::size_t run_start;
+            std::size_t run_end;
+            std::size_t power;
+        };
+
+        PowerSort() = default;
 
         static std::size_t calc_min_run(std::size_t n);
 
@@ -44,22 +51,31 @@ class TimSort
             std::size_t run_start, Compare cmp
         );
 
+        static std::size_t power_loop(
+            std::size_t run_start, 
+            std::size_t n1,
+            std::size_t n2,
+            std::size_t n
+        );
+
         template <typename T, typename Compare>
-        static void tim_merge(
+        static void found_new_run(
+            T* arr, std::vector<Run> &run_stack, Compare cmp,
+            std::size_t n2, std::size_t n, ptrdiff_t &min_gallop
+        );
+
+        template <typename T, typename Compare>
+        static void power_merge(
             T* arr, std::size_t start, std::size_t mid, std::size_t end,
             ptrdiff_t& min_gallop, Compare cmp
         );
 
-        // find rightmost position in [base, base + len) where key can be inserted to keep the array sorted; 
-        // i.e. the first index i such that arr[base + i] > key.
         template <typename T, typename Compare>
         static ptrdiff_t gallop_right(
             const T& key, T* arr, ptrdiff_t base,
             ptrdiff_t len, ptrdiff_t hint, Compare cmp
         );
 
-        // find leftmost position in [base, base + len) where key can be inserted; 
-        // i.e. the first index i such that arr[base + i] >= key.
         template <typename T, typename Compare>
         static ptrdiff_t gallop_left(
             const T& key, T* arr, ptrdiff_t base,
@@ -79,28 +95,21 @@ class TimSort
         );
 
         template <typename T, typename Compare>
-        static void merge_collapse(
-            T* arr, std::vector<std::pair<std::size_t, std::size_t>> &run_stack, 
-            ptrdiff_t &min_gallop, Compare cmp
-        );
-
-        template <typename T, typename Compare>
         static void merge_force_collapse(
-            T* arr, std::vector<std::pair<std::size_t, std::size_t>> &run_stack, 
+            T* arr, std::vector<Run> &run_stack, 
             ptrdiff_t &min_gallop, Compare cmp
         );
 };
 
 template <typename T, typename Compare>
-void TimSort::sort(T* arr, std::size_t n, Compare cmp)
+void PowerSort::sort(T* arr, std::size_t n, Compare cmp)
 {
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
 
     std::size_t min_run = calc_min_run(n);
-    std::vector<std::pair<std::size_t, std::size_t>> run_stack;
-
-    ptrdiff_t min_gallop = MIN_GALLOP;
+    std::vector<Run> run_stack;
     std::size_t run_start = 0;
+    ptrdiff_t min_gallop = MIN_GALLOP;
 
     while (run_start < n) {
 
@@ -114,16 +123,20 @@ void TimSort::sort(T* arr, std::size_t n, Compare cmp)
             BinaryInsertionSort::sort(arr + run_start, run_size, cmp);
         }
 
-        run_stack.push_back({run_start, run_end});
+        found_new_run(
+            arr, run_stack, cmp,
+            run_size, n, min_gallop
+        );
+
+        run_stack.push_back({run_start, run_end, 0});
         run_start = run_end + 1;
-        merge_collapse(arr, run_stack, min_gallop, cmp);
     }
 
     // After finding all runs, merge them.
     merge_force_collapse(arr, run_stack, min_gallop, cmp);
 }
 
-std::size_t TimSort::calc_min_run(std::size_t n)
+std::size_t PowerSort::calc_min_run(std::size_t n)
 {
     ptrdiff_t plus_one = 0;
     while (n >= MIN_MERGE) {
@@ -134,25 +147,125 @@ std::size_t TimSort::calc_min_run(std::size_t n)
 }
 
 template <typename T, typename Compare>
-std::size_t TimSort::get_run(
+std::size_t PowerSort::get_run(
     T* arr, const std::size_t n,
     std::size_t run_start, Compare cmp
 ) {
+    // Assume cmp is less<T> in the following code.
     std::size_t run_end = run_start;
-    if (run_end + 1 >= n) return run_start;
 
-    if (cmp(arr[run_end + 1], arr[run_end])) {
-        for (;run_end + 1 < n && cmp(arr[run_end + 1], arr[run_end]); ++ run_end);
-        std::reverse(arr + run_start, arr + run_end + 1);
-    } 
-    else {
-        for (;run_end + 1 < n && !cmp(arr[run_end + 1], arr[run_end]); ++ run_end);
+    for (; run_end + 1 < n; run_end ++) {
+        if (cmp(arr[run_end + 1], arr[run_end])) 
+            break;
     }
+    
+    // arr[run_start] ~ arr[run_end] are ascending.
+    if (run_end + 1 >= n) return run_end;
+
+    if (run_end - run_start >= 1) {
+        // arr[run_start] < arr[run_end]
+        if (cmp(arr[run_start], arr[run_end])) return run_end;
+        
+        // All elements from arr[run_start] to arr[run_end] are equal.
+        std::reverse(arr + run_start, arr + run_end + 1);
+    }
+
+    ++ run_end; 
+    std::size_t duplicate = 1;
+
+    for (; run_end + 1 < n; run_end ++) {
+        /* arr[run_end] < arr[run_end + 1] */
+        // End of the descending interval.
+        if (cmp(arr[run_end], arr[run_end + 1])) {
+            break;
+        }
+        /* arr[run_end] == arr[run_end + 1] */
+        else if (!cmp(arr[run_end + 1], arr[run_end])) {
+            duplicate ++;
+        }
+        /* arr[run_end] > arr[run_end + 1] */
+        // Reverse the duplicate elements.
+        else if (duplicate >= 2) {
+            std::reverse(arr + run_end + 1 - duplicate, arr + run_end + 1);
+            duplicate = 1;
+        }
+    }
+
+    if (duplicate >= 2) {
+        std::reverse(arr + run_end + 1 - duplicate, arr + run_end + 1);
+        duplicate = 1;
+    }
+
+    std::reverse(arr + run_start, arr + run_end + 1);
+
+    // After reverse, arr[run_start] ~ arr[run_end] are ascending now.
+    for (; run_end + 1 < n; run_end ++) {
+        if (cmp(arr[run_end + 1], arr[run_end])) break;
+    }
+
     return run_end;
 }
 
+std::size_t PowerSort::power_loop(
+    std::size_t run_start, 
+    std::size_t n1,
+    std::size_t n2,
+    std::size_t n
+) {
+    std::size_t ret = 0;
+    
+    // midpoint of run_1: a = run_start + n1 / 2;
+    // midpoint of run_2: b = run_start + n1 + n2 / 2 = a + (n1 + n2) / 2;
+    // But use 2a and 2b instead since 2a and 2b are integers.
+    std::size_t double_a = 2 * run_start + n1;
+    std::size_t double_b = double_a + n1 + n2;
+
+    while (true) {
+        ++ ret;
+        if (double_a >= n) {
+            double_a -= n;
+            double_b -= n;
+        }
+        else if (double_b >= n) {
+            break;
+        }
+
+        double_a <<= 1;
+        double_b <<= 1;
+    }
+
+    return ret;
+}
+
 template <typename T, typename Compare>
-void TimSort::tim_merge(
+void PowerSort::found_new_run(
+    T* arr, std::vector<Run> &run_stack, Compare cmp,
+    std::size_t n2, std::size_t n, ptrdiff_t &min_gallop
+) {
+    std::size_t size = run_stack.size();
+    if (!size) return;
+
+    std::size_t run_start = run_stack.back().run_start;
+    std::size_t n1    = run_stack.back().run_end - run_start + 1;
+    std::size_t power = power_loop(run_start, n1, n2, n);
+
+    while (size >= 2 && run_stack[size - 2].power > power) {
+
+        std::size_t l_B = run_stack[size - 2].run_start;
+        std::size_t r_B = run_stack[size - 2].run_end;
+        std::size_t r_C = run_stack[size - 1].run_end;
+        
+        size --;
+        run_stack.pop_back();
+        run_stack[size - 1].run_end = r_C; // From r_B to r_C
+        power_merge(arr, l_B, r_B, r_C, min_gallop, cmp);
+    }
+
+    run_stack[size - 1].power = power;
+}
+
+template <typename T, typename Compare>
+void PowerSort::power_merge(
     T* arr, std::size_t start, std::size_t mid, std::size_t end, 
     ptrdiff_t& min_gallop, Compare cmp
 ) {
@@ -182,7 +295,7 @@ void TimSort::tim_merge(
 }
 
 template <typename T, typename Compare>
-ptrdiff_t TimSort::gallop_right(
+ptrdiff_t PowerSort::gallop_right(
     const T& key, T* arr, ptrdiff_t base,
     ptrdiff_t len, ptrdiff_t hint, Compare cmp
 ) {
@@ -225,7 +338,7 @@ ptrdiff_t TimSort::gallop_right(
 }
 
 template <typename T, typename Compare>
-ptrdiff_t TimSort::gallop_left(
+ptrdiff_t PowerSort::gallop_left(
     const T& key, T* arr, ptrdiff_t base,
     ptrdiff_t len, ptrdiff_t hint, Compare cmp
 ) {
@@ -266,7 +379,7 @@ ptrdiff_t TimSort::gallop_left(
 }
 
 template <typename T, typename Compare>
-void TimSort::merge_lo(
+void PowerSort::merge_lo(
     T* arr, ptrdiff_t start, ptrdiff_t mid,
     ptrdiff_t end, ptrdiff_t& min_gallop, Compare cmp
 ) {
@@ -345,7 +458,7 @@ done:
 }
 
 template <typename T, typename Compare>
-void TimSort::merge_hi(
+void PowerSort::merge_hi(
     T* arr, ptrdiff_t start, ptrdiff_t mid,
     ptrdiff_t end, ptrdiff_t& min_gallop, Compare cmp
 ) {
@@ -436,94 +549,36 @@ done:
 }
 
 template <typename T, typename Compare>
-void TimSort::merge_collapse(
-    T* arr, std::vector<std::pair<std::size_t, std::size_t>> &run_stack, 
-    ptrdiff_t &min_gallop, Compare cmp
-) {
-    bool changed = true;
-    while (changed && run_stack.size() >= 2) {
-
-        changed = false;
-        std::size_t size = run_stack.size();
-
-        auto [l_B, r_B] = run_stack[size - 2];
-        auto [l_C, r_C] = run_stack[size - 1];
-        std::size_t size_B = r_B - l_B + 1;
-        std::size_t size_C = r_C - l_C + 1;
-
-        if (size >= 3) {
-            auto [l_A, r_A] = run_stack[size - 3];
-            std::size_t size_A = r_A - l_A + 1;
-            bool upper_violated = false;
-
-            if (size >= 4) {
-                auto [l_X, r_X] = run_stack[size - 4];
-                std::size_t size_X = r_X - l_X + 1;
-                upper_violated = (size_X <= size_A + size_B);
-            }
-
-            if ((size_A <= size_B + size_C || upper_violated)) {
-                /* Case 1: Merge A and B */
-                if (size_A < size_C) {
-                    tim_merge(arr, l_A, r_A, r_B, min_gallop, cmp);
-                    run_stack.resize(run_stack.size() - 3);
-                    run_stack.push_back({l_A, r_B});
-                    run_stack.push_back({l_C, r_C});
-                }
-                /* Case 2: Merge B and C */
-                else {
-                    tim_merge(arr, l_B, r_B, r_C, min_gallop, cmp);
-                    run_stack.resize(run_stack.size() - 2);
-                    run_stack.push_back({l_B, r_C});
-                }
-                changed = true;
-            }
-            /* Case 2: Merge B and C */
-            else if (size_B <= size_C) {
-                tim_merge(arr, l_B, r_B, r_C, min_gallop, cmp);
-                run_stack.resize(run_stack.size() - 2);
-                run_stack.push_back({l_B, r_C});
-                changed = true;
-            }
-        }
-        // Invariant #2
-        else if (size_B <= size_C){
-            tim_merge(arr, l_B, r_B, r_C, min_gallop, cmp);
-            run_stack.resize(run_stack.size() - 2);
-            run_stack.push_back({l_B, r_C});
-            changed = true;
-        }
-    }
-}
-
-template <typename T, typename Compare>
-void TimSort::merge_force_collapse(
-    T* arr, std::vector<std::pair<std::size_t, std::size_t>> &run_stack, 
+void PowerSort::merge_force_collapse(
+    T* arr, std::vector<Run> &run_stack, 
     ptrdiff_t &min_gallop, Compare cmp
 ) {
     while (run_stack.size() > 1) {
 
         std::size_t size = run_stack.size();
-        auto [l_B, r_B] = run_stack[size - 2];
-        auto [l_C, r_C] = run_stack[size - 1];
+        std::size_t l_B = run_stack[size - 2].run_start;
+        std::size_t r_B = run_stack[size - 2].run_end;
+        std::size_t l_C = run_stack[size - 1].run_start;
+        std::size_t r_C = run_stack[size - 1].run_end;
 
         if (size >= 3) {
-            auto [l_A, r_A] = run_stack[size - 3];
+            std::size_t l_A = run_stack[size - 3].run_start;
+            std::size_t r_A = run_stack[size - 3].run_end;
             std::size_t size_A = r_A - l_A + 1;
             std::size_t size_C = r_C - l_C + 1;
 
             if (size_A < size_C) {
-                tim_merge(arr, l_A, r_A, r_B, min_gallop, cmp);
+                power_merge(arr, l_A, r_A, r_B, min_gallop, cmp);
                 run_stack.resize(run_stack.size() - 3);
-                run_stack.push_back({l_A, r_B});
-                run_stack.push_back({l_C, r_C});
+                run_stack.push_back({l_A, r_B, 0});
+                run_stack.push_back({l_C, r_C, 0});
                 continue;
             }
         }
 
-        tim_merge(arr, l_B, r_B, r_C, min_gallop, cmp);
+        power_merge(arr, l_B, r_B, r_C, min_gallop, cmp);
         run_stack.resize(run_stack.size() - 2);
-        run_stack.push_back({l_B, r_C});
+        run_stack.push_back({l_B, r_C, 0});
     }
 }
 

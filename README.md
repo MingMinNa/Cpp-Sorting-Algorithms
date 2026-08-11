@@ -60,7 +60,7 @@ Currently implemented algorithms are listed below:
     <td><a>Patience Sort</a></td>
     <td><a>Adaptive Merge Sort</a></td>
     <td><a>Smooth Sort</a></td>
-    <td></td>
+    <td><a>Power Sort</a></td>
 </tr>
 </table>
 

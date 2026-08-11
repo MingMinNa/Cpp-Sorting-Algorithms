@@ -14,13 +14,13 @@
 | Shell (Pratt)   | ✓          | ✗      | ✓        | $O(n\log^2 n)$ | $O(n\log^2 n)$ | $O(n\log^2 n)$ | $O(1)$        |
 | Slow Sort       | ✓          | ✗      | ✓        | $O(n^{(\lg n) / 2})$| $O(n^{(\lg n) / 2})$| $O(n^{(\lg n) / 2})$| $O(\log n)$   |
 | Stooge Sort     | ✓          | ✗      | ✓        | $O(n^{2.71})$  | $O(n^{2.71})$  | $O(n^{2.71})$  | $O(\log n)$   |
-| Comb Sort       | ✓          | ✗      | ✓        | $O(n \log n)$  | $O(n^2)$       | $O(n^2)$       | $O(1)$        |
+| Comb Sort       | ✓          | ✗      | ✓        | $O(n \log n)$  | $O(n^2/2^p)$   | $O(n^2)$       | $O(1)$        |
 | Cycle Sort      | ✓          | ✗      | ✓        | $O(n^2)$       | $O(n^2)$       | $O(n^2)$       | $O(1)$        |
 | Bitonic Sort    | ✓          | ✗      | ✓        | $O(n\log^2 n)$ | $O(n\log^2 n)$ | $O(n\log^2 n)$ | $O(\log n)$   |
 | Odd-Even Sort   | ✓          | ✓      | ✓        | $O(n)$         | $O(n^2)$       | $O(n^2)$       | $O(1)$        |
 | Pancake Sort    | ✓          | ✗      | ✓        | $O(n^2)$       | $O(n^2)$       | $O(n^2)$       | $O(1)$        |
 | Strand Sort     | ✓          | ✓      | ✗        | $O(n)$         | $O(n^2)$       | $O(n^2)$       | $O(n)$        |
-| Tournament Sort | ✓          | ✓      | ✗        | $O(n\log n)$   | $O(n\log n)$   | $O(n\log n)$   | $O(n)$        |
+| Tournament Sort | ✓          | ✗      | ✗        | $O(n\log n)$   | $O(n\log n)$   | $O(n\log n)$   | $O(n)$        |
 | Patience Sort   | ✓          | ✗      | ✗        | $O(n\log n)$   | $O(n\log n)$   | $O(n\log n)$   | $O(n)$        |
 | Merge Sort      | ✓          | ✓      | ✗        | $O(n\log n)$   | $O(n\log n)$   | $O(n\log n)$   | $O(n)$        |
 | Adaptive Merge  | ✓          | ✓      | ✗        | $O(n)$         | $O(n\log n)$   | $O(n\log n)$   | $O(n)$        |
@@ -29,7 +29,8 @@
 | Tim Sort        | ✓          | ✓      | ✗        | $O(n)$         | $O(n\log n)$   | $O(n\log n)$   | $O(n)$        |
 | Smooth Sort     | ✓          | ✗      | ✓        | $O(n)$         | $O(n\log n)$   | $O(n\log n)$   | $O(1)$        |
 | Intro Sort      | ✓          | ✗      | ✓        | $O(n\log n)$   | $O(n\log n)$   | $O(n\log n)$   | $O(\log n)$   |
-| Counting Sort   | ✗          | ✓      | ✗        | $O(n + k)$     | $O(n + k)$     | $O(n + k)$     | $O(k)$        |
+| Power Sort      | ✓          | ✓      | ✗        | $O(n)$         | $O(n\log n)$   | $O(n\log n)$   | $O(n)$        |
+| Counting Sort   | ✗          | ✓      | ✗        | $O(n + k)$     | $O(n + k)$     | $O(n + k)$     | $O(n + k)$    |
 | Radix Sort      | ✗          | ✓      | ✗        | $O(d(n + k))$  | $O(d(n + k))$  | $O(d(n + k))$  | $O(n + k)$    |
 | Bucket Sort     | ✗          | ✓      | ✗        | $O(n + k)$     | $O(n + k)$     | $O(n^2)$       | $O(n + k)$    |
 | Flash Sort      | ✗          | ✗      | ✗        | $O(n + k)$     | $O(n + k)$     | $O(n^2)$       | $O(k)$        |
@@ -46,19 +47,19 @@
 
 ### Bitonic Sort
 - 序列長度必須為 $2$ 的次方。
-- 若輸入長度不符合條件，需自行進行填充或調整資料結構。
+- 若輸入長度不符合條件，需自行進行填充。
 
 ### Strand Sort
 - 即使提供陣列介面，內部仍會轉換為 `std::list` 進行處理。
 - 因此在處理大型資料時，使用 `std::list` 可能會有較佳的實際效能表現。
 
 ### Counting Sort
-- 本演算法僅適用於可枚舉且範圍有限的整數型別。
-- 本演算法不支援浮點數型別。
+- 僅適用於可枚舉且範圍有限的整數型別。
+- 不支援浮點數型別。
 
 ### Smooth Sort
 - 使用 `SmoothSort::sort` 時，當序列長度大於等於 李奧納多數-64 $L_{64}$ 時，可能會發生溢位問題。
-- 建議使用 `SmoothSortV2::sort`，以避免該問題並提升穩定性。
+- 建議使用 `SmoothSortV2::sort`，以避免該問題。
 
 ### 非比較式排序（通用說明）
 - 非比較式排序在使用時通常需要依賴特定資料特性，因此應根據實際應用場景調整程式碼。
