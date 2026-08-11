@@ -17,7 +17,7 @@ using namespace sort_imp;
 using namespace sort_benchmark;
 
 std::optional<std::size_t> seed = std::nullopt;
-std::size_t repeat = 3;
+std::size_t repeat = 5;
 std::size_t start_n = 16;
 std::size_t max_n = (1u << 20);
 
@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
         std::uint64_t,      // The first type is datatype (only std::unsigned_integral)
         HeapSort,            QuickSort,     MergeSort,      AdaptiveMergeSort,  TournamentSort,
         IntroSort,           TimSort,       SmoothSort,     SmoothSortV2,       PatienceSort,
-        BitonicSort
+        BitonicSort,         PowerSort
     >(sort_sizes, seed, repeat);
     to_csv(results, "benchmarks/results", "fast-comparison");
     

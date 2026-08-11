@@ -17,7 +17,7 @@ using namespace sort_imp;
 using namespace sort_benchmark;
 
 std::optional<std::size_t> seed = std::nullopt;
-std::size_t repeat = 3;
+std::size_t repeat = 5;
 std::size_t start_n = 16;
 std::size_t max_n = (1u << 16);
 
