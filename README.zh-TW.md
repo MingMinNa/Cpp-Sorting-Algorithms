@@ -143,4 +143,12 @@ target_link_libraries(<target_name>
 )
 ```
 
+接著，你就可以在自己的專案中使用它了。
+```C++
+#include <CppSortingAlgos/bubble_sort.hpp>
+#include <CppSortingAlgos/insertion_sort.hpp>
+#include <CppSortingAlgos/merge_sort.hpp>
+...
+```
+
 如果你想修改程式碼，可以下載原始碼，並把 `include/CppSortingAlgos` 資料夾複製到你的專案中。

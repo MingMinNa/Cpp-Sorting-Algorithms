@@ -30,10 +30,10 @@ Run `cmake --help` to see the full list of generators available on your system.
 Tests are executed using CTest:
 ```bash
 # With GCC
-$ ctest --test-dir build
+$ ctest --test-dir build --output-on-failure
 
 # With MSVC
-$ ctest --test-dir build -C Release
+$ ctest --test-dir build --output-on-failure -C Release
 ```
 
 ## Example Output

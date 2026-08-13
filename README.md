@@ -146,4 +146,12 @@ target_link_libraries(<target_name>
 )
 ```
 
+You can then include the library headers in your source file as follows:
+```C++
+#include <CppSortingAlgos/bubble_sort.hpp>
+#include <CppSortingAlgos/insertion_sort.hpp>
+#include <CppSortingAlgos/merge_sort.hpp>
+...
+```
+
 If you want to modify the code, download the source and copy `include/CppSortingAlgos` folder into your project.

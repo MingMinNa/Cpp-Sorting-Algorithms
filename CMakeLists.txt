@@ -15,7 +15,7 @@ add_library(sort_algo INTERFACE)
 
 target_include_directories(sort_algo 
     INTERFACE
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/CppSortingAlgos
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/
 )
 
 # Alias
