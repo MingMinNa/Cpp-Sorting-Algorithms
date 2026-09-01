@@ -4,7 +4,7 @@ This section describes how to build, run, and visualize the benchmark suite for 
 
 ## Requirements
 - CMake ≥ 3.20
-- C++23 compatible compiler
+- C++20 compatible compiler
 - Python 3.12+
 
 You can verify your CMake version with:

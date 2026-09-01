@@ -98,8 +98,8 @@ template <>
 struct RandomTraits<Int> {
     using range_type = Int;
 
-    static constexpr range_type range_min() { return Int_range_min; }
-    static constexpr range_type range_max() { return Int_range_max; }
+    static range_type range_min() { return Int_range_min; }
+    static range_type range_max() { return Int_range_max; }
 
     static Int generate(range_type min_val, range_type max_val, std::mt19937_64 &engine) 
     {
@@ -112,8 +112,8 @@ template <>
 struct RandomTraits<Float> {
     using range_type = Float;
 
-    static constexpr range_type range_min() { return Float_range_min; }
-    static constexpr range_type range_max() { return Float_range_max; }
+    static range_type range_min() { return Float_range_min; }
+    static range_type range_max() { return Float_range_max; }
 
     static Float generate(range_type min_val, range_type max_val, std::mt19937_64 &engine) 
     {
@@ -126,8 +126,8 @@ template <>
 struct RandomTraits<Element> {
     using range_type = decltype(Element::key);
 
-    static constexpr range_type range_min() { return Element_range_min_key; }
-    static constexpr range_type range_max() { return Element_range_max_key; }
+    static range_type range_min() { return Element_range_min_key; }
+    static range_type range_max() { return Element_range_max_key; }
 
     static Element generate(range_type min_val, range_type max_val, std::mt19937_64 &engine) 
     {

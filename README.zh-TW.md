@@ -2,7 +2,7 @@
 
 <a href="README.md">English</a> | 繁體中文
 
-![C++23](https://img.shields.io/badge/C%2B%2B-23-blue) [![License](https://img.shields.io/badge/License-MIT-green)](./LICENSE)
+![C++20](https://img.shields.io/badge/C%2B%2B-20-blue) [![License](https://img.shields.io/badge/License-MIT-green)](./LICENSE)
 
 本專案旨在以簡單且易於理解的方式實作各種排序演算法。  
 期望能將本專案發展成兼具實作、學習與參考價值的排序演算法資源。

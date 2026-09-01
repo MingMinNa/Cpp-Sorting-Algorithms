@@ -2,7 +2,7 @@
 
 English | <a href="README.zh-TW.md">繁體中文</a>
 
-![C++23](https://img.shields.io/badge/C%2B%2B-23-blue) [![License](https://img.shields.io/badge/License-MIT-green)](./LICENSE)
+![C++20](https://img.shields.io/badge/C%2B%2B-20-blue) [![License](https://img.shields.io/badge/License-MIT-green)](./LICENSE)
 
 This project aims to implement various sorting algorithms in a simple and easy-to-understand way.  
 The goal is to make this repository a useful resource for learning, implementation, and reference.

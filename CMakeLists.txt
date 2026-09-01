@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(CppSortingAlgos LANGUAGES CXX)
-
-set(CMAKE_CXX_STANDARD 23)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+project(CppSortingAlgos 
+    LANGUAGES CXX
+    HOMEPAGE_URL "https://github.com/MingMinNa/Cpp-Sorting-Algorithms"
+    DESCRIPTION "A collection of sorting algorithms implemented in C++."
+)
 
 # Build options
 option(ENABLE_TESTS "Build tests" OFF)
@@ -85,6 +85,10 @@ if(ENABLE_TESTS)
             PRIVATE 
                 sort_algo
         )
+        target_compile_features(${name}
+            PRIVATE
+                cxx_std_20
+        )
         apply_warning_flags(${name})
         apply_test_flags(${name})
         add_test(NAME ${name} COMMAND ${name})
@@ -105,7 +109,27 @@ if(ENABLE_BENCHMARKS)
             PRIVATE 
                 sort_algo
         )
+        target_compile_features(${name}
+            PRIVATE
+                cxx_std_20
+        )
         apply_warning_flags(${name})
         apply_release_flags(${name})
     endforeach()
 endif()
+
+# example.cpp
+
+get_filename_component(name "example.cpp" NAME_WE)
+
+add_executable(${name} "example.cpp")
+target_link_libraries(${name} 
+    PRIVATE 
+        sort_algo
+)
+target_compile_features(${name}
+    PRIVATE
+        cxx_std_20
+)
+apply_warning_flags(${name})
+apply_release_flags(${name})

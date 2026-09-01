@@ -4,7 +4,7 @@ This section describes how to build and run the test suite for sorting algorithm
 
 ## Requirements
 - CMake ≥ 3.20
-- C++23 compatible compiler
+- C++20 compatible compiler
 
 You can verify your CMake version with:
 ```bash
