@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.20)
 
 project(CppSortingAlgos 
+    VERSION 2.0.0
     LANGUAGES CXX
     HOMEPAGE_URL "https://github.com/MingMinNa/Cpp-Sorting-Algorithms"
     DESCRIPTION "A collection of sorting algorithms implemented in C++."
@@ -119,7 +120,6 @@ if(ENABLE_BENCHMARKS)
 endif()
 
 # example.cpp
-
 get_filename_component(name "example.cpp" NAME_WE)
 
 add_executable(${name} "example.cpp")

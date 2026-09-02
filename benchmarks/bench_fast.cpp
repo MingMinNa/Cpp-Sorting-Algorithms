@@ -6,6 +6,7 @@
 
 #include "../include/CppSortingAlgos/sort_collection.hpp"
 #include "benchmark_utils.hpp"
+#include "cpp_sorts.hpp"
 
 #include <cstring>
 #include <string>
@@ -49,7 +50,7 @@ int main(int argc, char *argv[])
         std::uint64_t,      // The first type is datatype (only std::unsigned_integral)
         HeapSort,            QuickSort,     MergeSort,      AdaptiveMergeSort,  TournamentSort,
         IntroSort,           TimSort,       SmoothSort,     SmoothSortV2,       PatienceSort,
-        BitonicSort,         PowerSort
+        BitonicSort,         PowerSort,     StdSort,        StdStableSort
     >(sort_sizes, seed, repeat);
     to_csv(results, "benchmarks/results", "fast-comparison");
     

@@ -1,8 +1,10 @@
-import os
 import argparse
+import os
+from typing import cast
+
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 
 BENCHMARKS_FOLDER = os.path.dirname(os.path.abspath(__file__))
 RESULTS_FOLDER = os.path.join(BENCHMARKS_FOLDER, "results")
@@ -75,6 +77,7 @@ def parse_args() -> argparse.Namespace:
 
     return parser.parse_args()
 
+
 def build_color_map(dfs: list[pd.DataFrame]) -> dict:
 
     all_algos = set()
@@ -85,6 +88,7 @@ def build_color_map(dfs: list[pd.DataFrame]) -> dict:
         for i, algo in enumerate(sorted(all_algos))
     }
 
+
 def best_time_unit(max_ns: float):
     if max_ns >= 1000000000:
         return 1000000000, "s"
@@ -93,6 +97,7 @@ def best_time_unit(max_ns: float):
     if max_ns >= 1000:
         return 1000, "μs"
     return 1, "ns"
+
 
 def plot_bar(
     filename: str,
@@ -108,15 +113,15 @@ def plot_bar(
         return
 
     subset["Algo"] = subset["Algo"].str.replace(" Sort", "")
-    algos = sorted(
-        subset["Algo"].unique(),
-        key=lambda a: subset.loc[subset["Algo"] == a, "Time(ns)"].values[0],
-    )
 
-    unit_div, unit_label = best_time_unit(subset["Time(ns)"].max())
-    times = [
-        subset.loc[subset["Algo"] == a, "Time(ns)"].values[0] / unit_div for a in algos
-    ]
+    time_by_algo = cast(
+        dict[str, float],
+        subset.set_index("Algo")["Time(ns)"].to_dict(),
+    )
+    algos = sorted(time_by_algo, key=lambda a: time_by_algo[a])
+
+    unit_div, unit_label = best_time_unit(max(time_by_algo.values()))
+    times = [time_by_algo[a] / unit_div for a in algos]
     colors = [color_map[a] for a in algos]
 
     x_pos = np.arange(len(algos))
@@ -138,7 +143,12 @@ def plot_bar(
     ax.set_xticklabels(algos, fontsize=10, rotation=30, ha="right")
 
     ax.yaxis.grid(
-        True, which="both", linestyle="--", linewidth=0.6, alpha=0.5, color="#CCCCCC"
+        True,
+        which="both",
+        linestyle="--",
+        linewidth=0.6,
+        alpha=0.5,
+        color="#CCCCCC",
     )
     ax.set_axisbelow(True)
     ax.spines[["top", "right"]].set_visible(False)
@@ -161,6 +171,7 @@ def plot_bar(
     plt.close(fig)
 
     print(f"[Output] Saved to {save_path}")
+
 
 def plot_trend(
     filename: str,
@@ -200,15 +211,23 @@ def plot_trend(
         ax.set_yscale("log")
 
     ax.grid(
-        True, which="both", linestyle="--", linewidth=0.6, alpha=0.4, color="#CCCCCC"
+        True,
+        which="both",
+        linestyle="--",
+        linewidth=0.6,
+        alpha=0.4,
+        color="#CCCCCC",
     )
+
     ax.set_axisbelow(True)
     ax.spines[["top", "right"]].set_visible(False)
     ax.spines[["left", "bottom"]].set_color("#CCCCCC")
 
     ax.set_xlabel("Input size (log scale)", fontsize=11, labelpad=8)
     ax.set_ylabel(
-        f"Time ({unit_label}){' (log scale)' if log_y else ''}", fontsize=11, labelpad=8
+        f"Time ({unit_label}){' (log scale)' if log_y else ''}",
+        fontsize=11,
+        labelpad=8,
     )
     ax.set_title(
         f"{os.path.basename(filename)} {data_order} (growth trend)",
@@ -224,6 +243,7 @@ def plot_trend(
     plt.close(fig)
 
     print(f"[Output] Saved to {save_path}")
+
 
 def main() -> None:
     args = parse_args()
@@ -265,6 +285,7 @@ def main() -> None:
                 plot_bar(img_path, df, order, size, color_map, log_y=bar_log_y)
             if args.mode in ("trend", "both"):
                 plot_trend(img_path, df, order, color_map, log_y=True)
+
 
 if __name__ == "__main__":
     main()

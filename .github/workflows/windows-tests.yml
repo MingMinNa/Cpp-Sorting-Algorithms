@@ -11,13 +11,17 @@ jobs:
     strategy:
       fail-fast: false
 
-    runs-on: windows-latest
+    runs-on: windows-2025-vs2026
 
     steps:
       - uses: actions/checkout@v7
 
+      - name: Check Visual Studio generator
+        shell: pwsh
+        run: cmake --help | Select-String "Visual Studio 18 2026"
+
       - name: Configure
-        run: cmake -S . -B build -DENABLE_TESTS=ON -DENABLE_BENCHMARKS=OFF
+        run: cmake -S . -B build -DENABLE_TESTS=ON -DENABLE_BENCHMARKS=OFF -G "Visual Studio 18 2026"
 
       - name: Build
         run: cmake --build build --config Release
