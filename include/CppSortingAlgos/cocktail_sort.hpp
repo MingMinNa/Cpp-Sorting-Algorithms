@@ -7,6 +7,7 @@
 #pragma once
 
 #include "sort_utils.hpp"
+#include <span>
 #include <string>
 #include <cstddef>
 #include <functional>
@@ -24,15 +25,18 @@ class CocktailSort
         inline static const bool in_place      = true;
 
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
+        static void sort(std::span<T> arr_span, Compare cmp = Compare{});
 
     private:
         CocktailSort() = default;
 };
 
 template <typename T, typename Compare>
-void CocktailSort::sort(T* arr, std::size_t n, Compare cmp)
+void CocktailSort::sort(std::span<T> arr_span, Compare cmp)
 {
+    T* arr = arr_span.data();
+    std::size_t n = arr_span.size();
+    
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
 
     std::size_t left = 0, right = n - 1;

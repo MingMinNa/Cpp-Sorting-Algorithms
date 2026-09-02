@@ -18,8 +18,10 @@
 namespace sort_algo
 {
 
-std::size_t random_generate(std::size_t lower_bound, std::size_t upper_bound) 
-{
+std::size_t random_generate(
+    std::size_t lower_bound, 
+    std::size_t upper_bound
+) {
     if (lower_bound > upper_bound)
         throw std::invalid_argument(
             "Lower bound must not exceed upper bound."

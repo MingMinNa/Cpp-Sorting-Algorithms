@@ -208,7 +208,7 @@ BenchmarkResult run_sort_benchmark(
     std::sort(ref.begin(), ref.end());
 
     auto t0 = std::chrono::high_resolution_clock::now();
-    SortClass::template sort<T>(vec.data(), vec.size());
+    SortClass::template sort<T>(vec);
     auto t1 = std::chrono::high_resolution_clock::now();
 
     result.time_ns = static_cast<double>(

@@ -7,6 +7,7 @@
 #pragma once
 
 #include "sort_utils.hpp"
+#include <span>
 #include <string>
 #include <cstddef>
 #include <utility>
@@ -27,15 +28,18 @@ class CombSort
         inline static const double SHRINK_FACTOR = 0.769; //  1 / 1.3 ≈ 0.769
 
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
+        static void sort(std::span<T> arr_span, Compare cmp = Compare{});
 
     private:
         CombSort() = default;
 };
 
 template <typename T, typename Compare>
-void CombSort::sort(T* arr, std::size_t n, Compare cmp)
+void CombSort::sort(std::span<T> arr_span, Compare cmp)
 {
+    T* arr = arr_span.data();
+    std::size_t n = arr_span.size();
+    
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
 
     std::size_t gap = n;

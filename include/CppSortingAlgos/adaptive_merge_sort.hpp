@@ -7,6 +7,7 @@
 #pragma once
 
 #include "sort_utils.hpp"
+#include <span>
 #include <stack>
 #include <string>
 #include <cstddef>
@@ -26,7 +27,7 @@ class AdaptiveMergeSort
         inline static const bool in_place      = false;
 
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
+        static void sort(std::span<T> arr_span, Compare cmp = Compare{});
 
     private:
         AdaptiveMergeSort() = default;
@@ -54,8 +55,11 @@ class AdaptiveMergeSort
 };
 
 template <typename T, typename Compare>
-void AdaptiveMergeSort::sort(T* arr, std::size_t n, Compare cmp)
+void AdaptiveMergeSort::sort(std::span<T> arr_span, Compare cmp)
 {
+    T* arr = arr_span.data();
+    std::size_t n = arr_span.size();
+
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
     
     std::size_t run_start = 0;

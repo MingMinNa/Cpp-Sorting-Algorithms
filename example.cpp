@@ -65,10 +65,10 @@ int main()
     print_traits<Sort>(Sort::name);
     print(data, "Original");
 
-    Sort::sort(data.data(), data.size(), less_cmp);
+    Sort::sort<Element>(data, less_cmp);
     print(data, "Sorted (Ascending)");
 
-    Sort::sort(data.data(), data.size(), greater_cmp);
+    Sort::sort<Element>(data, greater_cmp);
     print(data, "Sorted (Descending)");
 
     return 0;

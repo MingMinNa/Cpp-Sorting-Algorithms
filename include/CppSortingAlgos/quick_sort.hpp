@@ -7,6 +7,7 @@
 #pragma once
 
 #include "sort_utils.hpp"
+#include <span>
 #include <string>
 #include <cstddef>
 #include <utility>
@@ -28,7 +29,7 @@ class QuickSort
 
         template <typename T, typename Compare = std::less<T>>
         static void sort(
-            T* arr, std::size_t n, 
+            std::span<T> arr_span, 
             Compare cmp = Compare{}, 
             bool random_pivot = RANDOM_PIVOT_DEFAULT
         );
@@ -51,8 +52,11 @@ class QuickSort
 };
 
 template <typename T, typename Compare>
-void QuickSort::sort(T* arr, std::size_t n, Compare cmp, bool random_pivot)
+void QuickSort::sort(std::span<T> arr_span, Compare cmp, bool random_pivot)
 {
+    T* arr = arr_span.data();
+    std::size_t n = arr_span.size();
+
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
     quick_sort(arr, 0, n, cmp, random_pivot);
 }

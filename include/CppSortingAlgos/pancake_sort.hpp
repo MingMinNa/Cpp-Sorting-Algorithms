@@ -7,6 +7,7 @@
 #pragma once
 
 #include "sort_utils.hpp"
+#include <span>
 #include <string>
 #include <cstddef>
 #include <utility>
@@ -25,7 +26,7 @@ class PancakeSort
         inline static const bool in_place      = true;
 
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
+        static void sort(std::span<T> arr_span, Compare cmp = Compare{});
 
     private:
         PancakeSort() = default;
@@ -38,8 +39,11 @@ class PancakeSort
 };
 
 template <typename T, typename Compare>
-void PancakeSort::sort(T* arr, std::size_t n, Compare cmp)
+void PancakeSort::sort(std::span<T> arr_span, Compare cmp)
 {
+    T* arr = arr_span.data();
+    std::size_t n = arr_span.size();
+    
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
 
     for (std::size_t i = 0; i < n - 1; ++i) {    

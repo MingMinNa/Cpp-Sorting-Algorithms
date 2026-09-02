@@ -8,6 +8,7 @@
 
 #include "../include/CppSortingAlgos/sort_collection.hpp"
 #include "test_datatypes.hpp"
+#include <span>
 #include <string>
 #include <vector>
 #include <format>
@@ -523,7 +524,7 @@ template<typename Sort, typename T, typename Cmp, typename Fn>
 bool test(std::string sort_name, Tests exclude = Tests::None)
 {
     Fn sort_fn = [](T* arr, std::size_t n, Cmp cmp) {
-        Sort::sort(arr, n, cmp);
+        Sort::sort(std::span<T>{arr, n}, cmp);
     };
 
     TestSuite<T, Cmp> suite(

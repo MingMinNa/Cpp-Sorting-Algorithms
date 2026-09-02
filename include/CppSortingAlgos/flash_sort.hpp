@@ -8,6 +8,7 @@
 
 #include "sort_utils.hpp"
 #include "insertion_sort.hpp"
+#include <span>
 #include <string>
 #include <cstddef>
 #include <utility>
@@ -26,15 +27,18 @@ class FlashSort
         inline static const bool in_place      = false;
 
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
+        static void sort(std::span<T> arr_span, Compare cmp = Compare{});
     
     private:
         FlashSort() = default;
 };
 
 template <typename T, typename Compare>
-void FlashSort::sort(T* arr, std::size_t n, Compare cmp)
+void FlashSort::sort(std::span<T> arr_span, Compare cmp)
 {
+    T* arr = arr_span.data();
+    std::size_t n = arr_span.size();
+    
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
 
     std::size_t num_classes = std::max(
@@ -83,7 +87,7 @@ void FlashSort::sort(T* arr, std::size_t n, Compare cmp)
         }
     }
 
-    InsertionSort::sort(arr, n, cmp);
+    InsertionSort::sort(arr_span, cmp);
 }
 
 } // namespace sort_algo

@@ -83,7 +83,7 @@ Each sorting algorithm class provides the following interface:
 ```C++
 // Compare must satisfy strict weak ordering
 template <typename T, typename Compare = std::less<T>>
-static void sort(T* arr, size_t n, Compare cmp = Compare{});
+static void sort(std::span<T> arr_span, Compare cmp = Compare{});
 inline static const bool is_stable;     // → whether it is stable
 inline static const bool is_comparison; // → whether it is comparison-based
 inline static const bool in_place;      // → whether it is in-place
@@ -103,11 +103,11 @@ int main()
     // "BubbleSort" is the class.
     // "sort"       is the method.
 
-    sort_algo::BubbleSort::sort(arr, n, std::less<int>());      // ascending
-    sort_algo::BubbleSort::sort(arr, n, std::greater<int>());   // descending
+    sort_algo::BubbleSort::sort(std::span<int>{arr, n}, std::less<int>());      // ascending
+    sort_algo::BubbleSort::sort(std::span<int>{arr, n}, std::greater<int>());   // descending
 
     // For vector, you can use 
-    // sort_algo::BubbleSort::sort(vec.data(), vec.size(), less<int>());
+    // sort_algo::BubbleSort::sort<int>(vec, less<int>());
 }
 ```
 

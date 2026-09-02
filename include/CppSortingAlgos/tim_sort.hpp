@@ -8,6 +8,7 @@
 
 #include "sort_utils.hpp"
 #include "insertion_sort.hpp"
+#include <span>
 #include <vector>
 #include <string>
 #include <cstddef>
@@ -31,7 +32,7 @@ class TimSort
         inline static const uint8_t MIN_GALLOP = 7u;
 
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
+        static void sort(std::span<T> arr_span, Compare cmp = Compare{});
 
     private:
         TimSort() = default;
@@ -92,8 +93,11 @@ class TimSort
 };
 
 template <typename T, typename Compare>
-void TimSort::sort(T* arr, std::size_t n, Compare cmp)
+void TimSort::sort(std::span<T> arr_span, Compare cmp)
 {
+    T* arr = arr_span.data();
+    std::size_t n = arr_span.size();
+    
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
 
     std::size_t min_run = calc_min_run(n);
@@ -111,7 +115,7 @@ void TimSort::sort(T* arr, std::size_t n, Compare cmp)
         if (run_size < min_run) {
             run_size = std::min(min_run, n - run_start);
             run_end  = run_start + run_size - 1;
-            BinaryInsertionSort::sort(arr + run_start, run_size, cmp);
+            BinaryInsertionSort::sort(std::span<T>{arr + run_start, run_size}, cmp);
         }
 
         run_stack.push_back({run_start, run_end});

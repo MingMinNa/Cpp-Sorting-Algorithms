@@ -7,6 +7,7 @@
 #pragma once
 
 #include "sort_utils.hpp"
+#include <span>
 #include <string>
 #include <cstddef>
 #include <utility>
@@ -28,15 +29,18 @@ class RadixSort
         inline static const std::size_t RADIX = 1u << 8;
 
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
+        static void sort(std::span<T> arr_span, Compare cmp = Compare{});
     
     private:
         RadixSort() = default;
 };
 
 template <typename T, typename Compare>
-void RadixSort::sort(T* arr, std::size_t n, Compare cmp)
+void RadixSort::sort(std::span<T> arr_span, Compare cmp)
 {
+    T* arr = arr_span.data();
+    std::size_t n = arr_span.size();
+    
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
 
     // Note: radix must be at least 2.

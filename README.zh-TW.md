@@ -81,7 +81,7 @@ Cpp-Sorting-Algorithms/
 ```C++
 // Compare 必須滿足嚴格弱序
 template <typename T, typename Compare = std::less<T>>
-static void sort(T* arr, size_t n, Compare cmp = Compare{});
+static void sort(std::span<T> arr_span, Compare cmp = Compare{});
 inline static const bool is_stable;     // → 是否為穩定排序
 inline static const bool is_comparison; // → 是否為比較排序
 inline static const bool in_place;      // → 是否為原地排序
@@ -101,11 +101,11 @@ int main()
     // "BubbleSort" is the class.
     // "sort"       is the method.
 
-    sort_algo::BubbleSort::sort(arr, n, std::less<int>());      // ascending
-    sort_algo::BubbleSort::sort(arr, n, std::greater<int>());   // descending
+    sort_algo::BubbleSort::sort(std::span<int>{arr, n}, std::less<int>());      // ascending
+    sort_algo::BubbleSort::sort(std::span<int>{arr, n}, std::greater<int>());   // descending
 
     // For vector, you can use 
-    // sort_algo::BubbleSort::sort(vec.data(), vec.size(), less<int>());
+    // sort_algo::BubbleSort::sort<int>(vec, less<int>());
 }
 ```
 

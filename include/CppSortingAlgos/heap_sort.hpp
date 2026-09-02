@@ -7,6 +7,7 @@
 #pragma once
 
 #include "sort_utils.hpp"
+#include <span>
 #include <string>
 #include <cstddef>
 #include <functional>
@@ -24,7 +25,7 @@ class HeapSort
         inline static const bool in_place      = true;
 
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
+        static void sort(std::span<T> arr_span, Compare cmp = Compare{});
 
     private:
         HeapSort() = default;
@@ -37,8 +38,11 @@ class HeapSort
 };
 
 template <typename T, typename Compare>
-void HeapSort::sort(T* arr, std::size_t n, Compare cmp)
+void HeapSort::sort(std::span<T> arr_span, Compare cmp)
 {
+    T* arr = arr_span.data();
+    std::size_t n = arr_span.size();
+    
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
 
     build_heap<T, Compare>(arr, n, cmp);

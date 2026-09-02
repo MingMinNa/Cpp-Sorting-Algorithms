@@ -8,6 +8,7 @@
 
 #include "sort_utils.hpp"
 #include "insertion_sort.hpp"
+#include <span>
 #include <string>
 #include <cstddef>
 #include <utility>
@@ -29,8 +30,9 @@ class BucketSort
 
         template <typename T, typename Compare = std::less<T>>
         static void sort(
-            T* arr, std::size_t n, 
-            Compare cmp = Compare{}, std::size_t num_buckets = 0u
+            std::span<T> arr_span, 
+            Compare cmp = Compare{}, 
+            std::size_t num_buckets = 0u
         );
 
     private:
@@ -38,8 +40,11 @@ class BucketSort
 };
 
 template <typename T, typename Compare>
-void BucketSort::sort(T* arr, std::size_t n, Compare cmp, std::size_t num_buckets)
+void BucketSort::sort(std::span<T> arr_span, Compare cmp, std::size_t num_buckets)
 {
+    T* arr = arr_span.data();
+    std::size_t n = arr_span.size();
+    
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
 
     // if num_buckets is not specified, set it to sqrt(n) + 1
@@ -69,7 +74,7 @@ void BucketSort::sort(T* arr, std::size_t n, Compare cmp, std::size_t num_bucket
     }
 
     for (auto &bucket : buckets) {
-        InsertionSort::sort(bucket.data(), bucket.size(), cmp);
+        InsertionSort::sort<T>(bucket, cmp);
     }
 
     ptrdiff_t start = 0, end = 0, step = 0, index = 0;

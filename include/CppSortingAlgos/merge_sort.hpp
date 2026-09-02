@@ -7,6 +7,7 @@
 #pragma once
 
 #include "sort_utils.hpp"
+#include <span>
 #include <string>
 #include <cstddef>
 #include <utility>
@@ -25,7 +26,7 @@ class MergeSort
         inline static const bool in_place      = false;
 
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
+        static void sort(std::span<T> arr_span, Compare cmp = Compare{});
 
     private:
         MergeSort() = default;
@@ -40,8 +41,11 @@ class MergeSort
 };
 
 template <typename T, typename Compare>
-void MergeSort::sort(T* arr, std::size_t n, Compare cmp)
+void MergeSort::sort(std::span<T> arr_span, Compare cmp)
 {
+    T* arr = arr_span.data();
+    std::size_t n = arr_span.size();
+    
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
     merge_sort(arr, 0, n, cmp);
 }

@@ -7,6 +7,7 @@
 #pragma once
 
 #include "sort_utils.hpp"
+#include <span>
 #include <string>
 #include <cstddef>
 #include <utility>
@@ -27,15 +28,18 @@ class InsertionSort
         inline static const bool in_place      = true;
 
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
+        static void sort(std::span<T> arr_span, Compare cmp = Compare{});
         
     private:
         InsertionSort() = default;
 };
 
 template <typename T, typename Compare>
-void InsertionSort::sort(T* arr, std::size_t n, Compare cmp)
+void InsertionSort::sort(std::span<T> arr_span, Compare cmp)
 {
+    T* arr = arr_span.data();
+    std::size_t n = arr_span.size();
+
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
 
     for (std::size_t i = 1; i < n; ++i) {
@@ -68,15 +72,18 @@ class BinaryInsertionSort
         inline static const bool in_place      = true;
 
         template <typename T, typename Compare = std::less<T>>
-        static void sort(T* arr, std::size_t n, Compare cmp = Compare{});
+        static void sort(std::span<T> arr_span, Compare cmp = Compare{});
 
     private:
         BinaryInsertionSort() = default;
 };
 
 template <typename T, typename Compare>
-void BinaryInsertionSort::sort(T* arr, std::size_t n, Compare cmp)
+void BinaryInsertionSort::sort(std::span<T> arr_span, Compare cmp)
 {
+    T* arr = arr_span.data();
+    std::size_t n = arr_span.size();
+    
     if (check_sorted<T, Compare>(arr, n, cmp)) return;
 
     for (std::size_t i = 1; i < n; ++i) {
